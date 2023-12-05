@@ -8,13 +8,12 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('locations', function (Blueprint $table) {
+        Schema::create('location_travel', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100)->nullable(false);
-            $table->string('description', 255)->nullable(false);
-            $table->string('image_1', 255)->default("https://cdn.avalos.sv/wp-content/uploads/default-featured-image.png");
-            $table->string('image_2', 255)->default("https://cdn.avalos.sv/wp-content/uploads/default-featured-image.png");
-            $table->string('image_3', 255)->default("https://cdn.avalos.sv/wp-content/uploads/default-featured-image.png");
+            $table->unsignedBigInteger("travel_id");
+            $table->foreign("travel_id")->references("id")->on("travels")->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger("location_id");
+            $table->foreign("location_id")->references("id")->on("locations")->constrained()->onDelete('cascade');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
