@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Travel extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'start_date',
+        'end_date',
+        'is_active',
+        'timestamp',
+    ];
 }
