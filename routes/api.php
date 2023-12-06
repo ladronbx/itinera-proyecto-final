@@ -25,6 +25,7 @@ Route::put('/user-update', [UserController::class, 'updateProfile']);
 Route::delete('/user-delete', [UserController::class, 'deleteUser']);
 });
 
+Route::get('/my-travels', [TravelController::class, 'getMyTravels']);
 
 // LOCATION
 Route::get('/locations', [TravelController::class, 'getAllLocations']);

@@ -214,4 +214,42 @@ class TravelController extends Controller
             );
         }
     }
+
+
+    public function getMyTravels(Request $request)
+    {
+        try {
+
+            $user = auth()->user();
+            $travel = $user->travels;
+
+            if($travel->isEmpty() || !$travel){
+                return response()->json(
+                    [
+                        "success" => true,
+                        "message" => "Travel obtained succesfully",
+                        "data" => $travel
+                    ],
+                    Response::HTTP_OK
+                );
+            } else {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Travel not found"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error obtaining the travel"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }

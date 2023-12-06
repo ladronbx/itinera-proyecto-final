@@ -11,6 +11,11 @@ class GroupSeeder extends Seeder
     public function run(): void
     {
         DB::table('groups')->insert([
+            'user_id' => 1,
+            'travel_id' => 1,
+        ]);
+
+        DB::table('groups')->insert([
             'user_id' => 2,
             'travel_id' => 1,
         ]);

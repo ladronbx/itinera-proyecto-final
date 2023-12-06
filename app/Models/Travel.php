@@ -30,13 +30,18 @@ class Travel extends Model
         return $this->hasMany(LocationTravel::class);
     }
 
-    public function travels(): HasMany
-    {
-        return $this->hasMany(Travel::class);
-    }
+    // public function travels(): HasMany
+    // {
+    //     return $this->hasMany(Travel::class);
+    // }
 
     public function travel_locationManyToMany(): BelongsToMany
     {
         return $this->belongsToMany(Location::class, 'location_travel');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'group');
     }
 }

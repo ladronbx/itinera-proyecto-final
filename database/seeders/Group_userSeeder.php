@@ -11,6 +11,11 @@ class Group_userSeeder extends Seeder
     public function run(): void
     {
         DB::table('group_user')->insert([
+            'user_id' => 1,
+            'group_id' => 1,
+        ]);
+
+        DB::table('group_user')->insert([
             'user_id' => 2,
             'group_id' => 1,
         ]);
