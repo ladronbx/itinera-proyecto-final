@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
             TravelSeeder::class,
         ]);
 
-
         $this->call([
             LocationSeeder::class,
         ]);
