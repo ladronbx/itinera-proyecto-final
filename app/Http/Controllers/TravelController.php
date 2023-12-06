@@ -86,4 +86,36 @@ class TravelController extends Controller
             );
         }
     }
+
+    public function createTravel(Request $request)
+    {
+        try {
+            $user = auth()->user();
+
+            if ($user->role === ("super_admin")) {
+                $travel = Travel::query()->create([
+                    'start_date' => $request->start_date,
+                    'end_date' => $request->end_date,
+                ]);
+
+                return response()->json(
+                    [
+                        "success" => true,
+                        "message" => "Travels created succesfully",
+                        "data" => $travel
+                    ],
+                    Response::HTTP_OK
+                );
+            }
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error creating the travel"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }
