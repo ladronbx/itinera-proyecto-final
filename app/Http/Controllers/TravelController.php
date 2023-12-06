@@ -45,4 +45,41 @@ class TravelController extends Controller
             );
         }
     }
+
+    public function getTravelById(Request $request,$id)
+    {
+        try {
+            $travel = Travel::query()->find($id);
+
+            if(!$travel){
+                return response()->json(
+                    [
+                        "success" => true,
+                        "message" => "Travel doesn't exist", 
+                    ],
+                    Response::HTTP_OK
+                ); 
+            }
+
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Travel obtained succesfully",
+                    "data" => $travel
+                ],
+                Response::HTTP_OK
+            );
+
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error obtaining the travel"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }
