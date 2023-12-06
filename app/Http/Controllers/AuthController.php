@@ -123,4 +123,30 @@ class AuthController extends Controller
             );
         }
     }
+
+    public function profile(Request $request)
+    {
+        try {
+            $user = auth()->user();
+
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "User",
+                    "data" => $user
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error getting profile user"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }
