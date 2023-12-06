@@ -23,6 +23,17 @@ Route::put('/user-update', [UserController::class, 'updateProfile']);
 Route::delete('/user-delete', [UserController::class, 'deleteUser']);
 });
 
-// TRAVEL
-Route::get('/travels', [TravelController::class, 'getAllTravels']);
-Route::get('/travel/{id}', [TravelController::class, 'getTravelById']);
+
+// LOCATION
+Route::get('/locations', [TravelController::class, 'getAllLocations']);
+Route::get('/location/{id}', [TravelController::class, 'getLocationById']);
+Route::get('/location-travel/{id}', [TravelController::class, 'getLocationByTravelId']);
+
+
+// SUPERADMIN : TRAVELS
+// Route::group([
+//     'middleware' => ['auth:sanctum', 'is_super_admin']
+// ], function () {
+Route::get('/travels', [TravelController::class, 'getAllTravels']); //
+Route::get('/travel/{id}', [TravelController::class, 'getTravelById']); //
+// });
