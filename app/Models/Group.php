@@ -10,7 +10,6 @@ class Group extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'travel_id',
     ];
 
@@ -24,8 +23,8 @@ class Group extends Model
         return $this->belongsTo(Travel::class);
     }
 
-    public function members()
-    {
-        return $this->hasMany(Member::class);
-    }
+    // public function group_user()
+    // {
+    //     return $this->hasMany(Group_user::class);
+    // }
 }

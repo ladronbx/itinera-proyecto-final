@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Group_user;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,6 +23,14 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             ActivitySeeder::class,
+        ]);
+
+        $this->call([
+            GroupSeeder::class,
+        ]);
+
+        $this->call([
+            Group_userSeeder::class,
         ]);
 
     }
