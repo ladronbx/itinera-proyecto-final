@@ -12,30 +12,31 @@ class TravelController extends Controller
     public function getAllTravels(Request $request)
     {
         try {
-            $travels = Travel::query()->get();
+            $user = auth()->user();
 
-            if($travels->isEmpty()){
+            if ($user->role === "super_admin") {
+                $travels = Travel::query()->get();
+                if ($travels->isEmpty()) {
+                    return response()->json(
+                        [
+                            "success" => true,
+                            "message" => "There are not any travel",
+                        ],
+                        Response::HTTP_OK
+                    );
+                }
+
                 return response()->json(
                     [
                         "success" => true,
-                        "message" => "There are not any travel", 
+                        "message" => "Travels obtained succesfully",
+                        "data" => $travels
                     ],
                     Response::HTTP_OK
-                ); 
+                );
             }
-
-            return response()->json(
-                [
-                    "success" => true,
-                    "message" => "Travels obtained succesfully",
-                    "data" => $travels
-                ],
-                Response::HTTP_OK
-            );
-
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
-
             return response()->json(
                 [
                     "success" => false,
@@ -46,30 +47,33 @@ class TravelController extends Controller
         }
     }
 
-    public function getTravelById(Request $request,$id)
+    public function getTravelById(Request $request, $id)
     {
         try {
-            $travel = Travel::query()->find($id);
 
-            if(!$travel){
+            $user = auth()->user();
+
+            if ($user->role === "super_admin") {
+                $travel = Travel::query()->find($id);
+                if (!$travel) {
+                    return response()->json(
+                        [
+                            "success" => true,
+                            "message" => "Travel doesn't exist",
+                        ],
+                        Response::HTTP_OK
+                    );
+                }
+
                 return response()->json(
                     [
                         "success" => true,
-                        "message" => "Travel doesn't exist", 
+                        "message" => "Travel obtained succesfully",
+                        "data" => $travel
                     ],
                     Response::HTTP_OK
-                ); 
+                );
             }
-
-            return response()->json(
-                [
-                    "success" => true,
-                    "message" => "Travel obtained succesfully",
-                    "data" => $travel
-                ],
-                Response::HTTP_OK
-            );
-
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
 

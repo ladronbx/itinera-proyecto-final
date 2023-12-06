@@ -1,10 +1,12 @@
 <?php
 
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TravelController;
 use App\Http\Controllers\UserController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\IsSuperAdmin;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -31,9 +33,9 @@ Route::get('/location-travel/{id}', [TravelController::class, 'getLocationByTrav
 
 
 // SUPERADMIN : TRAVELS
-// Route::group([
-//     'middleware' => ['auth:sanctum', 'is_super_admin']
-// ], function () {
-Route::get('/travels', [TravelController::class, 'getAllTravels']); //
-Route::get('/travel/{id}', [TravelController::class, 'getTravelById']); //
-// });
+Route::group([
+    'middleware' => ['auth:sanctum', 'is_super_admin']
+], function () {
+Route::get('/travels', [TravelController::class, 'getAllTravels']);
+Route::get('/travel/{id}', [TravelController::class, 'getTravelById']);
+});

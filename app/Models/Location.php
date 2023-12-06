@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Location extends Model
 {
     use HasFactory;
+    
+    protected $table = 'locations';
 
     protected $fillable = [
         'name',

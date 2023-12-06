@@ -11,6 +11,8 @@ class Travel extends Model
 {
     use HasFactory;
 
+    protected $table = 'travels';
+
     protected $fillable = [
         'start_date',
         'end_date',
