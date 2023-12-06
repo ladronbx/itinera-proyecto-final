@@ -173,4 +173,45 @@ class TravelController extends Controller
             );
         }
     }
+
+    public function deleteTravel(Request $request, $id)
+    {
+        try {
+
+            $user = auth()->user();
+
+            if ($user->role === ("super_admin")) {
+                $travel = Travel::query()->find($id);
+
+                if ($travel) {
+                    $travel->delete();
+
+                    return response()->json(
+                        [
+                            "success" => true,
+                            "message" => "Travel deleted succesfully",
+                        ],
+                        Response::HTTP_OK
+                    );
+                } else {
+                    return response()->json(
+                        [
+                            "success" => false,
+                            "message" => "Travel not found"
+                        ],
+                        Response::HTTP_NOT_FOUND
+                    );
+                }
+            }
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error deleting the travel"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }

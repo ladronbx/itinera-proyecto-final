@@ -40,4 +40,5 @@ Route::get('/travels', [TravelController::class, 'getAllTravels']);
 Route::get('/travel/{id}', [TravelController::class, 'getTravelById']);
 Route::post('/travel-create', [TravelController::class, 'createTravel']);
 Route::put('/travel-update/{id}', [TravelController::class, 'updateTravel']);
+Route::delete('/travel-delete/{id}', [TravelController::class, 'deleteTravel']);
 });
