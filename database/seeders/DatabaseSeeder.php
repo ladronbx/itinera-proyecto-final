@@ -12,6 +12,12 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
         ]);
 
-        // \App\Models\User::factory(8)->create();
+        // \App\Models\User::factory(5)->create();
+
+        $this->call([
+            TravelSeeder::class,
+        ]);
+
+        // \App\Models\Travel::factory(5)->create();
     }
 }
