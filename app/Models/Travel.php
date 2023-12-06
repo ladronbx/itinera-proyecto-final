@@ -15,4 +15,14 @@ class Travel extends Model
         'is_active',
         'timestamp',
     ];
+
+    public function groups()
+    {
+        return $this->hasMany(Group::class);
+    }
+
+    public function locationTravels()
+    {
+        return $this->hasMany(LocationTravel::class);
+    }
 }

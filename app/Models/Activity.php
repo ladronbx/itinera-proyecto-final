@@ -17,4 +17,9 @@ class Activity extends Model
         'duration',
         'location_id',
     ];
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
 }

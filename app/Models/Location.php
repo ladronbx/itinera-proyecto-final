@@ -17,4 +17,14 @@ class Location extends Model
         'image_3',
         'timestamp',
     ];
+
+    public function locationTravels()
+    {
+        return $this->hasMany(LocationTravel::class);
+    }
+
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
+    }
 }

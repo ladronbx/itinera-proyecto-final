@@ -13,4 +13,14 @@ class Location_travel extends Model
         'location_id',
         'travel_id',
     ];
+
+    public function travel()
+    {
+        return $this->belongsTo(Travel::class);
+    }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
 }
