@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TravelController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +22,7 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::put('/user-update', [UserController::class, 'updateProfile']);
 Route::delete('/user-delete', [UserController::class, 'deleteUser']);
 });
+
+// TRAVEL
+Route::get('/travels', [TravelController::class, 'getAllTravels']);
+Route::get('/travel/{id}', [TravelController::class, 'getTravelById']);
