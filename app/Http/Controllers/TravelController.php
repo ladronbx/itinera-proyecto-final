@@ -90,9 +90,15 @@ class TravelController extends Controller
     public function createTravel(Request $request)
     {
         try {
+
             $user = auth()->user();
 
             if ($user->role === ("super_admin")) {
+                $request->validate([
+                    'start_date' => 'required|date|after:today',
+                    'end_date' => 'required|date|after:start_date',
+                ]);
+
                 $travel = Travel::query()->create([
                     'start_date' => $request->start_date,
                     'end_date' => $request->end_date,
@@ -113,6 +119,55 @@ class TravelController extends Controller
                 [
                     "success" => false,
                     "message" => "Error creating the travel"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
+    public function updateTravel(Request $request, $id)
+    {
+        try {
+
+            $user = auth()->user();
+
+            if ($user->role === ("super_admin")) {
+                $request->validate([
+                    'start_date' => 'required|date|after:today',
+                    'end_date' => 'required|date|after:start_date',
+                ]);
+
+                $travel = Travel::query()->find($id);
+
+                if ($travel) {
+                    $travel->start_date = $request->start_date;
+                    $travel->end_date = $request->end_date;
+                    $travel->save();
+
+                    return response()->json(
+                        [
+                            "success" => true,
+                            "message" => "Travel updated succesfully",
+                            "data" => $travel
+                        ],
+                        Response::HTTP_OK
+                    );
+                } else {
+                    return response()->json(
+                        [
+                            "success" => false,
+                            "message" => "Travel not found"
+                        ],
+                        Response::HTTP_NOT_FOUND
+                    );
+                }
+            }
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error updating the travel"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
