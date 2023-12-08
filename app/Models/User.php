@@ -34,15 +34,15 @@ class User extends Authenticatable
     public function groups(): HasMany
     {
         return $this->hasMany(Group::class);
-    }
+    } // 1 a muchos
 
     public function user_groupManyToMany(): BelongsToMany
     {
         return $this->belongsToMany(Group::class, 'group_user');
-    }
+    } // muchos a muchos (tabla intermedia) (user_group)
 
-    public function travels()
+    public function travels(): BelongsToMany
     {
-        return $this->belongsToMany(Travel::class, 'group');
-    }
+        return $this->belongsToMany(Travel::class, 'groups', 'user_id', 'travel_id');
+    } // muchos a muchos (tabla intermedia) (user_travel -> pertenece a groups)
 }

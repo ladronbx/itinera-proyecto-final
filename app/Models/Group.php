@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Group extends Model
 {
@@ -18,19 +17,14 @@ class Group extends Model
         'travel_id',
     ];
 
-    public function users()
-    {
-        return $this->belongsToMany(User::class, 'group_user', 'group_id', 'user_id');
-    }
-
-    public function group_userManyToMany(): BelongsToMany
+    public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'group_user');
-    }
+    } // muchos a muchos (tabla intermedia) (group_user)
 
-    public function travel()
+    public function travels(): BelongsToMany
     {
-        return $this->belongsTo(Travel::class);
-    }
+        return $this->belongsToMany(Travel::class);
+    } // muchos a muchos (sin tabla intermedia explícita)
 
 }

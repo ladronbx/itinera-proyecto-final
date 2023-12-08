@@ -25,21 +25,42 @@ Route::put('/user-update', [UserController::class, 'updateProfile']);
 Route::delete('/user-delete', [UserController::class, 'deleteUser']);
 });
 
-Route::get('/my-travels', [TravelController::class, 'getMyTravels']);
+// TRAVEL
+Route::group([
+    'middleware' => ['auth:sanctum']
+], function () {
+Route::post('/travel-create', [TravelController::class, 'createTravel']);
+// Route::get('/my-travels', [TravelController::class, 'getMyTravels']);
+});
+
+
+
+
+
+
+
+
+
 
 // LOCATION
-Route::get('/locations', [TravelController::class, 'getAllLocations']);
-Route::get('/location/{id}', [TravelController::class, 'getLocationById']);
-Route::get('/location-travel/{id}', [TravelController::class, 'getLocationByTravelId']);
+// Route::get('/locations', [TravelController::class, 'getAllLocations']);
+// Route::get('/location/{id}', [TravelController::class, 'getLocationById']);
+// Route::get('/location-travel/{id}', [TravelController::class, 'getLocationByTravelId']);
 
 
-// SUPERADMIN : TRAVELS
+
+
+
+
+
+
+
+// SUPERADMIN : TRAVELS (por revisar después de modificar relaciones)
 Route::group([
     'middleware' => ['auth:sanctum', 'is_super_admin']
 ], function () {
-Route::get('/travels', [TravelController::class, 'getAllTravels']);
-Route::get('/travel/{id}', [TravelController::class, 'getTravelById']);
-Route::post('/travel-create', [TravelController::class, 'createTravel']);
-Route::put('/travel-update/{id}', [TravelController::class, 'updateTravel']);
-Route::delete('/travel-delete/{id}', [TravelController::class, 'deleteTravel']);
+Route::get('/travels', [Super_adminController::class, 'getAllTravels']);
+Route::get('/travel/{id}', [Super_adminController::class, 'getTravelById']);
+Route::put('/travel-update/{id}', [Super_adminController::class, 'updateTravel']);
+Route::delete('/travel-delete/{id}', [Super_adminController::class, 'deleteTravel']);
 });

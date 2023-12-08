@@ -14,9 +14,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
         ]);
 
-        $this->call([
-            TravelSeeder::class,
-        ]);
+        // $this->call([
+        //     TravelSeeder::class,
+        // ]);
 
         $this->call([
             LocationSeeder::class,
@@ -26,17 +26,17 @@ class DatabaseSeeder extends Seeder
             ActivitySeeder::class,
         ]);
 
-        $this->call([
-            GroupSeeder::class,
-        ]);
+        // $this->call([
+        //     GroupSeeder::class,
+        // ]);
 
-        $this->call([
-            Group_userSeeder::class,
-        ]);
+        // $this->call([
+        //     Group_userSeeder::class,
+        // ]);
 
-        $this->call([
-            Location_travelSeeder::class,
-        ]);
+        // $this->call([
+        //     Location_travelSeeder::class,
+        // ]);
 
     }
 }

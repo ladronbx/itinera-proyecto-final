@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Travel extends Model
 {
@@ -20,28 +19,13 @@ class Travel extends Model
         'timestamp',
     ];
 
-    public function groups()
+    public function users(): BelongsToMany
     {
-        return $this->hasMany(Group::class);
-    }
+        return $this->belongsToMany(User::class, 'groups', 'travel_id', 'user_id');
+    } // muchos a muchos (tabla intermedia) (travel_user -> pertenece a groups)
 
-    public function locationTravels()
-    {
-        return $this->hasMany(LocationTravel::class);
-    }
-
-    // public function travels(): HasMany
-    // {
-    //     return $this->hasMany(Travel::class);
-    // }
-
-    public function travel_locationManyToMany(): BelongsToMany
+    public function locations(): BelongsToMany
     {
         return $this->belongsToMany(Location::class, 'location_travel');
-    }
-
-    public function users()
-    {
-        return $this->belongsToMany(User::class, 'group');
-    }
+    } // muchos a muchos (tabla intermedia) (location_travel)
 }
