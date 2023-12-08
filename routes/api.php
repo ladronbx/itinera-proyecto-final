@@ -36,12 +36,6 @@ Route::post('/trip-create', [TripController::class, 'createPersonalTrip']);
 
 
 
-
-
-
-
-
-
 // LOCATION
 // Route::get('/locations', [TripController::class, 'getAllLocations']);
 // Route::get('/location/{id}', [TripController::class, 'getLocationById']);
