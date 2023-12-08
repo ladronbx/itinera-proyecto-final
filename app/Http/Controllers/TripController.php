@@ -270,4 +270,44 @@ class TripController extends Controller
             );
         }
     }
+
+    public function deleteMyTripById(Request $request, $id)
+    {
+        try {
+            $user = auth()->user();
+            $group = Group::query()->where('trip_id', $id)->where('user_id', $user->id)->first();
+
+            if ($group->user_id != $user->id) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "You are not authorized to delete this trip"
+                    ],
+                    Response::HTTP_UNAUTHORIZED
+                );
+            }
+
+            Trip::destroy($group->trip_id);
+
+
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Trip deleted successfully",
+                    "data" => $group
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error deleting a trip"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }

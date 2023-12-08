@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Super_adminController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\IsSuperAdmin;
@@ -34,14 +35,14 @@ Route::post('/personal-trip-create/{id}', [TripController::class, 'createPersona
 Route::get('/my-trips', [TripController::class, 'getAllMyTrips']);
 Route::get('/my-trip/{id}', [TripController::class, 'getMyTripById']);
 Route::put('/my-trip/{id}', [TripController::class, 'updateMyTrip']);
-Route::delete('/my-trip-delete/{id}', [TripController::class, 'deleteMyTrip']);
+Route::delete('/my-trip/{id}', [TripController::class, 'deleteMyTripById']);
 });
 
 
 
 
 // LOCATION
-// Route::get('/locations', [TripController::class, 'getAllLocations']);
+Route::get('/locations', [TripController::class, 'getAllLocations']);
 // Route::get('/location/{id}', [TripController::class, 'getLocationById']);
 // Route::get('/location-trip/{id}', [TripController::class, 'getLocationByTripId']);
 
