@@ -29,8 +29,10 @@ Route::delete('/user-delete', [UserController::class, 'deleteUser']);
 Route::group([
     'middleware' => ['auth:sanctum']
 ], function () {
+//el usuario puede crear un viaje personal a partir de una localización marcando la casilla de viajo sólo
 Route::post('/personal-trip-create/{id}', [TripController::class, 'createPersonalTrip']);
-// Route::get('/my-trips', [TripController::class, 'getMyTrips']);
+Route::get('/my-trips', [TripController::class, 'getAllMyTrips']);
+Route::get('/my-trip/{id}', [TripController::class, 'getMyTripById']);
 });
 
 

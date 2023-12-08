@@ -96,19 +96,25 @@ class TripController extends Controller
         }
     }
 
-    public function getMyTrips(Request $request)
+    public function getAllMyTrips(Request $request)
     {
         try {
-
+    
             $user = auth()->user();
-            $trip = $user->trips;
+            $group = Group::query()->where('user_id', $user->id)->first();
+            $dates = Trip::query()->where('id', $group->trip_id)->get();
+            $location = Location_trip::query()->where('trip_id', $group->trip_id)->get();
 
-            if ($trip->isEmpty() || !$trip) {
+            if ($group) {
                 return response()->json(
                     [
                         "success" => true,
-                        "message" => "Trip obtained succesfully",
-                        "data" => $trip
+                        "message" => "Trips obtained succesfully",
+                        "data" => [
+                            "groups" => $group,
+                            "location" => $location,
+                            "dates" => $dates,
+                        ]
                     ],
                     Response::HTTP_OK
                 );
@@ -116,7 +122,7 @@ class TripController extends Controller
                 return response()->json(
                     [
                         "success" => false,
-                        "message" => "Trip not found"
+                        "message" => "Trips not found"
                     ],
                     Response::HTTP_NOT_FOUND
                 );
@@ -126,7 +132,7 @@ class TripController extends Controller
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error obtaining the trip"
+                    "message" => "Error obtaining the trips"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
