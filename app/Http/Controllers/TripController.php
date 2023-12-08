@@ -48,11 +48,11 @@ class TripController extends Controller
 
             $start_date = $request->input('start_date');
             $end_date = $request->input('end_date');
-            
+
             //realizar una consulta en la tabla trips para ver si existe un viaje con las mismas fechas
             $trip = Trip::query()->where('start_date', $start_date)->where('end_date', $end_date)->first();
 
-            if($trip){
+            if ($trip) {
                 return response()->json(
                     [
                         "success" => false,
@@ -99,22 +99,26 @@ class TripController extends Controller
     public function getAllMyTrips(Request $request)
     {
         try {
-    
             $user = auth()->user();
-            $group = Group::query()->where('user_id', $user->id)->first();
-            $dates = Trip::query()->where('id', $group->trip_id)->get();
-            $location = Location_trip::query()->where('trip_id', $group->trip_id)->get();
+            $groups = Group::query()->where('user_id', $user->id)->get();
 
-            if ($group) {
+            $data = $groups->map(function ($group) {
+                $dates = Trip::query()->where('id', $group->trip_id)->get();
+                $location = Location_trip::query()->where('trip_id', $group->trip_id)->get();
+
+                return [
+                    "group" => $group,
+                    "location" => $location,
+                    "dates" => $dates,
+                ];
+            });
+
+            if (!$groups->isEmpty()) {
                 return response()->json(
                     [
                         "success" => true,
                         "message" => "Trips obtained succesfully",
-                        "data" => [
-                            "groups" => $group,
-                            "location" => $location,
-                            "dates" => $dates,
-                        ]
+                        "data" => $data
                     ],
                     Response::HTTP_OK
                 );
