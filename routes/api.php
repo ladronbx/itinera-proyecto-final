@@ -4,7 +4,6 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\LocationController;
 use App\Http\Controllers\Super_adminController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\UserController;
@@ -42,9 +41,7 @@ Route::delete('/my-trip/{id}', [TripController::class, 'deleteMyTripById']);
 
 
 
-// LOCATION
-Route::get('/locations', [LocationController::class, 'getAllLocations']);
-// Route::get('/location/{id}', [LocationController::class, 'getLocationById']);
+
 
 
 
