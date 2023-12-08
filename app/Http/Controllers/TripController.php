@@ -139,7 +139,7 @@ class TripController extends Controller
     {
         try {
             $user = auth()->user();
-            $group = Group::query()->where('trip_id', $id)->first();
+            $group = Group::query()->where('trip_id', $id)->where('user_id', $user->id)->first();
 
             if ($group->user_id != $user->id) {
                 return response()->json(
@@ -188,6 +188,83 @@ class TripController extends Controller
                 [
                     "success" => false,
                     "message" => "Error obtaining the trips"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
+    public function updateMyTrip(Request $request, $id)
+    {
+        try {
+            $user = auth()->user();
+            $group = Group::query()->where('trip_id', $id)->where('user_id', $user->id)->first();
+            $dates = Trip::query()->where('id', $group->trip_id)->first();
+            $location = Location_trip::query()->where('trip_id', $group->trip_id)->first();
+
+            if ($group->user_id != $user->id) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "You are not authorized to update this trip"
+                    ],
+                    Response::HTTP_UNAUTHORIZED
+                );
+            }
+
+            $validator = Validator::make($request->all(), [
+                'start_date' => 'required|date|before:end_date',
+                'end_date' => 'required|date|after:start_date'
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(
+                    [
+                        "success" => true,
+                        "message" => "Error updating a trip",
+                        "error" => $validator->errors()
+                    ],
+                    Response::HTTP_BAD_REQUEST
+                );
+            }
+
+            $start_date = $request->input('start_date');
+            $end_date = $request->input('end_date');
+
+            $trip = Trip::query()->where('start_date', $start_date)->where('end_date', $end_date)->first();
+
+            if ($trip) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Trip already exists"
+                    ],
+                    Response::HTTP_CONFLICT
+                );
+            }
+
+            $dates->start_date = $start_date;
+            $dates->end_date = $end_date;
+            $dates->save();
+
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Trip updated successfully",
+                    "data"  => [
+                        "location" => $location,
+                        "dates" => $dates,
+                    ]
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error updating a trip"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
