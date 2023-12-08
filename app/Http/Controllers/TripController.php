@@ -122,11 +122,62 @@ class TripController extends Controller
                     ],
                     Response::HTTP_OK
                 );
+            }
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error obtaining the trips"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
+    public function getMyTripById(Request $request, $id)
+    {
+        try {
+            $user = auth()->user();
+            $group = Group::query()->where('trip_id', $id)->first();
+
+            if ($group->user_id != $user->id) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "You are not authorized to see this trip"
+                    ],
+                    Response::HTTP_UNAUTHORIZED
+                );
+            }
+
+            $dates = Trip::query()->where('id', $group->trip_id)->first();
+            $location = Location_trip::query()->where('trip_id', $group->trip_id)->first();
+
+            return [
+                "group" => $group,
+                "location" => $location,
+                "dates" => $dates,
+            ];
+
+            if (!$group->isEmpty()) {
+                return response()->json(
+                    [
+                        "success" => true,
+                        "message" => "Trip obtained succesfully",
+                        "data" => [
+                            "group" => $group,
+                            "location" => $location,
+                            "dates" => $dates,
+                        ]
+                    ],
+                    Response::HTTP_OK
+                );
             } else {
                 return response()->json(
                     [
                         "success" => false,
-                        "message" => "Trips not found"
+                        "message" => "Trip not found"
                     ],
                     Response::HTTP_NOT_FOUND
                 );
