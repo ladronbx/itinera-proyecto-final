@@ -29,7 +29,7 @@ Route::delete('/user-delete', [UserController::class, 'deleteUser']);
 Route::group([
     'middleware' => ['auth:sanctum']
 ], function () {
-Route::post('/trip-create', [TripController::class, 'createPersonalTrip']);
+Route::post('/personal-trip-create/{id}', [TripController::class, 'createPersonalTrip']);
 // Route::get('/my-trips', [TripController::class, 'getMyTrips']);
 });
 
