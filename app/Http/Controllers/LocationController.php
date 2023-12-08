@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class LocationController extends Controller
 {
-    public function getAllLocations()
+    public function getAllLocations(Request $request)
     {
         try {
             $locations = Location::get();
@@ -48,4 +48,40 @@ class LocationController extends Controller
 
 
     //getLocationById
+
+    public function getLocationById(Request $request, $id)
+    {
+        try {
+            $location = Location::find($id);
+
+            if (!$location) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Location not found"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Location obtained successfully",
+                    "data" => $location
+                ],
+                Response::HTTP_CREATED
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error obtaining a location"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }

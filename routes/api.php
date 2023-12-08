@@ -30,7 +30,7 @@ Route::delete('/user-delete', [UserController::class, 'deleteUser']);
 
 // LOCATION
 Route::get('/locations', [LocationController::class, 'getAllLocations']);
-// Route::get('/location/{id}', [LocationController::class, 'getLocationById']);
+Route::get('/location/{id}', [LocationController::class, 'getLocationById']);
 
 // SUPERADMIN : LOCATIONS
 // Route::group([
