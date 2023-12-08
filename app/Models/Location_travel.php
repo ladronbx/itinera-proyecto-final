@@ -5,20 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Location_travel extends Model
+class Location_trip extends Model
 {
     use HasFactory;
 
-    protected $table = 'location_travel';
+    protected $table = 'location_trip';
 
     protected $fillable = [
         'location_id',
-        'travel_id',
+        'trip_id',
     ];
 
-    public function travel()
+    public function trip()
     {
-        return $this->belongsTo(Travel::class);
+        return $this->belongsTo(Trip::class);
     }
 
     public function location()

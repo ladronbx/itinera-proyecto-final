@@ -20,10 +20,10 @@ class Location extends Model
         'timestamp',
     ];
 
-    public function travels(): BelongsToMany
+    public function trips(): BelongsToMany
     {
-        return $this->belongsToMany(Travel::class, 'location_travel');
-    } // muchos a muchos (tabla intermedia) (location_travel)
+        return $this->belongsToMany(Trip::class, 'location_trip');
+    } // muchos a muchos (tabla intermedia) (location_trip)
 
     public function activities(): HasMany
     {

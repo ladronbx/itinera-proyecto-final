@@ -8,10 +8,10 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('location_travel', function (Blueprint $table) {
+        Schema::create('location_trip', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("travel_id");
-            $table->foreign("travel_id")->references("id")->on("travels")->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger("trip_id");
+            $table->foreign("trip_id")->references("id")->on("trips")->constrained()->onDelete('cascade');
             $table->unsignedBigInteger("location_id");
             $table->foreign("location_id")->references("id")->on("locations")->constrained()->onDelete('cascade');
             $table->timestamp('created_at')->useCurrent();
@@ -21,6 +21,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('location_travel');
+        Schema::dropIfExists('location_trip');
     }
 };

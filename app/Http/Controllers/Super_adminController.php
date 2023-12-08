@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Travel;
+use App\Models\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 class Super_adminController extends Controller
 {
-    public function getAllTravels(Request $request)
+    public function getAllTrips(Request $request)
     {
         try {
             $user = auth()->user();
 
             if ($user->role === "super_admin") {
-                $travels = Travel::query()->get();
-                if ($travels->isEmpty()) {
+                $trips = Trip::query()->get();
+                if ($trips->isEmpty()) {
                     return response()->json(
                         [
                             "success" => true,
-                            "message" => "There are not any travel",
+                            "message" => "There are not any trip",
                         ],
                         Response::HTTP_OK
                     );
@@ -29,8 +29,8 @@ class Super_adminController extends Controller
                 return response()->json(
                     [
                         "success" => true,
-                        "message" => "Travels obtained succesfully",
-                        "data" => $travels
+                        "message" => "Trips obtained succesfully",
+                        "data" => $trips
                     ],
                     Response::HTTP_OK
                 );
@@ -40,26 +40,26 @@ class Super_adminController extends Controller
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error obtaining the travels"
+                    "message" => "Error obtaining the trips"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
         }
     }
 
-    public function getTravelById(Request $request, $id)
+    public function getTripById(Request $request, $id)
     {
         try {
 
             $user = auth()->user();
 
             if ($user->role === "super_admin") {
-                $travel = Travel::query()->find($id);
-                if (!$travel) {
+                $trip = Trip::query()->find($id);
+                if (!$trip) {
                     return response()->json(
                         [
                             "success" => true,
-                            "message" => "Travel doesn't exist",
+                            "message" => "Trip doesn't exist",
                         ],
                         Response::HTTP_OK
                     );
@@ -68,8 +68,8 @@ class Super_adminController extends Controller
                 return response()->json(
                     [
                         "success" => true,
-                        "message" => "Travel obtained succesfully",
-                        "data" => $travel
+                        "message" => "Trip obtained succesfully",
+                        "data" => $trip
                     ],
                     Response::HTTP_OK
                 );
@@ -80,14 +80,14 @@ class Super_adminController extends Controller
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error obtaining the travel"
+                    "message" => "Error obtaining the trip"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
         }
     }
     
-    public function updateTravel(Request $request, $id)
+    public function updateTrip(Request $request, $id)
     {
         try {
 
@@ -99,18 +99,18 @@ class Super_adminController extends Controller
                     'end_date' => 'required|date|after:start_date',
                 ]);
 
-                $travel = Travel::query()->find($id);
+                $trip = Trip::query()->find($id);
 
-                if ($travel) {
-                    $travel->start_date = $request->start_date;
-                    $travel->end_date = $request->end_date;
-                    $travel->save();
+                if ($trip) {
+                    $trip->start_date = $request->start_date;
+                    $trip->end_date = $request->end_date;
+                    $trip->save();
 
                     return response()->json(
                         [
                             "success" => true,
-                            "message" => "Travel updated succesfully",
-                            "data" => $travel
+                            "message" => "Trip updated succesfully",
+                            "data" => $trip
                         ],
                         Response::HTTP_OK
                     );
@@ -118,7 +118,7 @@ class Super_adminController extends Controller
                     return response()->json(
                         [
                             "success" => false,
-                            "message" => "Travel not found"
+                            "message" => "Trip not found"
                         ],
                         Response::HTTP_NOT_FOUND
                     );
@@ -129,29 +129,29 @@ class Super_adminController extends Controller
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error updating the travel"
+                    "message" => "Error updating the trip"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
         }
     }
 
-    public function deleteTravel(Request $request, $id)
+    public function deleteTrip(Request $request, $id)
     {
         try {
 
             $user = auth()->user();
 
             if ($user->role === ("super_admin")) {
-                $travel = Travel::query()->find($id);
+                $trip = Trip::query()->find($id);
 
-                if ($travel) {
-                    $travel->delete();
+                if ($trip) {
+                    $trip->delete();
 
                     return response()->json(
                         [
                             "success" => true,
-                            "message" => "Travel deleted succesfully",
+                            "message" => "Trip deleted succesfully",
                         ],
                         Response::HTTP_OK
                     );
@@ -159,7 +159,7 @@ class Super_adminController extends Controller
                     return response()->json(
                         [
                             "success" => false,
-                            "message" => "Travel not found"
+                            "message" => "Trip not found"
                         ],
                         Response::HTTP_NOT_FOUND
                     );
@@ -170,7 +170,7 @@ class Super_adminController extends Controller
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error deleting the travel"
+                    "message" => "Error deleting the trip"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
@@ -178,19 +178,19 @@ class Super_adminController extends Controller
     }
 
 
-    public function getMyTravels(Request $request)
+    public function getMyTrips(Request $request)
     {
         try {
 
             $user = auth()->user();
-            $travel = $user->travels;
+            $trip = $user->trips;
 
-            if($travel->isEmpty() || !$travel){
+            if($trip->isEmpty() || !$trip){
                 return response()->json(
                     [
                         "success" => true,
-                        "message" => "Travel obtained succesfully",
-                        "data" => $travel
+                        "message" => "Trip obtained succesfully",
+                        "data" => $trip
                     ],
                     Response::HTTP_OK
                 );
@@ -198,7 +198,7 @@ class Super_adminController extends Controller
                 return response()->json(
                     [
                         "success" => false,
-                        "message" => "Travel not found"
+                        "message" => "Trip not found"
                     ],
                     Response::HTTP_NOT_FOUND
                 );
@@ -208,7 +208,7 @@ class Super_adminController extends Controller
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error obtaining the travel"
+                    "message" => "Error obtaining the trip"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );

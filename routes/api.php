@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\TravelController;
+use App\Http\Controllers\TripController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\IsSuperAdmin;
 
@@ -25,12 +25,12 @@ Route::put('/user-update', [UserController::class, 'updateProfile']);
 Route::delete('/user-delete', [UserController::class, 'deleteUser']);
 });
 
-// TRAVEL
+// TRIP
 Route::group([
     'middleware' => ['auth:sanctum']
 ], function () {
-Route::post('/travel-create', [TravelController::class, 'createTravel']);
-// Route::get('/my-travels', [TravelController::class, 'getMyTravels']);
+Route::post('/trip-create', [TripController::class, 'createPersonalTrip']);
+// Route::get('/my-trips', [TripController::class, 'getMyTrips']);
 });
 
 
@@ -43,9 +43,9 @@ Route::post('/travel-create', [TravelController::class, 'createTravel']);
 
 
 // LOCATION
-// Route::get('/locations', [TravelController::class, 'getAllLocations']);
-// Route::get('/location/{id}', [TravelController::class, 'getLocationById']);
-// Route::get('/location-travel/{id}', [TravelController::class, 'getLocationByTravelId']);
+// Route::get('/locations', [TripController::class, 'getAllLocations']);
+// Route::get('/location/{id}', [TripController::class, 'getLocationById']);
+// Route::get('/location-trip/{id}', [TripController::class, 'getLocationByTripId']);
 
 
 
@@ -55,12 +55,12 @@ Route::post('/travel-create', [TravelController::class, 'createTravel']);
 
 
 
-// SUPERADMIN : TRAVELS (por revisar después de modificar relaciones)
+// SUPERADMIN : TRipS (por revisar después de modificar relaciones)
 Route::group([
     'middleware' => ['auth:sanctum', 'is_super_admin']
 ], function () {
-Route::get('/travels', [Super_adminController::class, 'getAllTravels']);
-Route::get('/travel/{id}', [Super_adminController::class, 'getTravelById']);
-Route::put('/travel-update/{id}', [Super_adminController::class, 'updateTravel']);
-Route::delete('/travel-delete/{id}', [Super_adminController::class, 'deleteTravel']);
+Route::get('/trips', [Super_adminController::class, 'getAllTrips']);
+Route::get('/trip/{id}', [Super_adminController::class, 'getTripById']);
+Route::put('/trip-update/{id}', [Super_adminController::class, 'updateTrip']);
+Route::delete('/trip-delete/{id}', [Super_adminController::class, 'deleteTrip']);
 });

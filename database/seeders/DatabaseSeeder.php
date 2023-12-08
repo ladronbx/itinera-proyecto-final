@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Group_user;
-use App\Models\Location_travel;
+use App\Models\Location_trip;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // $this->call([
-        //     TravelSeeder::class,
+        //     TripSeeder::class,
         // ]);
 
         $this->call([
@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // $this->call([
-        //     Location_travelSeeder::class,
+        //     Location_tripSeeder::class,
         // ]);
 
     }

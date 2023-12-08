@@ -14,7 +14,7 @@ class Group extends Model
 
     protected $fillable = [
         'user_id',
-        'travel_id',
+        'trip_id',
     ];
 
     public function users(): BelongsToMany
@@ -22,9 +22,9 @@ class Group extends Model
         return $this->belongsToMany(User::class, 'group_user');
     } // muchos a muchos (tabla intermedia) (group_user)
 
-    public function travels(): BelongsToMany
+    public function trips(): BelongsToMany
     {
-        return $this->belongsToMany(Travel::class);
+        return $this->belongsToMany(Trip::class);
     } // muchos a muchos (sin tabla intermedia explícita)
 
 }

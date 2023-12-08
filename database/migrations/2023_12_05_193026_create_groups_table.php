@@ -12,8 +12,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger("user_id");
             $table->foreign("user_id")->references("id")->on("users")->constrained()->onDelete('cascade');
-            $table->unsignedBigInteger("travel_id");
-            $table->foreign("travel_id")->references("id")->on("travels")->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger("trip_id");
+            $table->foreign("trip_id")->references("id")->on("trips")->constrained()->onDelete('cascade');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

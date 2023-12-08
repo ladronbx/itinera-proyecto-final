@@ -41,8 +41,8 @@ class User extends Authenticatable
         return $this->belongsToMany(Group::class, 'group_user');
     } // muchos a muchos (tabla intermedia) (user_group)
 
-    public function travels(): BelongsToMany
+    public function trips(): BelongsToMany
     {
-        return $this->belongsToMany(Travel::class, 'groups', 'user_id', 'travel_id');
-    } // muchos a muchos (tabla intermedia) (user_travel -> pertenece a groups)
+        return $this->belongsToMany(Trip::class, 'groups', 'user_id', 'trip_id');
+    } // muchos a muchos (tabla intermedia) (user_trip -> pertenece a groups)
 }

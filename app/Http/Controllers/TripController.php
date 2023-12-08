@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Travel;
+use App\Models\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
-class TravelController extends Controller
+class TripController extends Controller
 {
-    public function createTravel(Request $request)
+    public function createPersonalTrip(Request $request)
     {
         try {
 
@@ -21,7 +21,7 @@ class TravelController extends Controller
                     'end_date' => 'required|date|after:start_date',
                 ]);
 
-                $travel = Travel::query()->create([
+                $trip = Trip::query()->create([
                     'start_date' => $request->start_date,
                     'end_date' => $request->end_date,
                 ]);
@@ -29,8 +29,8 @@ class TravelController extends Controller
                 return response()->json(
                     [
                         "success" => true,
-                        "message" => "Travels created succesfully",
-                        "data" => $travel
+                        "message" => "Trips created succesfully",
+                        "data" => $trip
                     ],
                     Response::HTTP_OK
                 );
@@ -40,26 +40,26 @@ class TravelController extends Controller
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error creating the travel"
+                    "message" => "Error creating the trip"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
         }
     }
 
-    public function getMyTravels(Request $request)
+    public function getMyTrips(Request $request)
     {
         try {
 
             $user = auth()->user();
-            $travel = $user->travels;
+            $trip = $user->trips;
 
-            if($travel->isEmpty() || !$travel){
+            if($trip->isEmpty() || !$trip){
                 return response()->json(
                     [
                         "success" => true,
-                        "message" => "Travel obtained succesfully",
-                        "data" => $travel
+                        "message" => "Trip obtained succesfully",
+                        "data" => $trip
                     ],
                     Response::HTTP_OK
                 );
@@ -67,7 +67,7 @@ class TravelController extends Controller
                 return response()->json(
                     [
                         "success" => false,
-                        "message" => "Travel not found"
+                        "message" => "Trip not found"
                     ],
                     Response::HTTP_NOT_FOUND
                 );
@@ -77,7 +77,7 @@ class TravelController extends Controller
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error obtaining the travel"
+                    "message" => "Error obtaining the trip"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );

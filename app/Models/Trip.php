@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Travel extends Model
+class Trip extends Model
 {
     use HasFactory;
 
-    protected $table = 'travels';
+    protected $table = 'trips';
 
     protected $fillable = [
         'start_date',
@@ -21,11 +21,11 @@ class Travel extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'groups', 'travel_id', 'user_id');
-    } // muchos a muchos (tabla intermedia) (travel_user -> pertenece a groups)
+        return $this->belongsToMany(User::class, 'groups', 'trip_id', 'user_id');
+    } // muchos a muchos (tabla intermedia) (trip_user -> pertenece a groups)
 
     public function locations(): BelongsToMany
     {
-        return $this->belongsToMany(Location::class, 'location_travel');
-    } // muchos a muchos (tabla intermedia) (location_travel)
+        return $this->belongsToMany(Location::class, 'location_trip');
+    } // muchos a muchos (tabla intermedia) (location_trip)
 }
