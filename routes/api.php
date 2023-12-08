@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\Super_adminController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\UserController;
@@ -26,6 +27,22 @@ Route::put('/user-update', [UserController::class, 'updateProfile']);
 Route::delete('/user-delete', [UserController::class, 'deleteUser']);
 });
 
+
+// LOCATION
+Route::get('/locations', [LocationController::class, 'getAllLocations']);
+// Route::get('/location/{id}', [LocationController::class, 'getLocationById']);
+
+// SUPERADMIN : LOCATIONS
+// Route::group([
+//     'middleware' => ['auth:sanctum', 'is_super_admin']
+// ], function () {
+// Route::post('/location-create', [Super_adminController::class, 'createLocation']);
+// Route::put('/location-update/{id}', [Super_adminController::class, 'updateLocation']);
+// Route::delete('/location-delete/{id}', [Super_adminController::class, 'deleteLocation']);
+// });
+
+
+
 // TRIP
 Route::group([
     'middleware' => ['auth:sanctum']
@@ -47,11 +64,7 @@ Route::delete('/my-trip/{id}', [TripController::class, 'deleteMyTripById']);
 
 
 
-
-
-
-
-// SUPERADMIN : TRipS (por revisar después de modificar relaciones)
+// SUPERADMIN : TRIPS (por revisar después de modificar relaciones)
 Route::group([
     'middleware' => ['auth:sanctum', 'is_super_admin']
 ], function () {
