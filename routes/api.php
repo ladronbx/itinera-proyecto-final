@@ -23,7 +23,7 @@ Route::group([
 ], function () {
 Route::get('/profile', [AuthController::class, 'profile']);
 Route::post('/logout', [AuthController::class, 'logout']);
-Route::put('/user-update', [UserController::class, 'updateProfile']);
+Route::put('/profile-update', [UserController::class, 'updateProfile']);
 Route::delete('/user-delete', [UserController::class, 'deleteUser']);
 });
 
