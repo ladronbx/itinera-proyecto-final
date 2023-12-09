@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
-use Laravel\Sanctum\PersonalAccessToken;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth; // Import the Auth facade
 
 class AuthController extends Controller
 {
@@ -102,7 +102,9 @@ class AuthController extends Controller
                 );
             }
 
-            $token = $user->createToken('apiToken')->plainTextToken;
+            // Generar token con JWT
+            $token = Auth::claims(['user_id' => $user->id])->attempt(['email' => $email, 'password' => $password]); // Use the Auth facade to generate the token
+
 
             return response()->json(
                 [
@@ -154,9 +156,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         try {
-            $accessToken = $request->bearerToken();
-            $token = PersonalAccessToken::findToken($accessToken);
-            $token->delete();
+            auth()->logout(); // Invalida el token JWT
 
             return response()->json(
                 [

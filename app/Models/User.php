@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Tymon\JWTAuth\Contracts\JWTSubject; // Añade esta línea
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject // Añade 'implements JWTSubject' aquí
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -45,4 +45,15 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Trip::class, 'groups', 'user_id', 'trip_id');
     } // muchos a muchos (tabla intermedia) (user_trip -> pertenece a groups)
+
+    // Añade estos dos métodos
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }
