@@ -104,12 +104,15 @@ class TripController extends Controller
 
             $data = $groups->map(function ($group) {
                 $dates = Trip::query()->where('id', $group->trip_id)->get();
-                $location = Location_trip::query()->where('trip_id', $group->trip_id)->get();
+                $location_trip = Location_trip::query()->where('trip_id', $group->trip_id)->first();
+
+                $location = $location_trip->location->name;
 
                 return [
-                    "group" => $group,
+                    "membersCount" => $group->users()->count(),
                     "location" => $location,
-                    "dates" => $dates,
+                    "start_date" => $dates[0]->start_date,
+                    "end_date" => $dates[0]->end_date,
                 ];
             });
 

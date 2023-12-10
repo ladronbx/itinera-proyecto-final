@@ -32,6 +32,7 @@ Route::delete('/user-delete', [UserController::class, 'deleteUser']);
 // LOCATION
 Route::get('/locations', [LocationController::class, 'getAllLocations']);
 Route::get('/location/{id}', [LocationController::class, 'getLocationById']);
+Route::get('/activities', [ActivityController::class, 'getAllActivities']);
 
 // SUPERADMIN : LOCATIONS
 // Route::group([
@@ -61,7 +62,6 @@ Route::delete('/my-trip/{id}', [TripController::class, 'deleteMyTripById']);
 Route::group([
     'middleware' => ['jwt.auth']
 ], function () {
-Route::get('/activities', [ActivityController::class, 'getAllActivities']);
 Route::get('/activity/{id}', [ActivityController::class, 'getActivityById']);
 Route::get('/activities-location/{id}', [ActivityController::class, 'getActivityByLocationId']);
 });
