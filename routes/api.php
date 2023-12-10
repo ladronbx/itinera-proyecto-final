@@ -62,6 +62,7 @@ Route::group([
     'middleware' => ['jwt.auth']
 ], function () {
 Route::get('/activities', [ActivityController::class, 'getAllActivities']);
+Route::get('/activity/{id}', [ActivityController::class, 'getActivityById']);
 });
 
 
