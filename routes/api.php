@@ -63,6 +63,7 @@ Route::group([
 ], function () {
 Route::get('/activities', [ActivityController::class, 'getAllActivities']);
 Route::get('/activity/{id}', [ActivityController::class, 'getActivityById']);
+Route::get('/activities-location/{id}', [ActivityController::class, 'getActivityByLocationId']);
 });
 
 

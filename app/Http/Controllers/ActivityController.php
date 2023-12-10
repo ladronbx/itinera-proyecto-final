@@ -80,4 +80,40 @@ class ActivityController extends Controller
             );
         }
     }
+
+    public function getActivityByLocationId(Request $request, $id)
+    {
+        try {
+            $activity = Activity::where('location_id', $id)->get();
+
+            if (!$activity || $activity->isEmpty()) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Activity not found"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Activity obtained successfully",
+                    "data" => $activity
+                ],
+                Response::HTTP_CREATED
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error obtaining a trip"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }
