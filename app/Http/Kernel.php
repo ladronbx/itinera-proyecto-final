@@ -67,4 +67,9 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'is_super_admin' => \App\Http\Middleware\IsSuperAdmin::class
     ];
+
+    protected $routeMiddleware = [
+        // ...
+        'jwt.auth' => \App\Http\Middleware\EnsureTokenIsValid::class,
+    ];
 }

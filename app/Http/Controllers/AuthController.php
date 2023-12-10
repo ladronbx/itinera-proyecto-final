@@ -103,13 +103,12 @@ class AuthController extends Controller
             }
 
             // Generar token con JWT
-            $token = Auth::claims(['user_id' => $user->id])->attempt(['email' => $email, 'password' => $password]); // Use the Auth facade to generate the token
-
+            $token = Auth::guard('jwt')->attempt(['email' => $email, 'password' => $password]);
 
             return response()->json(
                 [
                     "success" => true,
-                    "message" => "User Logged",
+                    "message" => "User logged in",
                     "token" => $token,
                     "data" => $user
                 ]

@@ -10,7 +10,7 @@ use App\Http\Controllers\TripController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\IsSuperAdmin;
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('jwt.auth')->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -19,7 +19,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::group([
-    'middleware' => ['auth:sanctum']
+    'middleware' => ['jwt.auth']
 ], function () {
 Route::get('/profile', [AuthController::class, 'profile']);
 Route::post('/logout', [AuthController::class, 'logout']);
@@ -34,7 +34,7 @@ Route::get('/location/{id}', [LocationController::class, 'getLocationById']);
 
 // SUPERADMIN : LOCATIONS
 // Route::group([
-//     'middleware' => ['auth:sanctum', 'is_super_admin']
+//     'middleware' => ['jwt.auth', 'is_super_admin']
 // ], function () {
 // Route::post('/location-create', [Super_adminController::class, 'createLocation']);
 // Route::put('/location-update/{id}', [Super_adminController::class, 'updateLocation']);
@@ -45,7 +45,7 @@ Route::get('/location/{id}', [LocationController::class, 'getLocationById']);
 
 // TRIP
 Route::group([
-    'middleware' => ['auth:sanctum']
+    'middleware' => ['jwt.auth']
 ], function () {
 //el usuario puede crear un viaje personal a partir de una localización marcando la casilla de viajo sólo
 Route::post('/personal-trip-create/{id}', [TripController::class, 'createPersonalTrip']);
@@ -66,7 +66,7 @@ Route::delete('/my-trip/{id}', [TripController::class, 'deleteMyTripById']);
 
 // SUPERADMIN : TRIPS (por revisar después de modificar relaciones)
 Route::group([
-    'middleware' => ['auth:sanctum', 'is_super_admin']
+    'middleware' => ['jwt.auth', 'is_super_admin']
 ], function () {
 Route::get('/trips', [Super_adminController::class, 'getAllTrips']);
 Route::get('/trip/{id}', [Super_adminController::class, 'getTripById']);
