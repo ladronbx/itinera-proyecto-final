@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Route;
@@ -53,6 +54,14 @@ Route::get('/my-trips', [TripController::class, 'getAllMyTrips']);
 Route::get('/my-trip/{id}', [TripController::class, 'getMyTripById']);
 Route::put('/my-trip/{id}', [TripController::class, 'updateMyTrip']);
 Route::delete('/my-trip/{id}', [TripController::class, 'deleteMyTripById']);
+});
+
+
+// ACTIVITY
+Route::group([
+    'middleware' => ['jwt.auth']
+], function () {
+Route::get('/activities', [ActivityController::class, 'getAllActivities']);
 });
 
 
