@@ -59,62 +59,11 @@ class ActivityController extends Controller
     }
 
     public function getActivityById($id)
-{
-    try {
-        $activity = Activity::find($id);
-
-        if (!$activity) {
-            return response()->json(
-                [
-                    "success" => false,
-                    "message" => "Activity not found"
-                ],
-                Response::HTTP_NOT_FOUND
-            );
-        }
-
-        $location = Location::find($activity->location_id);
-
-        $data = [
-            "name" => $activity->name,
-            "location" => $location ? $location->name : null,
-            "description" => $activity->description,
-            "image_1" => $activity->image_1,
-            "image_2" => $activity->image_2
-        ];
-
-        return response()->json(
-            [
-                "success" => true,
-                "message" => "Activity obtained successfully",
-                "data" => $data
-            ],
-            Response::HTTP_OK
-        );
-
-    } catch (\Throwable $th) {
-        Log::error($th->getMessage());
-
-        return response()->json(
-            [
-                "success" => false,
-                "message" => "Error obtaining an activity"
-            ],
-            Response::HTTP_INTERNAL_SERVER_ERROR
-        );
-    }
-}
-
-
-
-      
-
-    public function getActivityByLocationId($id)
     {
         try {
-            $activity = Activity::where('location_id', $id)->get();
+            $activity = Activity::find($id);
 
-            if (!$activity || $activity->isEmpty()) {
+            if (!$activity) {
                 return response()->json(
                     [
                         "success" => false,
@@ -124,13 +73,23 @@ class ActivityController extends Controller
                 );
             }
 
+            $location = Location::find($activity->location_id);
+
+            $data = [
+                "name" => $activity->name,
+                "location" => $location ? $location->name : null,
+                "description" => $activity->description,
+                "image_1" => $activity->image_1,
+                "image_2" => $activity->image_2
+            ];
+
             return response()->json(
                 [
                     "success" => true,
                     "message" => "Activity obtained successfully",
-                    "data" => $activity
+                    "data" => $data
                 ],
-                Response::HTTP_CREATED
+                Response::HTTP_OK
             );
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
@@ -138,7 +97,54 @@ class ActivityController extends Controller
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error obtaining a activity"
+                    "message" => "Error obtaining an activity"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
+    public function getActivityByLocationId($id){
+        try {
+            $activities = Activity::query()->where('location_id', $id)->get();
+
+            $data = $activities->map(function ($activity) {
+                $location = Location::find($activity->location_id);
+
+                return [
+                    "name" => $activity->name,
+                    "location" => $location ? $location->name : null,
+                    "description" => $activity->description,
+                    "image_1" => $activity->image_1,
+                    "image_2" => $activity->image_2
+                ];
+            });
+
+            if (!$activities->isEmpty()) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "data" => $data
+                    ],
+                    Response::HTTP_OK
+                );
+            } else {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Activities not found"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error obtaining an activity"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
