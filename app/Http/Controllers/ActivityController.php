@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,31 +15,45 @@ class ActivityController extends Controller
         try {
             $activities = Activity::get();
 
-            if (!$activities) {
+
+
+            $data = $activities->map(function ($activity) {
+                $location = Location::find($activity->location_id);
+    
+                return [
+                    "name" => $activity->name,
+                    "location" => $location ? $location->name : null,
+                    "description" => $activity->description,
+                    "image_1" => $activity->image_1,
+                    "image_2" => $activity->image_2
+
+                ];
+            });
+
+            if (!$activities->isEmpty()) {
                 return response()->json(
                     [
                         "success" => false,
-                        "message" => "Activity not found"
+                        "data" => $data
+                    ],
+                    Response::HTTP_OK
+                );
+            }else{
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Activities not found"
                     ],
                     Response::HTTP_NOT_FOUND
-                );
-            }
+                );}
 
-            return response()->json(
-                [
-                    "success" => true,
-                    "message" => "Activities obtained successfully",
-                    "data" => $activities
-                ],
-                Response::HTTP_CREATED
-            );
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
 
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error obtaining a trip"
+                    "message" => "Error obtaining an activity"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
@@ -74,7 +89,7 @@ class ActivityController extends Controller
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error obtaining a trip"
+                    "message" => "Error obtaining an activity"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
