@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Group_user;
-use App\Models\Location_trip;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,9 +12,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
         ]);
 
-        // $this->call([
-        //     TripSeeder::class,
-        // ]);
+        $this->call([
+            TripSeeder::class,
+        ]);
 
         $this->call([
             LocationSeeder::class,
@@ -26,17 +24,23 @@ class DatabaseSeeder extends Seeder
             ActivitySeeder::class,
         ]);
 
-        // $this->call([
-        //     GroupSeeder::class,
-        // ]);
+        $this->call([
+            GroupSeeder::class,
+        ]);
 
-        // $this->call([
-        //     Group_userSeeder::class,
-        // ]);
+        $this->call([
+            Group_userSeeder::class,
+        ]);
 
-        // $this->call([
-        //     Location_tripSeeder::class,
-        // ]);
+        $this->call([
+            Location_tripSeeder::class,
+        ]);
+
+        $this->call([
+            TripActivitySeeder::class,
+        ]);
+
+
 
     }
 }

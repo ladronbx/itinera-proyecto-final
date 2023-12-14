@@ -5,22 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GroupTripActivity extends Model
+class TripActivity extends Model
 {
     use HasFactory;
 
-    protected $table = 'group_trip_activities';
+    protected $table = 'trip_activities';
 
     protected $fillable = [
-        'group_id',
         'trip_id',
         'activity_id',
     ];
-
-    public function group()
-    {
-        return $this->belongsTo(Group::class);
-    }
 
     public function trip()
     {

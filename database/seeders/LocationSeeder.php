@@ -11,58 +11,59 @@ class LocationSeeder extends Seeder
     public function run(): void
     {
         DB::table('locations')->insert([
-            'name' => 'Roma',
-            'description' => 'Roma es la capital de Italia, es una ciudad cosmopolita que tiene una larga historia que se remonta a los tiempos de los antiguos romanos.',
+            'name' => 'Valencia',
+            'description' => 'Valencia es una ciudad en España, conocida por su Ciudad de las Artes y las Ciencias y su festtividad de las Fallas.',
+        ]);
+        
+        DB::table('locations')->insert([
+            'name' => 'Galicia',
+            'description' => 'Galicia es una comunidad autónoma en España, conocida por su gastronomía y sus paisajes.',
         ]);
 
         DB::table('locations')->insert([
+            'name' => 'Sevilla',
+            'description' => 'Sevilla es una ciudad en España, famosa por su Catedral y la Giralda.',
+        ]);
+        
+        DB::table('locations')->insert([
             'name' => 'Madrid',
-            'description' => 'Madrid es la capital de España, conocida por su rica colección de arte europeo y el Palacio Real.',
+            'description' => 'Madrid es la capital de España, famosa por su Plaza Mayor y el Museo del Prado.',
         ]);
         
         DB::table('locations')->insert([
-            'name' => 'París',
-            'description' => 'París es la capital de Francia, famosa por su torre Eiffel, el Louvre y la catedral de Notre-Dame.',
+            'name' => 'Barcelona',
+            'description' => 'Barcelona es una ciudad en España, conocida por su Sagrada Familia y el Parque Güell.',
         ]);
         
         DB::table('locations')->insert([
-            'name' => 'Londres',
-            'description' => 'Londres es la capital de Inglaterra, conocida por su icónico Big Ben y la Torre de Londres.',
+            'name' => 'Asturias',
+            'description' => 'Asturias es una comunidad autónoma en España, famosa por sus paisajes y su gastronomía.',
         ]);
         
         DB::table('locations')->insert([
-            'name' => 'Berlín',
-            'description' => 'Berlín es la capital de Alemania, famosa por su historia y el Muro de Berlín.',
+            'name' => 'Granada',
+            'description' => 'Granada es una ciudad en España, conocida por su Alhambra y el barrio del Albaicín.',
+        ]);
+
+        DB::table('locations')->insert([
+            'name' => 'Málaga',
+            'description' => 'Málaga es una ciudad en la costa sur de España, famosa por su clima, playas y el Museo Picasso.',
+        ]);
+
+        DB::table('locations')->insert([
+            'name' => 'Bilbao',
+            'description' => 'Bilbao es una ciudad en el norte de España, conocida por el Museo Guggenheim y su gastronomía vasca.',
+        ]);
+
+        DB::table('locations')->insert([
+            'name' => 'Valle de Arán',
+            'description' => 'El Valle de Arán es una comarca en los Pirineos de España, conocida por sus paisajes montañosos y su cultura.',
+        ]);
+
+        DB::table('locations')->insert([
+            'name' => 'Córdoba',
+            'description' => 'Córdoba es una ciudad en Andalucía, España, famosa por su Mezquita-Catedral y el Puente Romano.',
         ]);
         
-        DB::table('locations')->insert([
-            'name' => 'Tokio',
-            'description' => 'Tokio es la capital de Japón, conocida por su moderna tecnología y la Torre de Tokio.',
-        ]);
-        
-        DB::table('locations')->insert([
-            'name' => 'Nueva York',
-            'description' => 'Nueva York es una ciudad en los Estados Unidos, conocida por la Estatua de la Libertad y Times Square.',
-        ]);
-        
-        DB::table('locations')->insert([
-            'name' => 'Sídney',
-            'description' => 'Sídney es una ciudad en Australia, famosa por su Ópera y el Puente del Puerto de Sídney.',
-        ]);
-        
-        DB::table('locations')->insert([
-            'name' => 'Río de Janeiro',
-            'description' => 'Río de Janeiro es una ciudad en Brasil, conocida por su icónica estatua del Cristo Redentor y la playa de Copacabana.',
-        ]);
-        
-        DB::table('locations')->insert([
-            'name' => 'El Cairo',
-            'description' => 'El Cairo es la capital de Egipto, famosa por las pirámides de Giza y la Esfinge.',
-        ]);
-        
-        DB::table('locations')->insert([
-            'name' => 'Moscú',
-            'description' => 'Moscú es la capital de Rusia, conocida por el Kremlin y la Plaza Roja.',
-        ]);
     }
 }
