@@ -27,4 +27,9 @@ class Group extends Model
         return $this->belongsToMany(Trip::class);
     } // muchos a muchos (sin tabla intermedia explícita)
 
+    public function activities(): BelongsToMany
+    {
+        return $this->belongsToMany(Activity::class, 'group_trip_activities');
+    } // muchos a muchos (tabla intermedia) (group_trip_activities)
+
 }

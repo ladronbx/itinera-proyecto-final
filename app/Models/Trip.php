@@ -28,4 +28,9 @@ class Trip extends Model
     {
         return $this->belongsToMany(Location::class, 'location_trip');
     } // muchos a muchos (tabla intermedia) (location_trip)
+
+    public function activities(): BelongsToMany
+    {
+        return $this->belongsToMany(Activity::class, 'group_trip_activities');
+    } // muchos a muchos (tabla intermedia) (group_trip_activities)
 }

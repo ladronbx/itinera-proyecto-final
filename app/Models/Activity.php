@@ -24,4 +24,9 @@ class Activity extends Model
     {
         return $this->belongsTo(Location::class);
     } // muchas actividades pertenecen a una localización
+
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class, 'group_trip_activities');
+    } // muchos a muchos (tabla intermedia) (group_trip_activities)
 }
