@@ -50,7 +50,7 @@ Route::group([
     'middleware' => ['jwt.auth']
 ], function () {
 //el usuario puede crear un viaje personal a partir de una localización marcando la casilla de viajo sólo
-Route::post('/personal-trip-create/{id}', [TripController::class, 'createPersonalTrip']);
+// Route::post('/create-trip', [TripController::class, 'createTrip']);
 Route::get('/my-trips', [TripController::class, 'getAllMyTrips']);
 Route::get('/my-trip/{id}', [TripController::class, 'getMyTripById']);
 Route::put('/my-trip/{id}', [TripController::class, 'updateMyTrip']);
@@ -65,14 +65,6 @@ Route::group([
 Route::get('/activity/{id}', [ActivityController::class, 'getActivityById']);
 Route::get('/activities-location/{id}', [ActivityController::class, 'getActivityByLocationId']);
 });
-
-
-
-
-
-
-
-
 
 
 // SUPERADMIN : TRIPS (por revisar después de modificar relaciones)

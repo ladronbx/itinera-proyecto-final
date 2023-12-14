@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use App\Models\Location;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -20,7 +19,7 @@ class ActivityController extends Controller
 
                 return [
                     "name" => $activity->name,
-                    "location" => $location ? $location->name : null,
+                    "location" => $location->name,
                     "description" => $activity->description,
                     "image_1" => $activity->image_1,
                     "image_2" => $activity->image_2
@@ -77,7 +76,7 @@ class ActivityController extends Controller
 
             $data = [
                 "name" => $activity->name,
-                "location" => $location ? $location->name : null,
+                "location" => $location->name,
                 "description" => $activity->description,
                 "image_1" => $activity->image_1,
                 "image_2" => $activity->image_2
@@ -112,8 +111,9 @@ class ActivityController extends Controller
                 $location = Location::find($activity->location_id);
 
                 return [
+                    "id" => $activity->id,
                     "name" => $activity->name,
-                    "location" => $location ? $location->name : null,
+                    "location" => $location->name,
                     "description" => $activity->description,
                     "image_1" => $activity->image_1,
                     "image_2" => $activity->image_2
