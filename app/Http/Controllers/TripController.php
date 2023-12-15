@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Activity;
 use App\Models\Group;
+use App\Models\Group_user;
 use App\Models\Location;
 use App\Models\Location_trip;
 use App\Models\Trip;
+use App\Models\TripActivity;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
 class TripController extends Controller
-{   
+{
     //to do : crear un viaje con una localización y actividades
     //to do: validar que no se pueda crear un viaje con fechas que ya existen en otro viaje
     // public function createTrip(Request $request, $id)
@@ -113,6 +115,7 @@ class TripController extends Controller
                 $location = $location_trip->location->name;
 
                 return [
+                    "id" => $group->trip_id,
                     "membersCount" => $group->users()->count(),
                     "location" => $location,
                     "start_date" => $dates[0]->start_date,
@@ -146,9 +149,9 @@ class TripController extends Controller
     {
         try {
             $user = auth()->user();
-            $group = Group::query()->where('trip_id', $id)->where('user_id', $user->id)->first();
-
-            if ($group->user_id != $user->id) {
+            $group = Group::query()->where('trip_id', $id)->get();
+    
+            if ($group->isEmpty() || $user->id != $group[0]->user_id) {
                 return response()->json(
                     [
                         "success" => false,
@@ -157,25 +160,49 @@ class TripController extends Controller
                     Response::HTTP_UNAUTHORIZED
                 );
             }
+    
+            $dates = Trip::query()->where('id', $id)->first();
+            $location = Location_trip::query()->where('trip_id', $id)->first();
+            $locationName = Location::query()->where('id', $location->location_id)->first();
+    
+            $membersId = $group->map(function ($group) {
+                return $group->user_id;
+            })->toArray();
 
-            $dates = Trip::query()->where('id', $group->trip_id)->first();
-            $location = Location_trip::query()->where('trip_id', $group->trip_id)->first();
+            $membersName = User::query()->whereIn('id', $membersId)->get();
+            $memberName = $membersName->map(function ($member) {
+                return $member->name;
+            });
 
-            return [
-                "group" => $group,
-                "location" => $location,
-                "dates" => $dates,
-            ];
-
-            if (!$group->isEmpty()) {
+            $memberEmail = $membersName->map(function ($member) {
+                return $member->email;
+            });
+            
+    
+            $activities = TripActivity::query()->where('trip_id', $id)->get();
+            $activityName = $activities->map(function ($activity) {
+                return $activity->activity->name;
+            });
+    
+            $activityImage = $activities->map(function ($activity) {
+                return $activity->activity->image_1;
+            });
+    
+            if (!is_null($dates) && !is_null($location) && !$activities->isEmpty()) {
                 return response()->json(
                     [
                         "success" => true,
                         "message" => "Trip obtained succesfully",
                         "data" => [
-                            "group" => $group,
-                            "location" => $location,
-                            "dates" => $dates,
+                            "id" => $dates->id,
+                            "members_group" => $group->count(),
+                            "members_name" => $memberName,
+                            "members_email" => $memberEmail,
+                            "location" => $locationName->name,
+                            "start_date" => $dates->start_date,
+                            "end_date" => $dates->end_date,
+                            "activity_name" => $activityName,
+                            "activity_image" => $activityImage,
                         ]
                     ],
                     Response::HTTP_OK
