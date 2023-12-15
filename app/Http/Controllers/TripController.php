@@ -190,6 +190,10 @@ class TripController extends Controller
             $activityImage = $activities->map(function ($activity) {
                 return $activity->activity->image_1;
             });
+
+            $activityDuration = $activities->map(function ($activity) {
+                return $activity->activity->duration;
+            });
     
             if (!is_null($dates) && !is_null($location) && !$activities->isEmpty()) {
                 return response()->json(
@@ -203,10 +207,12 @@ class TripController extends Controller
                             "members_email" => $memberEmail,
                             "members_image" => $memberImage,
                             "location" => $locationName->name,
+                            "location_image" => $locationName->image_1,
                             "start_date" => $dates->start_date,
                             "end_date" => $dates->end_date,
                             "activity_name" => $activityName,
                             "activity_image" => $activityImage,
+                            "activity_duration" => $activityDuration,
                         ]
                     ],
                     Response::HTTP_OK
