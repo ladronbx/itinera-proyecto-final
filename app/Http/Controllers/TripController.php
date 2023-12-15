@@ -178,6 +178,9 @@ class TripController extends Controller
                 return $member->email;
             });
             
+            $memberImage= $membersName->map(function ($member) {
+                return $member->image;
+            });
     
             $activities = TripActivity::query()->where('trip_id', $id)->get();
             $activityName = $activities->map(function ($activity) {
@@ -198,6 +201,7 @@ class TripController extends Controller
                             "members_group" => $group->count(),
                             "members_name" => $memberName,
                             "members_email" => $memberEmail,
+                            "members_image" => $memberImage,
                             "location" => $locationName->name,
                             "start_date" => $dates->start_date,
                             "end_date" => $dates->end_date,
