@@ -19,7 +19,8 @@ class TripController extends Controller
     //to do : crear un viaje con una localización y actividades
     //to do: validar que no se pueda crear un viaje con fechas que ya existen en otro viaje
 
-    public function createTrip(Request $request){
+    public function createTrip(Request $request)
+    {
         try {
             $user = auth()->user();
             $validator = Validator::make($request->all(), [
@@ -100,7 +101,6 @@ class TripController extends Controller
                 ],
                 Response::HTTP_OK
             );
-
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
             return response()->json(
@@ -112,7 +112,7 @@ class TripController extends Controller
             );
         }
     }
-    
+
     public function getAllMyTrips(Request $request)
     {
         try {
@@ -164,7 +164,7 @@ class TripController extends Controller
         try {
             $user = auth()->user();
             $group = Group::query()->where('trip_id', $id)->get();
-    
+
             if ($group->isEmpty() || $user->id != $group[0]->user_id) {
                 return response()->json(
                     [
@@ -174,7 +174,7 @@ class TripController extends Controller
                     Response::HTTP_UNAUTHORIZED
                 );
             }
-    
+
             $dates = Trip::query()->where('id', $id)->first();
             $location_id = Location_trip::query()->where('trip_id', $id)->first();
             $locations = Location::query()->where('id', $location_id->location_id)->get();
@@ -185,7 +185,7 @@ class TripController extends Controller
                     'image' => $location->image_1,
                 ];
             });
-    
+
             $membersId = $group->map(function ($group) {
                 return $group->user_id;
             })->toArray();
@@ -199,7 +199,7 @@ class TripController extends Controller
                     'image' => $member->image,
                 ];
             });
-    
+
             $activities = TripActivity::query()->where('trip_id', $id)->get();
             $activityInfo = $activities->map(function ($activity) {
                 return [
@@ -360,6 +360,81 @@ class TripController extends Controller
                 [
                     "success" => false,
                     "message" => "Error deleting a trip"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
+
+    public function addMembersToTrip(Request $request, $tripId)
+    {
+        try {
+            $user = auth()->user();
+            $group = Group::query()->where('trip_id', $tripId)->where('user_id', $user->id)->first();
+            $emails = $request->input('emails');
+
+            // Comprueba que $emails no es null y es un array
+            if ($emails === null || !is_array($emails)) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Invalid emails"
+                    ],
+                    Response::HTTP_BAD_REQUEST
+                );
+            }
+
+            // whereIn se utiliza para comparar un campo con un array de valores. En este caso, se comparan los emails de los usuarios con los emails que se pasan en el array.
+            $users = User::whereIn('email', $emails)->get();
+
+            //si hago esta comparativa no doy pistas de qué emails no existen ;)
+            if (count($users) != count($emails)) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Some emails do not exist"
+                    ],
+                    Response::HTTP_BAD_REQUEST
+                );
+            }
+
+            if ($group->user_id != $user->id) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "You are not authorized to add members to this trip"
+                    ],
+                    Response::HTTP_UNAUTHORIZED
+                );
+            }
+
+            foreach ($users as $user) {
+                Group::create([
+                    'user_id' => $user->id,
+                    'trip_id' => $tripId,
+                ]);
+
+                $group_user = Group::query()->where('user_id', $user->id)->where('trip_id', $tripId)->first();
+                Group_user::create([
+                    'user_id' => $user->id,
+                    'group_id' => $group_user->id,
+                ]);
+            }
+
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Members added successfully",
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error adding members to the trip"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );

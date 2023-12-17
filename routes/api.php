@@ -22,10 +22,10 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::group([
     'middleware' => ['jwt.auth']
 ], function () {
-Route::get('/profile', [AuthController::class, 'profile']);
-Route::post('/logout', [AuthController::class, 'logout']);
-Route::put('/profile-update', [UserController::class, 'updateProfile']);
-Route::delete('/user-delete', [UserController::class, 'deleteUser']);
+    Route::get('/profile', [AuthController::class, 'profile']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::put('/profile-update', [UserController::class, 'updateProfile']);
+    Route::delete('/user-delete', [UserController::class, 'deleteUser']);
 });
 
 
@@ -49,21 +49,26 @@ Route::get('/activities', [ActivityController::class, 'getAllActivities']);
 Route::group([
     'middleware' => ['jwt.auth']
 ], function () {
-//el usuario puede crear un viaje personal a partir de una localización marcando la casilla de viajo sólo
-Route::post('/create-trip', [TripController::class, 'createTrip']);
-Route::get('/my-trips', [TripController::class, 'getAllMyTrips']);
-Route::get('/my-trip/{id}', [TripController::class, 'getMyTripById']);
-Route::put('/my-trip/{id}', [TripController::class, 'updateMyTrip']);
-Route::delete('/my-trip/{id}', [TripController::class, 'deleteMyTripById']);
+    Route::post('/create-trip', [TripController::class, 'createTrip']);
+    Route::get('/my-trips', [TripController::class, 'getAllMyTrips']);
+    Route::get('/my-trip/{id}', [TripController::class, 'getMyTripById']);
+    Route::put('/my-trip/{id}', [TripController::class, 'updateMyTrip']);
+    Route::delete('/my-trip/{id}', [TripController::class, 'deleteMyTripById']);
 });
 
+//GROUP
+Route::group([
+    'middleware' => ['jwt.auth']
+], function () {
+    Route::post('/my-trip/{id}/add-member', [TripController::class, 'addMembersToTrip']);
+});
 
 // ACTIVITY
 Route::group([
     'middleware' => ['jwt.auth']
 ], function () {
-Route::get('/activity/{id}', [ActivityController::class, 'getActivityById']);
-Route::get('/activities-location/{id}', [ActivityController::class, 'getActivityByLocationId']);
+    Route::get('/activity/{id}', [ActivityController::class, 'getActivityById']);
+    Route::get('/activities-location/{id}', [ActivityController::class, 'getActivityByLocationId']);
 });
 
 
@@ -71,8 +76,8 @@ Route::get('/activities-location/{id}', [ActivityController::class, 'getActivity
 Route::group([
     'middleware' => ['jwt.auth', 'is_super_admin']
 ], function () {
-Route::get('/trips', [Super_adminController::class, 'getAllTrips']);
-Route::get('/trip/{id}', [Super_adminController::class, 'getTripById']);
-Route::put('/trip-update/{id}', [Super_adminController::class, 'updateTrip']);
-Route::delete('/trip-delete/{id}', [Super_adminController::class, 'deleteTrip']);
+    Route::get('/trips', [Super_adminController::class, 'getAllTrips']);
+    Route::get('/trip/{id}', [Super_adminController::class, 'getTripById']);
+    Route::put('/trip-update/{id}', [Super_adminController::class, 'updateTrip']);
+    Route::delete('/trip-delete/{id}', [Super_adminController::class, 'deleteTrip']);
 });
