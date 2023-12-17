@@ -159,13 +159,30 @@ class TripController extends Controller
         }
     }
 
-    public function getMyTripById(Request $request, $id)
+    public function getMyTripById($id)
     {
         try {
             $user = auth()->user();
-            $group = Group::query()->where('trip_id', $id)->get();
+            $isMember = Group::query()->where('trip_id', $id)->where('user_id', $user->id)->first();
 
-            if ($group->isEmpty() || $user->id != $group[0]->user_id) {
+            Log::info($isMember);
+
+            if(!$isMember){
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Trip not found"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+
+            $group = Group::query()->where('trip_id', $id)->get();
+            Group_user::query()->where('group_id', $isMember)->where('user_id', $user->id)->first();
+        
+            Log::info($isMember);
+
+            if (!$isMember) {
                 return response()->json(
                     [
                         "success" => false,
