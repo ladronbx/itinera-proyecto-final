@@ -13,6 +13,7 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Ciudad de las Artes y las Ciencias',
             'description' => 'Explora la impresionante Ciudad de las Artes y las Ciencias en Valencia.',
+            'image_1' => 'https://forbes.es/wp-content/uploads/2021/02/GettyImages-486960529.jpg',
             'duration' => 4,
             'location_id' => 1
         ]);
