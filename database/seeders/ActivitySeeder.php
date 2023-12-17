@@ -14,6 +14,7 @@ class ActivitySeeder extends Seeder
             'name' => 'Ciudad de las Artes y las Ciencias',
             'description' => 'Explora la impresionante Ciudad de las Artes y las Ciencias en Valencia.',
             'image_1' => 'https://forbes.es/wp-content/uploads/2021/02/GettyImages-486960529.jpg',
+            'image_2' => 'OTRO LINK PARA LA SEGUNDA IMAGEN',
             'duration' => 4,
             'location_id' => 1
         ]);

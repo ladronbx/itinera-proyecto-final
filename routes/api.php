@@ -9,6 +9,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\Super_adminController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GroupController;
 use App\Http\Middleware\IsSuperAdmin;
 
 Route::middleware('jwt.auth')->get('/user', function (Request $request) {
@@ -60,7 +61,7 @@ Route::group([
 Route::group([
     'middleware' => ['jwt.auth']
 ], function () {
-    Route::post('/my-trip/{id}/add-member', [TripController::class, 'addMembersToTrip']);
+    Route::post('/my-trip/{id}/add-member', [GroupController::class, 'addMemberToTrip']);
 });
 
 // ACTIVITY

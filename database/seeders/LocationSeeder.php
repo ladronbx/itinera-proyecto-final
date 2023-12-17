@@ -14,6 +14,7 @@ class LocationSeeder extends Seeder
             'name' => 'Valencia',
             'description' => 'Valencia es una ciudad en España, conocida por su Ciudad de las Artes y las Ciencias y su festtividad de las Fallas.',
             'image_1' => 'https://image-proxy.libere.app/images/webp:1024/plain/https://air-production-cms-uploads.storage.googleapis.com/uploads/2022/03/31083557/oceanografic-III.jpg@webp',
+            'image_2' => 'LINK PARA LA SEGUNDA IMAGEN',
         ]);
         
         DB::table('locations')->insert([
