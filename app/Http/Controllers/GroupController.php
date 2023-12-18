@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Validator;
 
 class GroupController extends Controller
 {
@@ -17,6 +18,21 @@ class GroupController extends Controller
             $user = auth()->user();
             $group = Group::query()->where('trip_id', $tripId)->where('user_id', $user->id)->first();
             $email = $request->input('email');
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "The email field must be a valid email address",
+                        "error" => $validator->errors()
+                    ],
+                    Response::HTTP_BAD_REQUEST
+                );
+            }
+            
             Log::info('Request data: ', $request->all());
 
             if ($email === null || !is_string($email)) {
