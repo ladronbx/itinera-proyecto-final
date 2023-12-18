@@ -222,8 +222,11 @@ class TripController extends Controller
                 return [
                     'id' => $activity->activity_id,
                     'name' => $activity->activity->name,
-                    'image' => $activity->activity->image_1,
+                    'image_1' => $activity->activity->image_1,
+                    'image_2' => $activity->activity->image_2,
+                    'description' => $activity->activity->description,
                     'duration' => $activity->activity->duration,
+                    'location' => $activity->activity->location->name,
                 ];
             });
 

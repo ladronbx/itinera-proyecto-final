@@ -588,6 +588,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Caminito del Rey',
             'description' => 'Aventúrate en el impresionante Caminito del Rey, un camino de pasarelas suspendidas en las gargantas del Desfiladero de los Gaitanes.',
+            'image_1' => 'https://www.spain.info/.content/imagenes/cabeceras-grandes/andalucia/caminito-rey_s724133308.jpg',
+            'image_2' => 'https://upload.wikimedia.org/wikipedia/commons/8/8c/Desfiladero_de_los_Gaitanes05.jpg',
             'duration' => 5,
             'location_id' => 8
         ]);
@@ -595,6 +597,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Museo Carmen Thyssen',
             'description' => 'Descubre la colección de arte español del Museo Carmen Thyssen en Málaga. Explora pinturas y esculturas que abarcan desde el siglo XIII hasta el siglo XX.',
+            'image_1' => 'https://static.costadelsolmalaga.org/visita/subidas/imagenes/2/1/arc_27512_g.jpg',
+            'image_2' => 'https://malagadecultura.com/wp-content/uploads/2022/10/Arte-belga.-Del-impresionismo-a-Magritte.-Musee-dIxelles-696x462.jpg',
             'duration' => 2,
             'location_id' => 8
         ]);
@@ -602,6 +606,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Gibralfaro y Mirador de Málaga',
             'description' => 'Sube al Castillo de Gibralfaro y disfruta de vistas panorámicas de Málaga. Un lugar ideal para capturar la belleza de la ciudad desde las alturas.',
+            'image_1' => 'https://www.mardefrades.es/guia-azul/wp-content/uploads/sites/2/2022/06/mirador-de-gibralfaro-03.jpg',
+            'image_2' => 'https://www.andalucia360travel.com/wp-content/uploads/2021/09/miradores-de-malaga-fb.jpg',
             'duration' => 3,
             'location_id' => 8
         ]);
@@ -609,6 +615,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Museo Guggenheim Bilbao',
             'description' => 'Explora el icónico Museo Guggenheim Bilbao, una obra maestra de la arquitectura contemporánea diseñada por Frank Gehry. Descubre una impresionante colección de arte moderno y contemporáneo.',
+            'image_1' => 'https://cms.guggenheim-bilbao.eus/uploads/2021/03/2-1.jpg',
+            'image_2' => 'https://cms.guggenheim-bilbao.eus/uploads/2022/12/obras-maestras-de-la-coleccion.jpg',
             'duration' => 3,
             'location_id' => 9
         ]);
@@ -616,6 +624,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Casco Viejo',
             'description' => 'Sumérgete en la historia y la cultura de Bilbao explorando el Casco Viejo. Descubre sus estrechas calles, plazas animadas y disfruta de la gastronomía vasca en los pintxos.',
+            'image_1' => 'https://cms.guggenheim-bilbao.eus/uploads/2019/08/casco-viejo-bilbao.jpg',
+            'image_2' => 'https://espanafascinante.com/wp-content/uploads/panoramica-bilbao4-672x350.jpg',
             'duration' => 2,
             'location_id' => 9
         ]);
@@ -623,6 +633,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Puente Zubizuri',
             'description' => 'Pasea por el Puente Zubizuri, un puente peatonal diseñado por Santiago Calatrava. Disfruta de las vistas del río Nervión y la arquitectura moderna del puente.',
+            'image_1' => 'https://upload.wikimedia.org/wikipedia/commons/8/88/Bilbao_-_Zubizuri_07.jpg',
+            'image_2' => 'https://www.spain.info/.content/imagenes/cabeceras-grandes/pais-vasco/Zubizuri-puente-y-Isozaki-tower.jpg',
             'duration' => 1,
             'location_id' => 9
         ]);
@@ -630,6 +642,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Museo de Bellas Artes de Bilbao',
             'description' => 'Visita el Museo de Bellas Artes de Bilbao, que alberga una rica colección de pinturas, esculturas y arte decorativo desde el siglo XIII hasta la actualidad.',
+            'image_1' => 'https://www.disfrutabizkaia.com/wp-content/uploads/2021/04/museo-bellas-artes-1024x444.png',
+            'image_2' => 'https://img.remediosdigitales.com/a6e3b7/mbab/450_1000.jpg',
             'duration' => 2,
             'location_id' => 9
         ]);
@@ -637,6 +651,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Funicular de Artxanda',
             'description' => 'Sube al Funicular de Artxanda para disfrutar de vistas panorámicas de Bilbao desde la colina de Artxanda. Un lugar ideal para contemplar la ciudad y sus alrededores.',
+            'image_1' => 'https://www.disfrutabizkaia.com/wp-content/uploads/2021/04/funicular-artxanda-bilbao.jpg',
+            'image_2' => 'https://funicularartxanda.bilbao.eus/wp-content/uploads/2018/03/02-artxanda.jpg',
             'duration' => 1,
             'location_id' => 9
         ]);
@@ -644,6 +660,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Palacio Euskalduna',
             'description' => 'Descubre el Palacio Euskalduna, un moderno centro de conferencias y artes escénicas en Bilbao. Explora su arquitectura contemporánea y, si es posible, asiste a un evento cultural.',
+            'image_1' => 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/0a/79/64/euskalduna-bilbao.jpg?w=1200&h=-1&s=1',
+            'image_2' => 'https://www.euskadi.eus/contenidos/equipamiento/20150929125726/es_def/images/euskalduna1.jpg',
             'duration' => 2,
             'location_id' => 9
         ]);
@@ -651,6 +669,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Parque de Doña Casilda',
             'description' => 'Relájate en el Parque de Doña Casilda, un hermoso parque en el corazón de Bilbao. Disfruta de la naturaleza, los jardines y la tranquilidad del entorno.',
+            'image_1' => 'https://images11.eitb.eus/multimedia/images/2017/12/14/2224681/20171214154532_dona-casilda-id1472011895_foto610x342.jpg',
+            'image_2' => 'https://www.barcelo.com/guia-turismo/wp-content/uploads/2019/02/parque-dona-casilda-fuente.jpg',
             'duration' => 1,
             'location_id' => 9
         ]);
@@ -658,6 +678,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Azkuna Zentroa',
             'description' => 'Visita Azkuna Zentroa, un espacio cultural y de ocio ubicado en un antiguo almacén de vinos. Descubre exposiciones, eventos y disfruta de la arquitectura del lugar.',
+            'image_1' => 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/8b/39/cb/fachada-dos-fundos-do.jpg?w=1200&h=-1&s=1',
+            'image_2' => 'https://pbs.twimg.com/media/DejTm_GXcAAAiDU.jpg',
             'duration' => 2,
             'location_id' => 9
         ]);
@@ -665,6 +687,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Esquí en Baqueira Beret',
             'description' => 'Disfruta de la experiencia de esquí en la estación de Baqueira Beret, una de las más prestigiosas de los Pirineos. Descubre pistas emocionantes y hermosos paisajes invernales.',
+            'image_1' => 'https://apartamentos.totiaranalquilerbaqueira.com/hubfs/1574939882_433352_1574949416_sumario_normal-jpg.jpeg',
+            'image_2' => 'https://images.hola.com/imagenes/viajes/20191126154896/vacaciones-invierno-rafael-la-pleta-hotel-baqueira-beret/0-750-723/bypletavistaaerea-t.jpg',
             'duration' => 4,
             'location_id' => 10
         ]);
@@ -672,6 +696,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Rutas de Senderismo en Aigüestortes',
             'description' => 'Explora las impresionantes rutas de senderismo en el Parque Nacional de Aigüestortes y Estany de Sant Maurici. Descubre lagos, bosques y montañas en un entorno natural único.',
+            'image_1' => 'https://www.estiber.com/blog/wp-content/uploads/2021/06/aiguestortes1.jpg',
+            'image_2' => 'https://images.hola.com/imagenes/viajes/20180611125462/ruta-coche-aiguestortes-valle-boi-lleida-pirinero/0-575-202/lleida-t.jpg',
             'duration' => 3,
             'location_id' => 10
         ]);
@@ -679,6 +705,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Visita a Vielha',
             'description' => 'Pasea por las encantadoras calles de Vielha, la capital del Valle de Arán. Descubre la arquitectura tradicional, tiendas locales y disfruta de la gastronomía regional.',
+            'image_1' => 'https://equipatgedema.com/wp-content/uploads/2014/12/IMG_0376.jpg',
+            'image_2' => 'https://turismeacatalunya.cat/wp-content/uploads/2022/03/PORTADA-VIELHA-1.jpg',
             'duration' => 2,
             'location_id' => 10
         ]);
@@ -686,6 +714,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Parque Nacional de Aigüestortes',
             'description' => 'Adéntrate en el Parque Nacional de Aigüestortes y Estany de Sant Maurici. Observa la diversidad de flora y fauna, así como impresionantes formaciones geológicas.',
+            'image_1' => 'https://www.moventis.es/sites/moventis/files/article/2019/07/els-encantats-lago-san-mauricio.png',
+            'image_2' => 'https://que-ver.somrurals.com/wp-content/uploads/2018/10/aiguestortes.jpg',
             'duration' => 4,
             'location_id' => 10
         ]);
@@ -693,6 +723,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Ruta en BTT por el Valle',
             'description' => 'Experimenta la emoción del ciclismo de montaña con una ruta en BTT por los senderos del Valle de Arán. Disfruta de paisajes alpinos y desafiantes descensos.',
+            'image_1' => 'https://www.visitvaldaran.com/wp-content/uploads/2015/05/btt.jpg',
+            'image_2' => 'https://www.lugaresdeaventura.com/sites/default/files/2020-06/reportaje-val-aran-mtb-portada.jpg',
             'duration' => 3,
             'location_id' => 10
         ]);
@@ -700,6 +732,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Termas de Les',
             'description' => 'Relájate en las Termas de Les, aguas termales situadas en un entorno natural. Disfruta de la tranquilidad y los beneficios para la salud de estas aguas termales.',
+            'image_1' => 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/70/31/f2/termas-baronia-de-les.jpg?w=1200&h=1200&s=1',
+            'image_2' => 'https://static.wixstatic.com/media/df7b4c_369e0c10e0f04e1592e4499a8b11f697~mv2.jpg/v1/fill/w_800,h_533,al_c/df7b4c_369e0c10e0f04e1592e4499a8b11f697~mv2.jpg',
             'duration' => 2,
             'location_id' => 10
         ]);
@@ -707,6 +741,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Montgarri y la Ruta de las Iglesias',
             'description' => 'Descubre el encanto histórico de Montgarri y sigue la Ruta de las Iglesias, que te llevará a iglesias románicas enclavadas en paisajes de montaña.',
+            'image_1' => 'https://infomapas.com/wp-content/uploads/2019/09/montgarri_val-daran.jpg',
+            'image_2' => 'https://www.visitvaldaran.com/wp-content/uploads/2014/06/slide-montgarri-1-1024x1024.jpg',
             'duration' => 3,
             'location_id' => 10
         ]);
@@ -714,6 +750,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Pesca en los Ríos Aranés',
             'description' => 'Disfruta de la pesca en los ríos araneses, famosos por su rica variedad de truchas. Experimenta la pesca deportiva en un entorno natural y relajante.',
+            'image_1' => 'https://www.visitvaldaran.com/wp-content/uploads/2016/03/pesca-2016-web.jpg',
+            'image_2' => 'https://sietelagos.cl/wp-content/uploads/2023/09/Pesca-en-Panguipulli-Choshuenco-Sietelagos-Sietelagos-Chile-los-Rios-2.jpg',
             'duration' => 1,
             'location_id' => 10
         ]);
@@ -721,6 +759,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Mezquita-Catedral de Córdoba',
             'description' => 'Visita la impresionante Mezquita-Catedral de Córdoba, un lugar de culto que combina elementos islámicos y cristianos. Explora los patios, la sala de oración y la catedral.',
+            'image_1' => 'https://s1.eestatic.com/2018/09/16/cultura/patrimonio/cordoba_-municipio-patrimonio-mezquitas_338479073_97401098_1706x960.jpg',
+            'image_2' => 'https://mymodernmet.com/wp/wp-content/uploads/2020/02/Mezquita-Cordoba-1.jpg',
             'duration' => 2,
             'location_id' => 11
         ]);
@@ -728,6 +768,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Alcázar de los Reyes Cristianos',
             'description' => 'Explora el Alcázar de los Reyes Cristianos, un antiguo palacio fortificado con hermosos jardines y vistas al río Guadalquivir. Descubre la historia de este lugar emblemático.',
+            'image_1' => 'https://beticaromana.org/wp-content/uploads/2014/03/alcazar-reyes.jpg',
+            'image_2' => 'https://www.aepjp.es/wp-content/uploads/2019/02/k2_items_src_d9bdb14eb0a9b1023a46137e4aceaf72.jpg',
             'duration' => 3,
             'location_id' => 11
         ]);
@@ -735,6 +777,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Barrio de la Judería',
             'description' => 'Pasea por el encantador Barrio de la Judería, con sus estrechas calles empedradas y casas encaladas. Descubre la historia y la cultura judía de Córdoba.',
+            'image_1' => 'https://eventourcordoba.es/wp-content/uploads/2016/11/juderia-alcazar-int2.jpg',
+            'image_2' => 'https://vueltia.com/viajes/tours/cordoba/barrio_de_la_juderia_cordoba.jpg',
             'duration' => 2,
             'location_id' => 11
         ]);
@@ -742,6 +786,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Puente Romano',
             'description' => 'Cruza el Puente Romano sobre el río Guadalquivir. Disfruta de las vistas de la ciudad y descubre la estructura romana que ha perdurado a lo largo de los siglos.',
+            'image_1' => 'https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2021/01/25/16115899558059.jpg',
+            'image_2' => 'https://cordobea.com/wp-content/uploads/2023/01/Puente-Romano-de-Cordoba-01-REVISTA-EA-DESCUBRE-CORDOBA.jpg',
             'duration' => 1,
             'location_id' => 11
         ]);
@@ -749,6 +795,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Patios de Córdoba',
             'description' => 'Explora los famosos Patios de Córdoba, especialmente impresionantes durante el Festival de los Patios en mayo. Admira la arquitectura y la belleza de estos patios floridos.',
+            'image_1' => 'https://viajes.nationalgeographic.com.es/medio/2023/05/02/patios-de-cordoba_616a653d_230502170608_1280x853.jpg',
+            'image_2' => 'https://static.eldiario.es/clip/4be60a07-0e2e-43d0-b7bb-dcb524449c13_16-9-aspect-ratio_default_0.jpg',
             'duration' => 2,
             'location_id' => 11
         ]);
@@ -756,6 +804,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Baños Califales',
             'description' => 'Sumérgete en la historia en los Baños Califales, antiguos baños árabes en Córdoba. Descubre la arquitectura y las tradiciones de la época.',
+            'image_1' => 'https://www.turismodecordoba.org/archivos/2019/201908121216340000001565604994.1423.jpg',
+            'image_2' => 'https://cordoba.hammamalandalus.com/wp-content/uploads/sites/4/2019/09/Hammam_COR_Arquitectura_Octubre_2018_0R3A0919-1800x1200.jpg',
             'duration' => 1,
             'location_id' => 11
         ]);
@@ -763,6 +813,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Flamenco en Tablao',
             'description' => 'Vive la auténtica experiencia flamenca en un tablao de Córdoba. Disfruta del cante, el baile y la guitarra en un ambiente íntimo y apasionado.',
+            'image_1' => 'https://cordobatickets.com/wp-content/uploads/2020/01/tablao-arte-y-sabores-de-cordoba.jpg',
+            'image_2' => 'https://cordobatickets.com/wp-content/uploads/2020/01/tablao-el-cardenal.jpg',
             'duration' => 2,
             'location_id' => 11
         ]);
@@ -770,6 +822,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Palacio de Viana',
             'description' => 'Visita el Palacio de Viana, un hermoso palacio renacentista con doce patios diferentes. Explora los jardines y descubre la riqueza arquitectónica de este lugar.',
+            'image_1' => 'https://www.civitatis.com/f/espana/cordoba/visita-patios-palacio-viana-589x392.jpg',
+            'image_2' => 'https://saposyprincesas.elmundo.es/wp-content/uploads/2019/10/palacio-1.jpg',
             'duration' => 2,
             'location_id' => 11
         ]);
