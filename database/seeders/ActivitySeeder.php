@@ -14,7 +14,7 @@ class ActivitySeeder extends Seeder
             'name' => 'Ciudad de las Artes y las Ciencias',
             'description' => 'Explora la impresionante Ciudad de las Artes y las Ciencias en Valencia.',
             'image_1' => 'https://forbes.es/wp-content/uploads/2021/02/GettyImages-486960529.jpg',
-            'image_2' => 'OTRO LINK PARA LA SEGUNDA IMAGEN',
+            'image_2' => 'https://www.emozionviajes.com/i-img/es/blog/la-ciudad-de-las-artes-y-las-ciencias/gr-la-ciudad-de-las-artes-y-las-ciencias.jpg',
             'duration' => 4,
             'location_id' => 1
         ]);
@@ -22,6 +22,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Playa de la Malvarrosa',
             'description' => 'Disfruta de un día de sol en la famosa Playa de la Malvarrosa.',
+            'image_1' => 'https://mediaim.expedia.com/destination/3/cf70eaf8aa1e2f846be48fd251e5708c.jpg',
+            'image_2' => 'https://www.barcelo.com/guia-turismo/wp-content/uploads/2020/09/playa-de-la-malvarrosa.jpg',
             'duration' => 5,
             'location_id' => 1
         ]);
@@ -29,6 +31,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Casco Antiguo',
             'description' => 'Recorre las estrechas calles del Casco Antiguo de Valencia.',
+            'image_1' => 'https://www.valenciabus.com/wp-content/uploads/que-visitar-en-valencia.jpeg',
+            'image_2' => 'https://mentavalencia.com/wp-content/uploads/2018/08/plaza-redonda.jpg',
             'duration' => 3,
             'location_id' => 1
         ]);
@@ -36,13 +40,17 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Bioparc Valencia',
             'description' => 'Descubre la vida salvaje en el Bioparc de Valencia.',
+            'image_1' => 'https://thumbnail.pa-community.com/18/0e/0721b647cc19c03c943cf73f735d/270f14f735736a5d65c2da892f627029.jpg',
+            'image_2' => 'https://www.shutterstock.com/image-photo/valencia-spain-october-27-2021-600nw-2106155255.jpg',
             'duration' => 5,
             'location_id' => 1
         ]);
 
         DB::table('activities')->insert([
-            'name' => 'Oceanografico',
-            'description' => 'Sumérgete en el Oceanografico, el acuario más grande de Europa.',
+            'name' => 'Oceanogràfic',
+            'description' => 'Sumérgete en el Oceanogràfic, el acuario más grande de Europa.',
+            'image_1' => 'https://cdn-imgix.headout.com/category/2700/image/0727d0ae-748f-4345-8db4-108b891ee11b-2700-valencia-01-valencia--attractions-oceanografic-tickets-01.jpg',
+            'image_2' => 'https://www.valenciabonita.es/wp-content/uploads/2018/01/31604090441_fbe1ca0d62_o-1.jpg',
             'duration' => 4,
             'location_id' => 1
         ]);
@@ -50,13 +58,17 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Albufera Natural Park',
             'description' => 'Navega por la Albufera, un hermoso parque natural cerca de Valencia.',
+            'image_1' => 'https://www.visitvalencia.com/sites/default/files/media/media-images/images/Albufera-VV-17696_1024-%20Foto_Josep_Gil.jpg',
+            'image_2' => 'https://hostalandres-elsaler.es/wp-content/uploads/2018/06/shutterstock_248853742-1.jpg',
             'duration' => 4,
             'location_id' => 1
         ]);
 
         DB::table('activities')->insert([
-            'name' => 'Hemisférico',
-            'description' => 'Disfruta de proyecciones y espectáculos en el Hemisférico de Valencia.',
+            'name' => 'Hemisfèric',
+            'description' => 'Disfruta de proyecciones y espectáculos en el Hemisfèric de Valencia.',
+            'image_1' => 'https://www.jardindelturia.com/wp-content/uploads/hemisferic-letras.jpg',
+            'image_2' => 'https://www.ticketsnet.es/ticketspro/app/web/upload/calendars/image_1/296354cc5e11655ea131516595af6857.jpg',
             'duration' => 2,
             'location_id' => 1
         ]);
@@ -64,6 +76,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Mercado Central',
             'description' => 'Explora el bullicioso Mercado Central de Valencia.',
+            'image_1' => 'https://f.hubspotusercontent40.net/hubfs/5897040/mercado-central-valencia-entrada-1.jpg',
+            'image_2' => 'https://blog.visitvalencia.com/hs-fs/hubfs/mercado-central-valencia-cupula-1.jpg?width=800&name=mercado-central-valencia-cupula-1.jpg',
             'duration' => 3,
             'location_id' => 1
         ]);
@@ -71,6 +85,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Torres de Serranos',
             'description' => 'Visita las históricas Torres de Serranos en Valencia.',
+            'image_1' => 'https://upload.wikimedia.org/wikipedia/commons/7/72/Puerta_de_los_Serranos%2C_Valencia%2C_Espa%C3%B1a%2C_2014-06-30%2C_DD_86.JPG',
+            'image_2' => 'https://offloadmedia.feverup.com/valenciasecreta.com/wp-content/uploads/2016/11/21101435/fallas_unesco.jpg',
             'duration' => 2,
             'location_id' => 1
         ]);
@@ -78,6 +94,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Ruta por la Costa da Morte',
             'description' => 'Explora la impresionante Costa da Morte en Galicia, descubriendo sus paisajes marítimos y pintorescos pueblos pesqueros.',
+            'image_1' => 'https://i0.wp.com/www.galiciatips.com/en/files/2021/10/camarinas.jpeg?fit=600%2C400&ssl=1',
+            'image_2' => 'https://www.spain.info/.content/imagenes/cabeceras-grandes/galicia/cabo-vilan-faro-galicia-c-hector-martinez-u1602145.jpg',
             'duration' => 3,
             'location_id' => 2
         ]);
@@ -85,6 +103,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Ruta por la Ribeira Sacra',
             'description' => 'Descubre la Ribeira Sacra, una región en Galicia conocida por sus viñedos y monasterios.',
+            'image_1' => 'https://www.barcelo.com/guia-turismo/wp-content/uploads/2022/09/ourense-canones-del-sil-888.jpg',
+            'image_2' => 'https://www.turismo.gal/osdam/filestore/3/7/8/2_eedf6f0a4a9511d/3782scr_3c4a1dcd550d1d0.jpg',
             'duration' => 3,
             'location_id' => 2
         ]);
@@ -92,6 +112,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Ruta por las Islas Cíes',
             'description' => 'Visita las Islas Cíes, un archipiélago en Galicia conocido por sus playas y su naturaleza.',
+            'image_1' => 'https://www.crucerosriasbaixas.com/wp-content/uploads/2019/06/islas-cies-vigo-7.jpg',
+            'image_2' => 'https://www.interrias.com/wp-content/uploads/2017/08/FOTO-PRINCIPAL-POST-r-1200x675-1-1080x675.jpg',
             'duration' => 3,
             'location_id' => 2
         ]);
@@ -99,6 +121,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Ruta por las Islas Ons',
             'description' => 'Explora las Islas Ons, un archipiélago en Galicia conocido por sus playas y su naturaleza.',
+            'image_1' => 'https://www.mardeons.es/wp-content/uploads/2020/06/curiosidades-sobre-la-isla-de-ons-en-galicia.jpg',
+            'image_2' => 'https://www.sientegalicia.com/blog/wp-content/uploads/2016/06/Mirador-de-la-Isla-de-Ons.jpg',
             'duration' => 3,
             'location_id' => 2
         ]);
@@ -106,12 +130,16 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Ruta por las Islas Sálvora',
             'description' => 'Visita las Islas Sálvora, un archipiélago en Galicia conocido por sus playas y su naturaleza.',
+            'image_1' => 'https://www.crucerosdoulla.com/activities/visita-isla-de-salvora/images/sirena-isla-salvora.jpg',
+            'image_2' => 'https://www.charternatura.com/uploads/2/1/5/3/21533860/isla-salvora-a-coruna-5669-1_orig.jpg',
             'duration' => 3,
             'location_id' => 2
         ]);
         DB::table('activities')->insert([
             'name' => 'Flamenco en Triana',
             'description' => 'Experimenta la pasión del flamenco en el barrio de Triana en Sevilla. Disfruta de un espectáculo en vivo que captura la esencia del arte flamenco, con música, cante y baile.',
+            'image_1' => 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/23/c9/d4/cb/fin-de-fiesta-en-el-teatro.jpg?w=1200&h=1200&s=1',
+            'image_2' => 'https://cd1.taquilla.com/data/images/t/15/teatro-flamenco-triana.jpg',
             'duration' => 2,
             'location_id' => 3
         ]);
@@ -119,6 +147,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por la Catedral de Sevilla',
             'description' => 'Visita la Catedral de Sevilla, la catedral gótica más grande del mundo.',
+            'image_1' => 'https://cdn.getyourguide.com/img/tour/b203ad7fded51715.jpeg/97.jpg',
+            'image_2' => 'https://multimedia.andalucia.org/media/30C5694873514DF5BFE17164EAF1B940/img/D7A3268E8AA94F1594FAC32FB03380E3/1611304799973slider-interior-catedral7909304964114478417.jpg?responsive',
             'duration' => 3,
             'location_id' => 3
         ]);
@@ -126,6 +156,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por la Giralda',
             'description' => 'Visita la Giralda, el campanario de la Catedral de Sevilla.',
+            'image_1' => 'https://cometeelmundo.net/sites/default/files/styles/max_900x900/public/media/blog/visitar-la-giralda-de-sevilla.jpg?itok=1i2CjMbP',
+            'image_2' => 'https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/8f/05/18.jpg',
             'duration' => 2,
             'location_id' => 3
         ]);
@@ -133,6 +165,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Real Alcázar',
             'description' => 'Explora el Real Alcázar de Sevilla, un palacio real en Sevilla.',
+            'image_1' => 'https://www.alcazarsevilla.org/wp-content/uploads/2019/03/Historia-1.jpg',
+            'image_2' => 'https://offloadmedia.feverup.com/sevillasecreta.co/wp-content/uploads/2016/02/20100207/shutterstock_389603563-1-1024x597.jpg',
             'duration' => 3,
             'location_id' => 3
         ]);
@@ -140,6 +174,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por la Plaza de España',
             'description' => 'Visita la Plaza de España, una plaza en Sevilla.',
+            'image_1' => 'https://www.diariodesevilla.es/2021/10/08/vivirensevilla/Plaza-Espana_1618048552_145101326_1200x675.jpg',
+            'image_2' => 'https://www.artesaniasevilla.com/modules/ph_simpleblog/covers/35.jpg',
             'duration' => 2,
             'location_id' => 3
         ]);
@@ -147,6 +183,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Barrio de Santa Cruz',
             'description' => 'Explora el Barrio de Santa Cruz, un barrio en Sevilla.',
+            'image_1' => 'https://media.traveler.es/photos/61376e8ad7c7024f9175eb3b/16:9/w_1968,h_1107,c_limit/136286.jpg',
+            'image_2' => 'https://www.101viajes.com/sites/default/files/casco-historico-santa-cruz-sevilla_0.jpg',
             'duration' => 2,
             'location_id' => 3
         ]);
@@ -154,6 +192,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Archivo de Indias',
             'description' => 'Visita el Archivo de Indias, un archivo en Sevilla.',
+            'image_1' => 'https://offloadmedia.feverup.com/sevillasecreta.co/wp-content/uploads/2015/11/19140934/shutterstock_541372600-1.jpg',
+            'image_2' => 'https://elcorreoweb.es/documents/10157/0/675x450/0c25/675d400/none/10703/KJIA/image_content_18792973_20170317101239.jpg',
             'duration' => 2,
             'location_id' => 3
         ]);
@@ -161,6 +201,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por la Torre del Oro',
             'description' => 'Visita la Torre del Oro, una torre en Sevilla.',
+            'image_1' => 'https://offloadmedia.feverup.com/sevillasecreta.co/wp-content/uploads/2016/01/20100526/Torre-del-Oro-en-Sevilla.jpg',
+            'image_2' => 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/20/ce/75/49/caption.jpg?w=1200&h=900&s=1',
             'duration' => 2,
             'location_id' => 3
         ]);
@@ -168,6 +210,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Parque de María Luisa',
             'description' => 'Explora el Parque de María Luisa, un parque en Sevilla.',
+            'image_1' => 'https://www.barcelo.com/guia-turismo/wp-content/uploads/2019/04/parque-de-maria-luisa.jpg',
+            'image_2' => 'https://offloadmedia.feverup.com/sevillasecreta.co/wp-content/uploads/2020/06/24070607/shutterstock_1324665797-1-1024x651.jpg',
             'duration' => 2,
             'location_id' => 3
         ]);
@@ -175,6 +219,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Museo de Bellas Artes',
             'description' => 'Visita el Museo de Bellas Artes de Sevilla, un museo en Sevilla.',
+            'image_1' => 'https://upload.wikimedia.org/wikipedia/commons/5/51/Fachada_Museo.jpg',
+            'image_2' => 'https://www.diariodesevilla.es/2018/01/05/ocio/Interior-Bellas-Artes-Murillo-Sevilla_1206489430_79012571_667x375.jpg',
             'duration' => 2,
             'location_id' => 3
         ]);
@@ -182,6 +228,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Museo Arqueológico',
             'description' => 'Visita el Museo Arqueológico de Sevilla, un museo en Sevilla.',
+            'image_1' => 'https://www.diariodesevilla.es/2023/06/05/sevilla/Vista-Museo-Arqueologico-Sevilla_1799530200_186191691_1200x675.jpg',
+            'image_2' => 'https://www.sevillaluxuryrentals.com/wp-content/uploads/2020/01/Arqueologico.jpg',
             'duration' => 2,
             'location_id' => 3
         ]);
@@ -189,6 +237,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Puenting en Madrid',
             'description' => 'Experimenta la adrenalina del puenting en Madrid.',
+            'image_1' => 'https://media.timeout.com/images/105941115/image.jpg',
+            'image_2' => 'https://cdn1.yumping.com/emp/fotos/6/3/7/0/5/tb_p-63705-76710680-2494358380660761-8885370729273491456-o_15753627782972.jpg',
             'duration' => 2,
             'location_id' => 3
         ]);
@@ -196,6 +246,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Museo del Prado',
             'description' => 'Sumérgete en la rica historia del arte con un tour por el Museo del Prado en Madrid. Descubre obras maestras de artistas reconocidos y disfruta de la impresionante colección de pinturas.',
+            'image_1' => 'https://www.lavanguardia.com/files/og_thumbnail/uploads/2019/11/19/5fa53648e38b2.jpeg',
+            'image_2' => 'https://img.interempresas.net/fotos/3884163.jpeg',
             'duration' => 3,
             'location_id' => 4 
         ]);
@@ -203,6 +255,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Palacio Real',
             'description' => 'Explora el Palacio Real de Madrid, un palacio real en Madrid.',
+            'image_1' => 'https://images.musement.com/cover/0003/11/royal-palace-of-madrid_header-210276.jpeg?q=30&fit=crop&auto=format&w=1024&h=400',
+            'image_2' => 'https://www.patrimonionacional.es/sites/default/files/styles/full/public/2020-05/6-salon_del_trono_cabecera_.jpg?itok=VS6lBvub',
             'duration' => 3,
             'location_id' => 4 
         ]);
@@ -210,6 +264,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Parque del Retiro',
             'description' => 'Explora el Parque del Retiro, un parque en Madrid.',
+            'image_1' => 'https://patrimonioypaisaje.madrid.es/FWProjects/monumenta/Edificios/90002/03.05-img%201.jpg',
+            'image_2' => 'https://a.travel-assets.com/findyours-php/viewfinder/images/res70/348000/348829-El-Retiro-Park.jpg',
             'duration' => 2,
             'location_id' => 4 
         ]);
@@ -217,6 +273,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por la Plaza Mayor',
             'description' => 'Visita la Plaza Mayor, una plaza en Madrid.',
+            'image_1' => 'https://okdiario.com/img/2017/10/26/las-curiosidades-de-la-plaza-mayor-de-madrid-que-no-conocias-3.jpg',
+            'image_2' => 'https://static.eldiario.es/clip/4f847c17-2908-4160-90ad-44f3b6fa7d67_16-9-discover-aspect-ratio_default_0.jpg',
             'duration' => 2,
             'location_id' => 4 
         ]);
@@ -224,6 +282,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por la Puerta del Sol',
             'description' => 'Visita la Puerta del Sol, una plaza en Madrid.',
+            'image_1' => 'https://madridando.com/wp-content/uploads/2018/07/puerta-del-sol-madrid.jpeg',
+            'image_2' => 'https://a.travel-assets.com/findyours-php/viewfinder/images/res70/349000/349163-Puerta-Del-Sol.jpg',
             'duration' => 2,
             'location_id' => 4 
         ]);
@@ -231,6 +291,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Templo de Debod',
             'description' => 'Visita el Templo de Debod, un templo en Madrid.',
+            'image_1' => 'https://urbanity.one/uploads/default/original/2X/2/287b029774d95c2ef4c4c4f77236a0e40b1255a3.jpeg',
+            'image_2' => 'https://media.timeout.com/images/105778754/750/422/image.jpg',
             'duration' => 2,
             'location_id' => 4 
         ]);
@@ -238,6 +300,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Museo Reina Sofía',
             'description' => 'Visita el Museo Reina Sofía, un museo en Madrid.',
+            'image_1' => 'https://static2.museoreinasofia.es/sites/default/files/snippet_museo_sede_principal_5.png',
+            'image_2' => 'https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2023/09/guernica-3127614.jpg?tf=3840x',
             'duration' => 3,
             'location_id' => 4 
         ]);
@@ -245,6 +309,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Museo Thyssen-Bornemisza',
             'description' => 'Visita el Museo Thyssen-Bornemisza, un museo en Madrid.',
+            'image_1' => 'https://www.hotelindiana.es/wp-content/uploads/2020/05/museo-thyssen-gratis.jpg',
+            'image_2' => 'https://saposyprincesas.elmundo.es/wp-content/uploads/2012/09/madrid-museo-thyssen-005.jpg',
             'duration' => 3,
             'location_id' => 4 
         ]);
@@ -252,6 +318,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Museo Arqueológico',
             'description' => 'Visita el Museo Arqueológico Nacional, un museo en Madrid.',
+            'image_1' => 'https://saposyprincesas.elmundo.es/wp-content/uploads/2015/01/museo-arqueologico-nacional.jpg',
+            'image_2' => 'https://turismomadrid.es/images/Contenido/veryhacer/cultura/museos/Sala%20de%20Grecia_MAN%20Luis%20Asn.jpg',
             'duration' => 3,
             'location_id' => 4 
         ]);
@@ -259,6 +327,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Museo de Cera',
             'description' => 'Visita el Museo de Cera de Madrid, un museo en Madrid.',
+            'image_1' => 'https://www.museoceramadrid.com/wp-content/uploads/Que-hacer-en-el-Museo-de-Cera-de-Madrid..jpg',
+            'image_2' => 'https://www.65ymas.com/uploads/s1/10/93/44/6/museo-cera-madrid.jpeg',
             'duration' => 3,
             'location_id' => 4 
         ]);
@@ -266,6 +336,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Visita a la Sagrada Familia',
             'description' => 'Explora la famosa Sagrada Familia en Barcelona, obra maestra de Antoni Gaudí. Descubre la arquitectura única y la historia detrás de esta icónica basílica.',
+            'image_1' => 'https://www.sacyr.com/documents/121856245/121935575/IMG+0+Sagrada+Familia.jpg/581b6a0d-6ea2-c8c8-e24d-af942bebb396?t=1680604818400',
+            'image_2' => 'https://www.spain.info/export/sites/segtur/.content/imagenes/reportajes/cataluna/sagrada-familia-interior.jpg',
             'duration' => 2,
             'location_id' => 5
         ]);
@@ -273,6 +345,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Parque Güell',
             'description' => 'Pasea por el Parque Güell, otro proyecto magistral de Gaudí en Barcelona. Disfruta de la arquitectura modernista, los mosaicos coloridos y las vistas panorámicas de la ciudad.',
+            'image_1' => 'https://upload.wikimedia.org/wikipedia/commons/2/2e/G%C3%BCell_BCN.jpg',
+            'image_2' => 'https://img2.rtve.es/imagenes/jardines-historia-parque-guell/1650732387265.jpg',
             'duration' => 3,
             'location_id' => 5
         ]);
@@ -280,6 +354,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Paseo por Las Ramblas',
             'description' => 'Sumérgete en la vibrante vida urbana de Barcelona dando un paseo por Las Ramblas. Descubre tiendas, restaurantes, artistas callejeros y la energía única de esta famosa avenida.',
+            'image_1' => 'https://static-resources.mirai.com/wp-content/uploads/sites/1745/20210603081005/esta-Las-Ramblas-de-Barcelona-.jpg',
+            'image_2' => 'https://beaviajera.com/wp-content/uploads/2020/09/Las-Ramblas-11.jpg',
             'duration' => 3,
             'location_id' => 5
         ]);
@@ -287,6 +363,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Barrio Gótico',
             'description' => 'Explora el Barrio Gótico de Barcelona, un barrio en el centro de la ciudad. Descubre la historia de la ciudad y disfruta de la arquitectura medieval.',
+            'image_1' => 'https://barcelonando.com/es/wp-content/uploads/2018/11/barrio_gotico.jpeg',
+            'image_2' => 'https://www.gratisbarcelona.com/assets/images/barrio-gotico010.jpg',
             'duration' => 3,
             'location_id' => 5
         ]);
@@ -294,6 +372,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Barrio del Born',
             'description' => 'Explora el Barrio del Born de Barcelona, un barrio en el centro de la ciudad. Descubre la historia de la ciudad y disfruta de la arquitectura medieval.',
+            'image_1' => 'https://barcelonando.com/es/wp-content/uploads/2018/07/el-born-barcelona.jpeg',
+            'image_2' => 'https://beaviajera.com/wp-content/uploads/2020/01/El-Born-8-1024x768.jpg',
             'duration' => 3,
             'location_id' => 5
         ]);
@@ -301,6 +381,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Barrio de Gracia',
             'description' => 'Explora el Barrio de Gracia de Barcelona, un barrio en el centro de la ciudad. Descubre la historia de la ciudad y disfruta de la arquitectura medieval.',
+            'image_1' => 'https://s3.eu-west-1.amazonaws.com/pro.static.portalstdo.tmb.cat/styles/galeria_slider/s3/2018-03/REF_BARRIO_DE_GRACIA_CT6A0756-web.jpg?itok=8YHbmYXI',
+            'image_2' => 'https://www.willysplan.com/wp-content/uploads/2022/10/tour-por-el-barrio-de-gracia-de-barcelona.jpg',
             'duration' => 3,
             'location_id' => 5
         ]);
@@ -308,6 +390,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Tour por el Barrio de Sants',
             'description' => 'Explora el Barrio de Sants de Barcelona, un barrio en el centro de la ciudad. Descubre la historia de la ciudad y disfruta de la arquitectura medieval.',
+            'image_1' => 'https://megustavolar.iberia.com/wp-content/uploads/mgv/Barcelona-Barrio-Sants-Espa%C3%B1a-Dani-Keral-Un-Viaje-Creativo-640x441.jpg',
+            'image_2' => 'https://images.adsttc.com/media/images/5849/1a54/e58e/ce64/7c00/0162/newsletter/_AG_2575.jpg?1481185830',
             'duration' => 3,
             'location_id' => 5
         ]);
@@ -315,6 +399,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Visita al Camp Nou',
             'description' => 'Visita el Camp Nou, el estadio del FC Barcelona.',
+            'image_1' => 'https://www.historia.com/wp-content/uploads/2017/06/camp-nou-vista-aerea.jpg',
+            'image_2' => 'https://www.apropacultura.org/sites/default/files/styles/header_780w/public/equipment/vo230607a80001_1.jpg?itok=MWUiLznO',
             'duration' => 3,
             'location_id' => 5
         ]);
@@ -322,6 +408,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Ruta por los Picos de Europa',
             'description' => 'Embárcate en una emocionante ruta por los Picos de Europa en Asturias. Descubre impresionantes paisajes montañosos y disfruta de la naturaleza en su máxima expresión.',
+            'image_1' => 'https://s1.ppllstatics.com/elcorreo/www/multimedia/202212/01/media/cortadas/Picu%20Urriellu-RZls5ztBmVS98PuQIHL4h6J-1248x770@El%20Correo.jpg',
+            'image_2' => 'https://www.escapadarural.com/blog/wp-content/uploads/2017/03/Picos-de-Europa-1-1-585x390.jpg',
             'duration' => 4,
             'location_id' => 6
         ]);
@@ -329,6 +417,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Ruta Gastronómica por Oviedo',
             'description' => 'Embárcate en una ruta gastronómica por las calles de Oviedo, la capital de Asturias. Descubre los sabores de la cocina asturiana, probando platos tradicionales como la sidra y el cabrales.',
+            'image_1' => 'https://blog.renfe.com/wp-content/uploads/2022/04/4_MG_0009-scaled.jpg',
+            'image_2' => 'https://elpiguena.com/wp-content/uploads/2021/03/sidreria-en-gasgona-oviedo-asturias-piguena.jpg',
             'duration' => 3,
             'location_id' => 6
         ]);
@@ -336,6 +426,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Visita a la Catedral de Oviedo',
             'description' => 'Explora la histórica Catedral de Oviedo, un impresionante monumento de estilo gótico que alberga numerosos tesoros artísticos y religiosos.',
+            'image_1' => 'https://www.elcaminoconcorreos.com/admin/files/articulos/397/catedral-san-salvador-oviedo.jpg',
+            'image_2' => 'https://saposyprincesas.elmundo.es/wp-content/uploads/2020/06/CatedraldeOviedo.jpg',
             'duration' => 2,
             'location_id' => 6
         ]);
@@ -343,6 +435,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Recorrido por los Lagos de Covadonga',
             'description' => 'Realiza un recorrido por los Lagos de Covadonga, un paraje natural de gran belleza en los Picos de Europa. Disfruta de la naturaleza y las vistas panorámicas.',
+            'image_1' => 'https://upload.wikimedia.org/wikipedia/commons/d/d6/LAGOS_DE_COVADONGA_5.jpg',
+            'image_2' => 'https://fronteraverde.com/wp-content/uploads/2017/02/DSCN4603.jpg',
             'duration' => 4,
             'location_id' => 6
         ]);
@@ -350,6 +444,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Cata de Sidra en una Sidrería Tradicional',
             'description' => 'Sumérgete en la cultura sidrera de Asturias con una cata de sidra en una sidrería tradicional. Aprende sobre la elaboración de la sidra y degusta diferentes variedades.',
+            'image_1' => 'https://www.turismoasturias.es/documents/39908/67956/sidrerias-2.jpg/8bf9431c-183b-7e14-221d-f19513d1b81e',
+            'image_2' => 'https://www.65ymas.com/uploads/s1/70/80/mejores-sidrerias-asturias-sidreria-lena.jpeg',
             'duration' => 2,
             'location_id' => 6
         ]);
@@ -357,6 +453,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Cocina Asturiana',
             'description' => 'Explora la rica tradición gastronómica de Asturias con una experiencia culinaria. Degusta platos típicos como la fabada asturiana y la sidra local.',
+            'image_1' => 'https://i.blogs.es/6a8dcb/fabada_sidra/1366_2000.jpg',
+            'image_2' => 'https://www.jaireviajes.com/wp-content/uploads/2017/11/comida-asturiana.png',
             'duration' => 2,
             'location_id' => 6
         ]);
@@ -364,6 +462,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Playa de Gulpiyuri',
             'description' => 'Relájate en la playa de Gulpiyuri, una joya natural escondida en Asturias. Disfruta de aguas cristalinas y un entorno sereno.',
+            'image_1' => 'https://queverenasturias.es/wp-content/uploads/2017/09/gulpiyuri-playa-asturias-03.jpg',
+            'image_2' => 'https://www.edicionlimitada.es/wp-content/uploads/2021/07/playa_Gulpiyuri_Asturias3.jpg',
             'duration' => 3,
             'location_id' => 6
         ]);
@@ -371,6 +471,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Playa de Torimbia',
             'description' => 'Relájate en la playa de Torimbia, una playa en Asturias. Disfruta de aguas cristalinas y un entorno sereno.',
+            'image_1' => 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/7d/22/c5/torimbia-desde-el-aparcamiento.jpg?w=1200&h=1200&s=1',
+            'image_2' => 'https://estaticos-cdn.prensaiberica.es/clip/66b7bf87-3bec-4af5-849c-f46aa3ceb8d6_16-9-aspect-ratio_default_0.jpg',
             'duration' => 3,
             'location_id' => 6
         ]);
@@ -378,6 +480,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Alhambra',
             'description' => 'Visita la majestuosa Alhambra, un complejo palaciego y fortaleza en Granada. Explora los hermosos jardines, patios y salones con influencias islámicas.',
+            'image_1' => 'https://upload.wikimedia.org/wikipedia/commons/d/de/Dawn_Charles_V_Palace_Alhambra_Granada_Andalusia_Spain.jpg',
+            'image_2' => 'https://www.spain.info/.content/imagenes/cabeceras-grandes/andalucia/patio-de-los-leones-la-alhambra-de-granada-s617241374.jpg',
             'duration' => 4,
             'location_id' => 7
         ]);
@@ -385,6 +489,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Catedral de Granada',
             'description' => 'Descubre la Catedral de Granada, una obra maestra arquitectónica que combina estilos gótico y renacentista. Explora la Capilla Real y disfruta de las vistas desde la torre.',
+            'image_1' => 'https://www.hitocultural.com/wp-content/uploads/2020/12/Catedral-Granada.jpg',
+            'image_2' => 'https://ticketsgranadacristiana.com/uploads/products/catedral04-1-60c315fbf2c6c.jpg',
             'duration' => 2,
             'location_id' => 7
         ]);
@@ -392,6 +498,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Barrio del Albaicín',
             'description' => 'Pasea por las estrechas calles empedradas del Albaicín, el antiguo barrio árabe de Granada. Disfruta de la arquitectura morisca, las tiendas artesanales y las vistas a la Alhambra.',
+            'image_1' => 'https://i.pinimg.com/736x/87/f4/03/87f403e90d72ff76edc7cb16a78b5d36.jpg',
+            'image_2' => 'https://espanafascinante.com/wp-content/uploads/panoramica_andalucia_granada_albaicin_flickr-1-672x372.jpg',
             'duration' => 3,
             'location_id' => 7
         ]);
@@ -399,6 +507,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Mirador de San Nicolás',
             'description' => 'Contempla las impresionantes vistas de la Alhambra desde el Mirador de San Nicolás en el Albaicín. Un lugar icónico para disfrutar de la puesta de sol sobre Granada.',
+            'image_1' => 'https://www.barcelo.com/guia-turismo/wp-content/uploads/2018/07/mirador-san-nicolas-plan.jpg',
+            'image_2' => 'https://phantom-expansion.unidadeditorial.es/7bb0bf4704b05ad572dcca4c844d228b/resize/640/assets/multimedia/imagenes/2021/02/25/16142564364280.jpg',
             'duration' => 1,
             'location_id' => 7
         ]);
@@ -406,6 +516,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Baños Árabes El Bañuelo',
             'description' => 'Sumérgete en la historia en los Baños Árabes El Bañuelo, antiguos baños públicos islámicos en el Albaicín. Admira la arquitectura y aprende sobre las costumbres de la época.',
+            'image_1' => 'https://multimedia.andalucia.org/content_images/main_image_75086.jpeg',
+            'image_2' => 'https://go2alhambra.com/images/elbanuelogranada.jpg',
             'duration' => 2,
             'location_id' => 7
         ]);
@@ -413,6 +525,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Flamenco en Sacromonte',
             'description' => 'Vive la experiencia del flamenco en el barrio de Sacromonte, conocido por sus cuevas donde se celebran espectáculos flamencos. Disfruta del cante, el baile y la guitarra en un entorno único.',
+            'image_1' => 'https://media.tacdn.com/media/attractions-splice-spp-674x446/07/01/51/91.jpg',
+            'image_2' => 'https://cometeelmundo.net/sites/default/files/styles/max_1300x1300/public/media/blog/flamenco-en-el-sacromonte.jpg?itok=AbUaoj4l',
             'duration' => 2,
             'location_id' => 7
         ]);
@@ -420,6 +534,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Monasterio de San Jerónimo',
             'description' => 'Explora el Monasterio de San Jerónimo, un impresionante edificio renacentista en Granada. Descubre la arquitectura, el claustro y la historia religiosa del lugar.',
+            'image_1' => 'https://ticketsgranadacristiana.com/uploads/products/sanjeronimo-05-60d19dfdc9c78.jpg',
+            'image_2' => 'https://www2.ual.es/ideimand/wp-content/uploads/2018/01/Copia-de-fig-4.jpg',
             'duration' => 2,
             'location_id' => 7
         ]);
@@ -427,6 +543,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Parque de las Ciencias',
             'description' => 'Visita el Parque de las Ciencias, un museo interactivo y centro cultural en Granada. Disfruta de exhibiciones científicas, planetario y actividades educativas.',
+            'image_1' => 'https://upload.wikimedia.org/wikipedia/commons/4/4a/ParqueCiencias_Macroscopio.jpg',
+            'image_2' => 'https://www.juntadeandalucia.es/presidencia/portavoz/resources/files/2018/8/7/1533635087097EDU%20Planetario%20Parque%20de%20las%20Ciencias%20Granada.jpg',
             'duration' => 3,
             'location_id' => 7
         ]);
@@ -434,6 +552,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Visita al Museo Picasso',
             'description' => 'Explora la obra del famoso pintor Pablo Picasso en el Museo Picasso de Málaga. Descubre una colección única de sus obras y su impacto en el arte moderno.',
+            'image_1' => 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/42/a1/0d/caption.jpg?w=1200&h=-1&s=1',
+            'image_2' => 'https://www.museopicassomalaga.org/cms/uploads/xxlarge_El_eco_de_Picasse_Home_de42517cbf.jpg',
             'duration' => 2,
             'location_id' => 8
         ]);
@@ -441,6 +561,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Paseo por el Casco Antiguo',
             'description' => 'Disfruta de un pintoresco paseo por el casco antiguo de Málaga. Explora estrechas calles, descubre plazas encantadoras y sumérgete en la atmósfera histórica.',
+            'image_1' => 'https://static.costadelsolmalaga.org/visita/subidas/imagenes/2/6/arc_19362_g.png',
+            'image_2' => 'https://www.travelechoes.com/sites/default/files/inline-images/frigiliana.jpg',
             'duration' => 3,
             'location_id' => 8
         ]);
@@ -448,6 +570,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Alcazaba y Teatro Romano',
             'description' => 'Visita la Alcazaba de Málaga, una fortaleza árabe con impresionantes vistas a la ciudad. Descubre también el Teatro Romano, un vestigio histórico.',
+            'image_1' => 'https://static.wixstatic.com/media/15cb1d_c24b567700324a82a32be5b8f77772c1~mv2.webp',
+            'image_2' => 'https://www.civitatis.com/f/espana/malaga/galeria/teatro-romano-malaga.jpg',
             'duration' => 4,
             'location_id' => 8
         ]);
@@ -455,6 +579,8 @@ class ActivitySeeder extends Seeder
         DB::table('activities')->insert([
             'name' => 'Día de Playa en La Malagueta',
             'description' => 'Relájate en la playa de La Malagueta y disfruta del sol y del mar. Experimenta la vida playera y prueba la deliciosa gastronomía local en los chiringuitos.',
+            'image_1' => 'https://www.barcelo.com/guia-turismo/wp-content/uploads/2019/07/la-malagueta1.jpg',
+            'image_2' => 'https://iloftmalaga.com/wp-content/uploads/2020/09/malagueta1.jpg',
             'duration' => 1,
             'location_id' => 8
         ]);
