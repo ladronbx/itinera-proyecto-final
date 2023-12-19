@@ -62,6 +62,7 @@ Route::group([
     'middleware' => ['jwt.auth']
 ], function () {
     Route::post('/my-trip/{id}/add-member', [GroupController::class, 'addMemberToTrip']);
+    Route::delete('/my-trip/{tripId}/delete-member/{userId}', [GroupController::class, 'deleteMemberFromTrip']);
 });
 
 // ACTIVITY

@@ -164,7 +164,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por el Real Alcázar',
-            'description' => 'Explora el Real Alcázar de Sevilla, un palacio real en Sevilla.',
+            'description' => 'Explora el Real Alcázar de Sevilla, un conjunto palaciego amurallado construido en diferentes etapas históricas',
             'image_1' => 'https://www.alcazarsevilla.org/wp-content/uploads/2019/03/Historia-1.jpg',
             'image_2' => 'https://offloadmedia.feverup.com/sevillasecreta.co/wp-content/uploads/2016/02/20100207/shutterstock_389603563-1-1024x597.jpg',
             'duration' => 3,
@@ -173,7 +173,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por la Plaza de España',
-            'description' => 'Visita la Plaza de España, una plaza en Sevilla.',
+            'description' => 'Visita la Plaza de España que simboliza la comunión con los antiguos territorios americanos.',
             'image_1' => 'https://www.diariodesevilla.es/2021/10/08/vivirensevilla/Plaza-Espana_1618048552_145101326_1200x675.jpg',
             'image_2' => 'https://www.artesaniasevilla.com/modules/ph_simpleblog/covers/35.jpg',
             'duration' => 2,
@@ -182,7 +182,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por el Barrio de Santa Cruz',
-            'description' => 'Explora el Barrio de Santa Cruz, un barrio en Sevilla.',
+            'description' => 'Explora el Barrio de Santa Cruz, que se asienta en parte de la antigua judería de la ciudad.',
             'image_1' => 'https://media.traveler.es/photos/61376e8ad7c7024f9175eb3b/16:9/w_1968,h_1107,c_limit/136286.jpg',
             'image_2' => 'https://www.101viajes.com/sites/default/files/casco-historico-santa-cruz-sevilla_0.jpg',
             'duration' => 2,
@@ -191,7 +191,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por el Archivo de Indias',
-            'description' => 'Visita el Archivo de Indias, un archivo en Sevilla.',
+            'description' => 'Visita el Archivo de Indias, un edificio renacentista considerado patrimonio de la humanidad que exhibe documentos sobre el Imperio español.',
             'image_1' => 'https://offloadmedia.feverup.com/sevillasecreta.co/wp-content/uploads/2015/11/19140934/shutterstock_541372600-1.jpg',
             'image_2' => 'https://elcorreoweb.es/documents/10157/0/675x450/0c25/675d400/none/10703/KJIA/image_content_18792973_20170317101239.jpg',
             'duration' => 2,
@@ -200,7 +200,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por la Torre del Oro',
-            'description' => 'Visita la Torre del Oro, una torre en Sevilla.',
+            'description' => 'Visita la Torre del Oro, una atalaya defensiva de época almohade famosa por sus reflejos dorados, protagonista de leyendas.',
             'image_1' => 'https://offloadmedia.feverup.com/sevillasecreta.co/wp-content/uploads/2016/01/20100526/Torre-del-Oro-en-Sevilla.jpg',
             'image_2' => 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/20/ce/75/49/caption.jpg?w=1200&h=900&s=1',
             'duration' => 2,
@@ -209,7 +209,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por el Parque de María Luisa',
-            'description' => 'Explora el Parque de María Luisa, un parque en Sevilla.',
+            'description' => 'Explora el Parque de María Luisa, el primer parque urbano de Sevilla y uno de sus pulmones verdes.',
             'image_1' => 'https://www.barcelo.com/guia-turismo/wp-content/uploads/2019/04/parque-de-maria-luisa.jpg',
             'image_2' => 'https://offloadmedia.feverup.com/sevillasecreta.co/wp-content/uploads/2020/06/24070607/shutterstock_1324665797-1-1024x651.jpg',
             'duration' => 2,
@@ -218,7 +218,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por el Museo de Bellas Artes',
-            'description' => 'Visita el Museo de Bellas Artes de Sevilla, un museo en Sevilla.',
+            'description' => 'Visita el Museo de Bellas Artes de Sevilla, es considerada una de las pinacotecas más importantes de España.',
             'image_1' => 'https://upload.wikimedia.org/wikipedia/commons/5/51/Fachada_Museo.jpg',
             'image_2' => 'https://www.diariodesevilla.es/2018/01/05/ocio/Interior-Bellas-Artes-Murillo-Sevilla_1206489430_79012571_667x375.jpg',
             'duration' => 2,
@@ -227,7 +227,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por el Museo Arqueológico',
-            'description' => 'Visita el Museo Arqueológico de Sevilla, un museo en Sevilla.',
+            'description' => 'Visita el Museo Arqueológico de Sevilla, que exhibe el tesoro de El Carambolo, encontrado en la zona, además de reliquias romanas y mosaicos.',
             'image_1' => 'https://www.diariodesevilla.es/2023/06/05/sevilla/Vista-Museo-Arqueologico-Sevilla_1799530200_186191691_1200x675.jpg',
             'image_2' => 'https://www.sevillaluxuryrentals.com/wp-content/uploads/2020/01/Arqueologico.jpg',
             'duration' => 2,
@@ -254,7 +254,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por el Palacio Real',
-            'description' => 'Explora el Palacio Real de Madrid, un palacio real en Madrid.',
+            'description' => 'Explora el Palacio Real de Madrid, es el más grande de Europa Occidental y uno de los más grandes del mundo.',
             'image_1' => 'https://images.musement.com/cover/0003/11/royal-palace-of-madrid_header-210276.jpeg?q=30&fit=crop&auto=format&w=1024&h=400',
             'image_2' => 'https://www.patrimonionacional.es/sites/default/files/styles/full/public/2020-05/6-salon_del_trono_cabecera_.jpg?itok=VS6lBvub',
             'duration' => 3,
@@ -263,7 +263,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por el Parque del Retiro',
-            'description' => 'Explora el Parque del Retiro, un parque en Madrid.',
+            'description' => 'Explora el Parque del Retiro, amplio parque del siglo XIX con lago para barcas y rosaleda, además de diversas fuentes y estatuas.',
             'image_1' => 'https://patrimonioypaisaje.madrid.es/FWProjects/monumenta/Edificios/90002/03.05-img%201.jpg',
             'image_2' => 'https://a.travel-assets.com/findyours-php/viewfinder/images/res70/348000/348829-El-Retiro-Park.jpg',
             'duration' => 2,
@@ -272,7 +272,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por la Plaza Mayor',
-            'description' => 'Visita la Plaza Mayor, una plaza en Madrid.',
+            'description' => 'Visita la Plaza Mayor. Este recinto fue escenario en tiempos pasados de numerosos actos públicos, tales como corridas de toros, procesiones, fiestas, representaciones de teatro, juicios de la Inquisición e incluso ejecuciones capitales.',
             'image_1' => 'https://okdiario.com/img/2017/10/26/las-curiosidades-de-la-plaza-mayor-de-madrid-que-no-conocias-3.jpg',
             'image_2' => 'https://static.eldiario.es/clip/4f847c17-2908-4160-90ad-44f3b6fa7d67_16-9-discover-aspect-ratio_default_0.jpg',
             'duration' => 2,
@@ -281,7 +281,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por la Puerta del Sol',
-            'description' => 'Visita la Puerta del Sol, una plaza en Madrid.',
+            'description' => 'Visita la Puerta del Sol, en ella se encuentra desde 1950 el denominado kilómetro cero de las carreteras radiales del país.',
             'image_1' => 'https://madridando.com/wp-content/uploads/2018/07/puerta-del-sol-madrid.jpeg',
             'image_2' => 'https://a.travel-assets.com/findyours-php/viewfinder/images/res70/349000/349163-Puerta-Del-Sol.jpg',
             'duration' => 2,
@@ -290,7 +290,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por el Templo de Debod',
-            'description' => 'Visita el Templo de Debod, un templo en Madrid.',
+            'description' => 'Visita el Templo de Debod, fue un regalo de Egipto a España en 1968 en compensación por la ayuda española tras el llamamiento internacional realizado por la Unesco para salvar los templos de Nubia.',
             'image_1' => 'https://urbanity.one/uploads/default/original/2X/2/287b029774d95c2ef4c4c4f77236a0e40b1255a3.jpeg',
             'image_2' => 'https://media.timeout.com/images/105778754/750/422/image.jpg',
             'duration' => 2,
@@ -299,7 +299,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por el Museo Reina Sofía',
-            'description' => 'Visita el Museo Reina Sofía, un museo en Madrid.',
+            'description' => 'Visita el Museo Reina Sofía, es un museo de arte del siglo XX y contemporáneo.',
             'image_1' => 'https://static2.museoreinasofia.es/sites/default/files/snippet_museo_sede_principal_5.png',
             'image_2' => 'https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2023/09/guernica-3127614.jpg?tf=3840x',
             'duration' => 3,
@@ -308,7 +308,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por el Museo Thyssen-Bornemisza',
-            'description' => 'Visita el Museo Thyssen-Bornemisza, un museo en Madrid.',
+            'description' => 'Visita el Museo Thyssen-Bornemisza, es una pinacoteca de maestros antiguos y modernos.',
             'image_1' => 'https://www.hotelindiana.es/wp-content/uploads/2020/05/museo-thyssen-gratis.jpg',
             'image_2' => 'https://saposyprincesas.elmundo.es/wp-content/uploads/2012/09/madrid-museo-thyssen-005.jpg',
             'duration' => 3,
@@ -317,7 +317,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por el Museo Arqueológico',
-            'description' => 'Visita el Museo Arqueológico Nacional, un museo en Madrid.',
+            'description' => 'Visita el Museo Arqueológico Nacional, es el principal museo español dedicado a la arqueología. Su colección se basa en piezas originarias de España, desde la Prehistoria hasta la Edad Moderna.',
             'image_1' => 'https://saposyprincesas.elmundo.es/wp-content/uploads/2015/01/museo-arqueologico-nacional.jpg',
             'image_2' => 'https://turismomadrid.es/images/Contenido/veryhacer/cultura/museos/Sala%20de%20Grecia_MAN%20Luis%20Asn.jpg',
             'duration' => 3,
@@ -326,7 +326,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por el Museo de Cera',
-            'description' => 'Visita el Museo de Cera de Madrid, un museo en Madrid.',
+            'description' => 'Visita el Museo de Cera de Madrid, cuenta con más de 450 figuras de cera de conocidos personajes históricos, del mundo del deporte y del espectáculo.',
             'image_1' => 'https://www.museoceramadrid.com/wp-content/uploads/Que-hacer-en-el-Museo-de-Cera-de-Madrid..jpg',
             'image_2' => 'https://www.65ymas.com/uploads/s1/10/93/44/6/museo-cera-madrid.jpeg',
             'duration' => 3,
@@ -362,7 +362,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por el Barrio Gótico',
-            'description' => 'Explora el Barrio Gótico de Barcelona, un barrio en el centro de la ciudad. Descubre la historia de la ciudad y disfruta de la arquitectura medieval.',
+            'description' => 'Explora el Barrio Gótico de Barcelona, un distrito con encanto que tiene estrechos callejones medievales repletos de bares de moda, pubs y restaurantes.',
             'image_1' => 'https://barcelonando.com/es/wp-content/uploads/2018/11/barrio_gotico.jpeg',
             'image_2' => 'https://www.gratisbarcelona.com/assets/images/barrio-gotico010.jpg',
             'duration' => 3,
@@ -371,7 +371,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por el Barrio del Born',
-            'description' => 'Explora el Barrio del Born de Barcelona, un barrio en el centro de la ciudad. Descubre la historia de la ciudad y disfruta de la arquitectura medieval.',
+            'description' => 'Explora el Barrio del Born de Barcelona, uno de los barrios más de moda de Barcelona. Cosmopolita, multicultural y alternativo.',
             'image_1' => 'https://barcelonando.com/es/wp-content/uploads/2018/07/el-born-barcelona.jpeg',
             'image_2' => 'https://beaviajera.com/wp-content/uploads/2020/01/El-Born-8-1024x768.jpg',
             'duration' => 3,
@@ -380,7 +380,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por el Barrio de Gracia',
-            'description' => 'Explora el Barrio de Gracia de Barcelona, un barrio en el centro de la ciudad. Descubre la historia de la ciudad y disfruta de la arquitectura medieval.',
+            'description' => 'Explora el Barrio de Gracia de Barcelona, un distrito elegante que destaca por sus bulevares y calles peatonales del siglo XIX repletas de boutiques alternativas, galerías y salas de cine.',
             'image_1' => 'https://s3.eu-west-1.amazonaws.com/pro.static.portalstdo.tmb.cat/styles/galeria_slider/s3/2018-03/REF_BARRIO_DE_GRACIA_CT6A0756-web.jpg?itok=8YHbmYXI',
             'image_2' => 'https://www.willysplan.com/wp-content/uploads/2022/10/tour-por-el-barrio-de-gracia-de-barcelona.jpg',
             'duration' => 3,
@@ -389,7 +389,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Tour por el Barrio de Sants',
-            'description' => 'Explora el Barrio de Sants de Barcelona, un barrio en el centro de la ciudad. Descubre la historia de la ciudad y disfruta de la arquitectura medieval.',
+            'description' => 'Explora el Barrio de Sants de Barcelona, es una zona residencial tranquila alejada de la ciudad.',
             'image_1' => 'https://megustavolar.iberia.com/wp-content/uploads/mgv/Barcelona-Barrio-Sants-Espa%C3%B1a-Dani-Keral-Un-Viaje-Creativo-640x441.jpg',
             'image_2' => 'https://images.adsttc.com/media/images/5849/1a54/e58e/ce64/7c00/0162/newsletter/_AG_2575.jpg?1481185830',
             'duration' => 3,
@@ -416,7 +416,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Ruta Gastronómica por Oviedo',
-            'description' => 'Embárcate en una ruta gastronómica por las calles de Oviedo, la capital de Asturias. Descubre los sabores de la cocina asturiana, probando platos tradicionales como la sidra y el cabrales.',
+            'description' => 'Disfruta en una ruta gastronómica por las calles de Oviedo, la capital de Asturias. Descubre los sabores de la cocina asturiana, probando platos tradicionales como la sidra y el cabrales.',
             'image_1' => 'https://blog.renfe.com/wp-content/uploads/2022/04/4_MG_0009-scaled.jpg',
             'image_2' => 'https://elpiguena.com/wp-content/uploads/2021/03/sidreria-en-gasgona-oviedo-asturias-piguena.jpg',
             'duration' => 3,
@@ -470,7 +470,7 @@ class ActivitySeeder extends Seeder
 
         DB::table('activities')->insert([
             'name' => 'Playa de Torimbia',
-            'description' => 'Relájate en la playa de Torimbia, una playa en Asturias. Disfruta de aguas cristalinas y un entorno sereno.',
+            'description' => 'Relájate en la playa de Torimbia, considerada paisaje protegido.',
             'image_1' => 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/7d/22/c5/torimbia-desde-el-aparcamiento.jpg?w=1200&h=1200&s=1',
             'image_2' => 'https://estaticos-cdn.prensaiberica.es/clip/66b7bf87-3bec-4af5-849c-f46aa3ceb8d6_16-9-aspect-ratio_default_0.jpg',
             'duration' => 3,
