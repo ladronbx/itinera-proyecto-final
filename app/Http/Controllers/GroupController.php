@@ -136,7 +136,7 @@ class GroupController extends Controller
                     Response::HTTP_BAD_REQUEST
                 );
             }
-            
+
             $groupToDelete->users()->detach($userId);
             $groupToDelete->delete();
 
@@ -156,6 +156,45 @@ class GroupController extends Controller
                     "success" => false,
                     "message" => "Error deleting member from the trip",
                     "data" => $groupToDelete,
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
+    public function getMembersTrip($tripId)
+    {
+        try {
+            $user = auth()->user();
+            $group = Group::query()->where('trip_id', $tripId)->where('user_id', $user->id)->first();
+
+            if ($group === null) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "You are not authorized to get members from this trip. Only the creator of the trip can get members.",
+                    ],
+                    Response::HTTP_UNAUTHORIZED
+                );
+            }
+
+            $members = Group::query()->where('trip_id', $tripId)->get();
+
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Members retrieved successfully",
+                    "data" => $members
+                ],
+                Response::HTTP_OK
+            );
+
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error retrieving member",
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );

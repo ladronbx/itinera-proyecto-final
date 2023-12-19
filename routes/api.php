@@ -63,6 +63,7 @@ Route::group([
 ], function () {
     Route::post('/my-trip/{id}/add-member', [GroupController::class, 'addMemberToTrip']);
     Route::delete('/my-trip/{tripId}/delete-member/{userId}', [GroupController::class, 'deleteMemberFromTrip']);
+    Route::get('/my-trip/{tripId}/get-members', [GroupController::class, 'getMembersTrip']);
 });
 
 // ACTIVITY
