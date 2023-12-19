@@ -20,6 +20,7 @@ Route::middleware('jwt.auth')->get('/user', function (Request $request) {
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
+
 Route::group([
     'middleware' => ['jwt.auth']
 ], function () {
@@ -27,6 +28,7 @@ Route::group([
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::put('/profile-update', [UserController::class, 'updateProfile']);
     Route::delete('/user-delete', [UserController::class, 'deleteUser']);
+    Route::post('/verify-password', [AuthController::class, 'verifyPassword']);
 });
 
 

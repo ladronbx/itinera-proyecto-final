@@ -176,4 +176,40 @@ class AuthController extends Controller
             );
         }
     }
+
+    public function verifyPassword(Request $request)
+    {
+        try {
+            $user = auth()->user();
+            $providedPassword = $request->input('password');
+
+            if (Hash::check($providedPassword, $user->password)) {
+                return response()->json(
+                    [
+                        "success" => true,
+                        "message" => "Password verified"
+                    ],
+                    Response::HTTP_OK
+                );
+            } else {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Incorrect password"
+                    ],
+                    Response::HTTP_UNAUTHORIZED
+                );
+            }
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error verifying password"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }
