@@ -5,60 +5,74 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
     public function updateProfile(Request $request)
-    {
-        try {
-            $token = auth()->user();
-            $user = User::query()->find($token->id);
+{
+    try {
+        $token = auth()->user();
+        $user = User::query()->find($token->id);
 
-            $name = $request->input('name');
-            $email = $request->input('email');
-            $password = $request->input('password');
-            $image = $request->input('image');
+        $validator = Validator::make($request->all(), [
+            'name' => 'nullable|min:3|max:100|regex:/^[a-zA-Z\s]*$/',
+            'email' => 'nullable|unique:users|email',
+            'password' => 'nullable|min:6|max:12|regex:/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[-+_!@#$%^&*.,?]).+$/',
+            'image' => 'nullable|max:255',
+        ]);
 
-            if ($request->has('name')) {
-                $user->name = $name;
-            }
-
-            if ($request->has('email')) {
-                $user->email = $email;
-            }
-
-            if ($request->has('password')) {
-                $user->password = bcrypt($password);
-            }
-
-            if ($request->has('image')) {
-                $user->image = $image;
-            }
-
-            $user->save();
-
-            return response()->json(
-                [
-                    "success" => true,
-                    "message" => "User updated",
-                    "data" => $user
-                ],
-                Response::HTTP_CREATED
-            );
-
-        } catch (\Throwable $th) {
-            Log::error($th->getMessage());
-
+        if ($validator->fails()) {
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error updating profile user"
+                    "message" => "Validation failed",
+                    "error" => $validator->errors()
                 ],
-                Response::HTTP_INTERNAL_SERVER_ERROR
+                Response::HTTP_BAD_REQUEST
             );
         }
+
+        if ($request->has('name')) {
+            $user->name = $request->input('name');
+        }
+
+        if ($request->has('email')) {
+            $user->email = $request->input('email');
+        }
+
+        if ($request->has('password')) {
+            $user->password = bcrypt($request->input('password'));
+        }
+
+        if ($request->has('image')) {
+            $user->image = $request->input('image');
+        }
+
+        $user->save();
+
+        return response()->json(
+            [
+                "success" => true,
+                "message" => "User updated",
+                "data" => $user
+            ],
+            Response::HTTP_CREATED
+        );
+
+    } catch (\Throwable $th) {
+        Log::error($th->getMessage());
+
+        return response()->json(
+            [
+                "success" => false,
+                "message" => "Error updating profile user"
+            ],
+            Response::HTTP_INTERNAL_SERVER_ERROR
+        );
     }
+}
     
     public function deleteUser()
     {
