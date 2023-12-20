@@ -26,9 +26,12 @@ Route::group([
 ], function () {
     Route::get('/profile', [AuthController::class, 'profile']);
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::put('/profile-update', [UserController::class, 'updateProfile']);
+    Route::put('/update-profile', [UserController::class, 'updateProfile']);
+    Route::put('/update-password', [UserController::class, 'updatePassword']);
     Route::delete('/user-delete', [UserController::class, 'deleteUser']);
-    Route::post('/verify-password', [AuthController::class, 'verifyPassword']);
+    // Route::post('/verify-password', [AuthController::class, 'verifyPassword']);
+    //updatePassword
+
 });
 
 
