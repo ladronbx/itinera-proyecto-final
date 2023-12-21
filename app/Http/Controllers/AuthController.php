@@ -80,7 +80,7 @@ class AuthController extends Controller
                 return response()->json(
                     [
                         "success" => false,
-                        "message" => "Error login user",
+                        "message" => "Email o contraseña incorrecta",
                         "error" => $validator->errors()
                     ],
                     Response::HTTP_BAD_REQUEST
@@ -92,25 +92,16 @@ class AuthController extends Controller
 
             $user = User::query()->where('email', $email)->first();
 
-            if (!$user) {
+            if (!$user || !Hash::check($password, $user->password)) {
                 return response()->json(
                     [
                         "success" => false,
-                        "message" => "Email is invalid"
+                        "message" => "Email o contraseña incorrecta"
                     ],
-                    Response::HTTP_NOT_FOUND
+                    Response::HTTP_UNAUTHORIZED // Cambia esto a 401
                 );
             }
-
-            if (!Hash::check($password, $user->password)) {
-                return response()->json(
-                    [
-                        "success" => false,
-                        "message" => "Password is invalid"
-                    ],
-                    Response::HTTP_NOT_FOUND
-                );
-            }
+            
             // Generar token con JWT
             $token = Auth::guard('jwt')->attempt(['email' => $email, 'password' => $password]);
 
@@ -131,7 +122,7 @@ class AuthController extends Controller
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error logging in user"
+                    "message" => "Email o contraseña incorrecta"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
