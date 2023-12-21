@@ -7,7 +7,7 @@ use App\Models\Group_user;
 use App\Models\Location;
 use App\Models\Location_trip;
 use App\Models\Trip;
-use App\Models\TripActivity;
+use App\Models\Trip_activity;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -68,7 +68,7 @@ class TripController extends Controller
             $activities = $request->input('activities');
 
             foreach ($activities as $activity) {
-                $trip_activity = TripActivity::create([
+                $trip_activity = Trip_activity::create([
                     'trip_id' => $trip->id,
                     'activity_id' => $activity,
                 ]);
@@ -95,7 +95,7 @@ class TripController extends Controller
                         "group" => $group,
                         "group_user" => $group_user,
                         "membersCount" => $group->users()->count(),
-                        "trip_activities" => $trip_activity,
+                        "trips_activities" => $trip_activity,
                     ]
                 ],
                 Response::HTTP_OK
@@ -219,10 +219,11 @@ class TripController extends Controller
                 ];
             });
 
-            $activities = TripActivity::query()->where('trip_id', $id)->get();
+            $activities = Trip_activity::query()->where('trip_id', $id)->get();
             $activityInfo = $activities->map(function ($activity) {
                 return [
-                    'id' => $activity->activity_id,
+                    'trip_activity_id' => $activity->id,
+                    'id' => $activity->activity->id,
                     'name' => $activity->activity->name,
                     'image_1' => $activity->activity->image_1,
                     'image_2' => $activity->activity->image_2,

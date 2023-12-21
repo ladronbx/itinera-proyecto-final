@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            TripActivitySeeder::class,
+            Trip_activitySeeder::class,
         ]);
 
 

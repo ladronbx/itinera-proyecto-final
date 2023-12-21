@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Activity;
 use App\Models\Location;
 use App\Models\Trip;
-use App\Models\TripActivity;
+use App\Models\Trip_activity;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -185,7 +185,7 @@ class ActivityController extends Controller
             $activities = $request->input('activities');
             $activitiesAdded = [];
             foreach ($activities as $activity) {
-                $trip_activity = TripActivity::create([
+                $trip_activity = Trip_activity::create([
                     'trip_id' => $trip->id,
                     'activity_id' => $activity['id'],
                 ]);
@@ -218,6 +218,16 @@ class ActivityController extends Controller
     {
         try {
             $user = auth()->user();
+            if (!$user) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "You are not authorized to delete an activity from this trip. Only the creator of the trip can delete activities.",
+                    ],
+                    Response::HTTP_UNAUTHORIZED
+                );
+            }
+
             $trip = Trip::find($tripId)->first();
 
             if (!$trip) {
@@ -230,7 +240,7 @@ class ActivityController extends Controller
                 );
             }
 
-            $trip_activity = TripActivity::query()->where('trip_id', $tripId)->where('activity_id', $activityId)->first();
+            $trip_activity = Trip_activity::query()->where('trip_id', $tripId)->where('activity_id', $activityId)->first();
 
             if (!$trip_activity) {
                 return response()->json(

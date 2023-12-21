@@ -29,7 +29,7 @@ class Group extends Model
 
     public function activities(): BelongsToMany
     {
-        return $this->belongsToMany(Activity::class, 'group_trip_activities');
-    } // muchos a muchos (tabla intermedia) (group_trip_activities)
+        return $this->belongsToMany(Activity::class, 'trips_activities');
+    } // muchos a muchos (tabla intermedia) (trips_activities)
 
 }
