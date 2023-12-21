@@ -77,6 +77,8 @@ Route::group([
 ], function () {
     Route::get('/activity/{id}', [ActivityController::class, 'getActivityById']);
     Route::get('/activities-location/{id}', [ActivityController::class, 'getActivityByLocationId']);
+    // http://localhost:8000/api/activities-add
+    Route::post('/activities-add-my-trip/{id}', [ActivityController::class, 'addActivityToTrip']);
 });
 
 

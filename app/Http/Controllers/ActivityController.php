@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use App\Models\Location;
+use App\Models\Trip;
+use App\Models\TripActivity;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class ActivityController extends Controller
@@ -105,7 +108,8 @@ class ActivityController extends Controller
         }
     }
 
-    public function getActivityByLocationId($id){
+    public function getActivityByLocationId($id)
+    {
         try {
             $activities = Activity::query()->where('location_id', $id)->get();
 
@@ -139,7 +143,6 @@ class ActivityController extends Controller
                     Response::HTTP_NOT_FOUND
                 );
             }
-
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
 
@@ -147,6 +150,64 @@ class ActivityController extends Controller
                 [
                     "success" => false,
                     "message" => "Error obtaining an activity"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
+    public function addActivityToTrip($id, Request $request)
+    {
+        try {
+            $user = auth()->user();
+            if (!$user) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "You are not authorized to add an activity to this trip. Only the creator of the trip can add activities.",
+                    ],
+                    Response::HTTP_UNAUTHORIZED
+                );
+            }
+
+            $trip = Trip::find($id)->first();
+
+            if (!$trip) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Trip not found"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+
+            $activities = $request->input('activities');
+            $activitiesAdded = [];
+            foreach ($activities as $activity) {
+                $trip_activity = TripActivity::create([
+                    'trip_id' => $trip->id,
+                    'activity_id' => $activity['id'],
+                ]);
+                $activitiesAdded[] = $trip_activity->id;
+            }
+            
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Activities added successfully",
+                    "activitiesAdded" => $activitiesAdded
+                ],
+                Response::HTTP_OK
+            );
+
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error adding $activitiesAdded"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
