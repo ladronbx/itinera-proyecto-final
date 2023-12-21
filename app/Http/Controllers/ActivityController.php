@@ -156,7 +156,7 @@ class ActivityController extends Controller
         }
     }
 
-    public function addActivityToTrip($id, Request $request)
+    public function addActivityFromTrip($id, Request $request)
     {
         try {
             $user = auth()->user();
@@ -208,6 +208,56 @@ class ActivityController extends Controller
                 [
                     "success" => false,
                     "message" => "Error adding $activitiesAdded"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+    
+    public function deleteActivityFromTrip($tripId, $activityId)
+    {
+        try {
+            $user = auth()->user();
+            $trip = Trip::find($tripId)->first();
+
+            if (!$trip) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Trip not found"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+
+            $trip_activity = TripActivity::query()->where('trip_id', $tripId)->where('activity_id', $activityId)->first();
+
+            if (!$trip_activity) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Activity : $activityId not found"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+
+            $trip_activity->delete();
+
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Activity : $activityId deleted successfully"
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error deleting activity $activityId"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
