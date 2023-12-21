@@ -92,27 +92,39 @@ class AuthController extends Controller
 
             $user = User::query()->where('email', $email)->first();
 
-            if (!$user || !Hash::check($password, $user->password)) {
+            if (!$user) {
                 return response()->json(
                     [
                         "success" => false,
-                        "message" => "Email or password are invalid"
+                        "message" => "Email is invalid"
                     ],
                     Response::HTTP_NOT_FOUND
                 );
             }
 
+            if (!Hash::check($password, $user->password)) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Password is invalid"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
             // Generar token con JWT
             $token = Auth::guard('jwt')->attempt(['email' => $email, 'password' => $password]);
 
-            return response()->json(
-                [
-                    "success" => true,
-                    "message" => "User logged in",
-                    "token" => $token,
-                    "data" => $user
-                ]
-            );
+            if ($token) {
+
+                return response()->json(
+                    [
+                        "success" => true,
+                        "message" => "User logged in",
+                        "token" => $token,
+                        "data" => $user
+                    ]
+                );
+            }
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
 

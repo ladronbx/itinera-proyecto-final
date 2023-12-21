@@ -18,6 +18,7 @@ class ActivityController extends Controller
                 $location = Location::find($activity->location_id);
 
                 return [
+                    "id" => $activity->id,
                     "name" => $activity->name,
                     "location" => $location->name,
                     "description" => $activity->description,
@@ -75,6 +76,7 @@ class ActivityController extends Controller
             $location = Location::find($activity->location_id);
 
             $data = [
+                "id" => $activity->id,
                 "name" => $activity->name,
                 "location" => $location->name,
                 "description" => $activity->description,

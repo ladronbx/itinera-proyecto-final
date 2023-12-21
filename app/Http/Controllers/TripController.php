@@ -25,13 +25,15 @@ class TripController extends Controller
             $user = auth()->user();
             $validator = Validator::make($request->all(), [
                 'start_date' => 'required|date|before:end_date',
-                'end_date' => 'required|date|after:start_date'
+                'end_date' => 'required|date|after:start_date',
+                'location_id' => 'required|integer',
+                'activities' => 'required|array',
             ]);
-
+    
             if ($validator->fails()) {
                 return response()->json(
                     [
-                        "success" => true,
+                        "success" => false,
                         "message" => "Error creating a trip",
                         "error" => $validator->errors()
                     ],
@@ -101,16 +103,17 @@ class TripController extends Controller
                 ],
                 Response::HTTP_OK
             );
-        } catch (\Throwable $th) {
-            Log::error($th->getMessage());
-            return response()->json(
-                [
-                    "success" => false,
-                    "message" => "Error creating the trips"
-                ],
-                Response::HTTP_INTERNAL_SERVER_ERROR
-            );
-        }
+    } catch (\Throwable $th) {
+        Log::error($th->getMessage());
+        return response()->json(
+            [
+                "success" => false,
+                "message" => "Error creating the trips",
+                "error" => $th->getMessage()
+            ],
+            Response::HTTP_INTERNAL_SERVER_ERROR
+        );
+    }
     }
 
     public function getAllMyTrips(Request $request)
