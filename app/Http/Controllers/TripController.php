@@ -16,9 +16,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class TripController extends Controller
 {
-    //to do : crear un viaje con una localización y actividades
-    //to do: validar que no se pueda crear un viaje con fechas que ya existen en otro viaje
-
     public function createTrip(Request $request)
     {
         try {
@@ -29,7 +26,7 @@ class TripController extends Controller
                 'location_id' => 'required|integer',
                 'activities' => 'required|array',
             ]);
-    
+
             if ($validator->fails()) {
                 return response()->json(
                     [
@@ -103,17 +100,17 @@ class TripController extends Controller
                 ],
                 Response::HTTP_OK
             );
-    } catch (\Throwable $th) {
-        Log::error($th->getMessage());
-        return response()->json(
-            [
-                "success" => false,
-                "message" => "Error creating the trips",
-                "error" => $th->getMessage()
-            ],
-            Response::HTTP_INTERNAL_SERVER_ERROR
-        );
-    }
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error creating the trips",
+                    "error" => $th->getMessage()
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
     }
 
     public function getAllMyTrips(Request $request)
@@ -129,9 +126,11 @@ class TripController extends Controller
 
                 $location = $location_trip->location->name;
 
+                $members = Group::query()->where('trip_id', $group->trip_id)->get();
+
                 return [
                     "id" => $group->trip_id,
-                    "membersCount" => $group->users()->count(),
+                    "memberscount" => $members->count(),
                     "location" => $location,
                     "start_date" => $dates[0]->start_date,
                     "end_date" => $dates[0]->end_date,
@@ -170,7 +169,7 @@ class TripController extends Controller
 
             Log::info($isMember);
 
-            if(!$isMember){
+            if (!$isMember) {
                 return response()->json(
                     [
                         "success" => false,
@@ -182,7 +181,7 @@ class TripController extends Controller
 
             $group = Group::query()->where('trip_id', $id)->get();
             Group_user::query()->where('group_id', $isMember)->where('user_id', $user->id)->first();
-        
+
             Log::info($isMember);
 
             if (!$isMember) {
@@ -366,7 +365,6 @@ class TripController extends Controller
             }
 
             Trip::destroy($group->trip_id);
-
 
             return response()->json(
                 [
