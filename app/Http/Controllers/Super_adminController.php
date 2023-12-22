@@ -5,6 +5,7 @@ use App\Models\Group;
 use App\Models\Location;
 use App\Models\Location_trip;
 use App\Models\Trip;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
@@ -226,6 +227,52 @@ class Super_adminController extends Controller
                 [
                     "success" => false,
                     "message" => "Error obtaining the trip"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
+    // getAllUsers
+
+    public function getAllUsers(Request $request)
+    {
+        try {
+            $user = auth()->user();
+    
+            if ($user->role === "is_super_admin") {
+    
+                $users = User::query()->get();
+    
+                $data = $users->map(function ($user) {
+                    return [
+                        "id" => $user->id,
+                        "name" => $user->name,
+                        "email" => $user->email,
+                        "image" => $user->image,
+                        "role" => $user->role,
+                        "is_active" => $user->is_active,
+                    ];
+                });
+    
+                if (!$users->isEmpty()) {
+                    return response()->json(
+                        [
+                            "success" => true,
+                            "message" => "Users obtained succesfully",
+                            "data" => $data
+                        ],
+                        Response::HTTP_OK
+                    );
+                }
+               
+            }
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error obtaining the users"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );

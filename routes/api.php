@@ -100,5 +100,6 @@ Route::group([
     Route::get('/trip/{id}', [Super_adminController::class, 'getTripById']);
     Route::put('/trip-update/{id}', [Super_adminController::class, 'updateTrip']);
     Route::delete('/trip-delete/{id}', [Super_adminController::class, 'deleteTrip']);
+    Route::get('/users', [Super_adminController::class, 'getAllUsers']);
     //to do : Route::put('/changeRole', [SuperAdminController::class, 'changeRole']); 
 });
