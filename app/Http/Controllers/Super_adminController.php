@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Group;
+use App\Models\Location;
+use App\Models\Location_trip;
 use App\Models\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -13,27 +15,42 @@ class Super_adminController extends Controller
     {
         try {
             $user = auth()->user();
-
+    
             if ($user->role === "super_admin") {
-                $trips = Trip::query()->get();
-                if ($trips->isEmpty()) {
+    
+                $groups = Group::query()->get();
+    
+                $data = $groups->map(function ($group) {
+                    $dates = Trip::query()->where('id', $group->trip_id)->get();
+                    $location_trip = Location_trip::query()->where('trip_id', $group->trip_id)->first();
+                    $locationName = Location::query()->where('id', $location_trip->location_id)->first();
+    
+                    $location = $location_trip->location->name;
+    
+                    $members = Group::query()->where('trip_id', $group->trip_id)->get();
+    
+                    return [
+                        "id" => $group->trip_id,
+                        "memberscount" => $members->count(),
+                        "location" => $location,
+                        "start_date" => $dates[0]->start_date,
+                        "end_date" => $dates[0]->end_date,
+                        "image_1" => $locationName->image_1,
+    
+                    ];
+                });
+    
+                if (!$groups->isEmpty()) {
                     return response()->json(
                         [
                             "success" => true,
-                            "message" => "There are not any trip",
+                            "message" => "Trips obtained succesfully",
+                            "data" => $data
                         ],
                         Response::HTTP_OK
                     );
                 }
-
-                return response()->json(
-                    [
-                        "success" => true,
-                        "message" => "Trips obtained succesfully",
-                        "data" => $trips
-                    ],
-                    Response::HTTP_OK
-                );
+               
             }
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
@@ -46,7 +63,6 @@ class Super_adminController extends Controller
             );
         }
     }
-
     public function getTripById(Request $request, $id)
     {
         try {
