@@ -289,17 +289,17 @@ class Super_adminController extends Controller
                 $request->validate([
                     'name' => 'required|string',
                     'description' => 'required|string',
-                    'image_1' => 'string',
-                    'image_2' => 'string',
-                    'image_3' => 'string',
+                    'image_1' => 'nullable|string',
+                    'image_2' => 'nullable|string',
+                    'image_3' => 'nullable|string',
                 ]);
     
                 $location = Location::query()->create([
                     'name' => $request->name,
                     'description' => $request->description,
-                    'image_1' => $request->image_1,
-                    'image_2' => $request->image_2,
-                    'image_3' => $request->image_3,
+                    'image_1' => $request->image_1 ?? '',
+                    'image_2' => $request->image_2 ?? '',
+                    'image_3' => $request->image_3 ?? '',
                 ]);
     
                 if (!$location) {
@@ -360,8 +360,8 @@ class Super_adminController extends Controller
                 $request->validate([
                     'name' => 'required|string',
                     'description' => 'required|string',
-                    'image_1' => 'string',
-                    'image_2' => 'string',
+                    'image_1' => 'nullable|string',
+                    'image_2' => 'nullable|string',
                     'duration' => 'required|integer',
                     'location_id' => 'required|integer',
                 ]);
@@ -369,8 +369,8 @@ class Super_adminController extends Controller
                 $activity = Activity::query()->create([
                     'name' => $request->name,
                     'description' => $request->description,
-                    'image_1' => $request->image_1,
-                    'image_2' => $request->image_2,
+                    'image_1' => $request->image_1 ?? '',
+                    'image_2' => $request->image_2 ?? '',
                     'duration' => $request->duration,
                     'location_id' => $request->location_id,
                 ]);
