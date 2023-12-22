@@ -97,10 +97,10 @@ class AuthController extends Controller
                         "success" => false,
                         "message" => "Email o contraseña incorrecta"
                     ],
-                    Response::HTTP_UNAUTHORIZED // Cambia esto a 401
+                    Response::HTTP_UNAUTHORIZED
                 );
             }
-            
+
             // Generar token con JWT
             $token = Auth::guard('jwt')->attempt(['email' => $email, 'password' => $password, 'role' => $user->role]);
 
@@ -179,29 +179,29 @@ class AuthController extends Controller
         }
     }
 
-    public function validataRole(Request $request)
-    {
-        try {
-            $user = auth()->user();
+    // public function validateRole(Request $request)
+    // {
+    //     try {
+    //         $user = auth()->user();
 
-            return response()->json(
-                [
-                    "success" => true,
-                    "message" => "User",
-                    "data" => $user->role
-                ],
-                Response::HTTP_OK
-            );
-        } catch (\Throwable $th) {
-            Log::error($th->getMessage());
+    //         return response()->json(
+    //             [
+    //                 "success" => true,
+    //                 "message" => "User",
+    //                 "data" => $user->role
+    //             ],
+    //             Response::HTTP_OK
+    //         );
+    //     } catch (\Throwable $th) {
+    //         Log::error($th->getMessage());
 
-            return response()->json(
-                [
-                    "success" => false,
-                    "message" => "Error getting profile user"
-                ],
-                Response::HTTP_INTERNAL_SERVER_ERROR
-            );
-        }
-    }
+    //         return response()->json(
+    //             [
+    //                 "success" => false,
+    //                 "message" => "Error getting profile user"
+    //             ],
+    //             Response::HTTP_INTERNAL_SERVER_ERROR
+    //         );
+    //     }
+    // }
 }

@@ -233,8 +233,6 @@ class Super_adminController extends Controller
         }
     }
 
-    // getAllUsers
-
     public function getAllUsers(Request $request)
     {
         try {

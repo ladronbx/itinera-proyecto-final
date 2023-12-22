@@ -163,7 +163,7 @@ class UserController extends Controller
         }
     }
 
-    public function deleteUser()
+    public function countDelete()
     {
         try {
             $token = auth()->user();
