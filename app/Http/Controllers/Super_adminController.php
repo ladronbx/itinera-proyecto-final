@@ -349,4 +349,68 @@ class Super_adminController extends Controller
             );
         }
     }
+
+    public function createActivity(Request $request)
+    {
+        try {
+            $user = auth()->user();
+
+            if ($user->role === "is_super_admin") {
+
+                $request->validate([
+                    'name' => 'required|string',
+                    'description' => 'required|string',
+                    'image_1' => 'string',
+                    'image_2' => 'string',
+                    'duration' => 'required|integer',
+                    'location_id' => 'required|integer',
+                ]);
+    
+                $activity = Activity::query()->create([
+                    'name' => $request->name,
+                    'description' => $request->description,
+                    'image_1' => $request->image_1,
+                    'image_2' => $request->image_2,
+                    'duration' => $request->duration,
+                    'location_id' => $request->location_id,
+                ]);
+    
+                if (!$activity) {
+                    return response()->json(
+                        [
+                            "success" => false,
+                            "message" => "Error creating the activity"
+                        ],
+                        Response::HTTP_INTERNAL_SERVER_ERROR
+                    );
+                }
+    
+                return response()->json(
+                    [
+                        "success" => true,
+                        "message" => "Activity created succesfully",
+                        "data" => $activity
+                    ],
+                    Response::HTTP_CREATED
+                );
+            }else{
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "You are not have permission to create a activity"
+                    ],
+                    Response::HTTP_INTERNAL_SERVER_ERROR
+                );
+            }
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error creating the activity"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }

@@ -80,6 +80,7 @@ Route::group([
     Route::delete('/trip-delete/{id}', [Super_adminController::class, 'deleteTrip']);
     Route::get('/users', [Super_adminController::class, 'getAllUsers']);
     Route::post('/location-create', [Super_adminController::class, 'createLocation']);
+    Route::post('/activity-create', [Super_adminController::class, 'createActivity']);
     //to do : Route::put('/changeRole', [SuperAdminController::class, 'changeRole']); 
 });
 
