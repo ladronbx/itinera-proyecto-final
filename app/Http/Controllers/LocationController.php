@@ -46,9 +46,6 @@ class LocationController extends Controller
         }
     }
 
-
-    //getLocationById
-
     public function getLocationById(Request $request, $id)
     {
         try {

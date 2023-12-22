@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Activity;
 use App\Models\Group;
 use App\Models\Location;
 use App\Models\Location_trip;
@@ -195,7 +197,6 @@ class Super_adminController extends Controller
         }
     }
 
-
     public function getMyTrips(Request $request)
     {
         try {
@@ -263,7 +264,6 @@ class Super_adminController extends Controller
                         Response::HTTP_OK
                     );
                 }
-               
             }
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
@@ -271,6 +271,79 @@ class Super_adminController extends Controller
                 [
                     "success" => false,
                     "message" => "Error obtaining the users"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
+    // Route::post('/location-create', [Super_adminController::class, 'createLocation']);
+
+    public function createLocation(Request $request)
+    {
+        try {
+            $user = auth()->user();
+
+            if ($user->role === "is_super_admin") {
+    
+                $request->validate([
+                    'name' => 'required|string',
+                    'description' => 'required|string',
+                    'image_1' => 'string',
+                    'image_2' => 'string',
+                    'image_3' => 'string',
+                ]);
+    
+                $location = Location::query()->create([
+                    'name' => $request->name,
+                    'description' => $request->description,
+                    'image_1' => $request->image_1,
+                    'image_2' => $request->image_2,
+                    'image_3' => $request->image_3,
+                ]);
+    
+                if (!$location) {
+                    return response()->json(
+                        [
+                            "success" => false,
+                            "message" => "Error creating the location"
+                        ],
+                        Response::HTTP_INTERNAL_SERVER_ERROR
+                    );
+                }
+    
+                return response()->json(
+                    [
+                        "success" => true,
+                        "message" => "Location created succesfully",
+                        "data" => $location
+                    ],
+                    Response::HTTP_CREATED
+                );
+            }else{
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "You are not have permission to create a location"
+                    ],
+                    Response::HTTP_INTERNAL_SERVER_ERROR
+                );
+            }
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error creating the location"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error creating the location"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
