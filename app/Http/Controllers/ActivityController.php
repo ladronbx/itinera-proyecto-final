@@ -157,7 +157,7 @@ class ActivityController extends Controller
         }
     }
 
-    public function addActivityFromTrip($id, Request $request)
+    public function addActivityFromTrip($tripId, $activityId)
     {
         try {
             $user = auth()->user();
@@ -171,7 +171,7 @@ class ActivityController extends Controller
                 );
             }
 
-            $trip = Trip::find($id)->first();
+            $trip = Trip::find($tripId)->first();
 
             if (!$trip) {
                 return response()->json(
@@ -183,21 +183,18 @@ class ActivityController extends Controller
                 );
             }
 
-            $activities = $request->input('activities');
-            $activitiesAdded = [];
-            foreach ($activities as $activity) {
-                $trip_activity = Trip_activity::create([
-                    'trip_id' => $trip->id,
-                    'activity_id' => $activity['id'],
-                ]);
-                $activitiesAdded[] = $trip_activity->id;
-            }
+        
+
+            $trip_activity = Trip_activity::create([
+                'trip_id' => $tripId,
+                'activity_id' => $activityId,
+            ]);
 
             return response()->json(
                 [
                     "success" => true,
-                    "message" => "Activities added successfully",
-                    "activitiesAdded" => $activitiesAdded
+                    "message" => "Activity added successfully",
+                    "activityAdded" => $trip_activity->id
                 ],
                 Response::HTTP_OK
             );
@@ -207,7 +204,7 @@ class ActivityController extends Controller
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error adding $activitiesAdded"
+                    "message" => "Error adding activity"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );

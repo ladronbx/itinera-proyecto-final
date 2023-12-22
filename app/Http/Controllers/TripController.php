@@ -233,7 +233,7 @@ class TripController extends Controller
                 ];
             });
 
-            if (!is_null($dates) && !is_null($locations) && !$activities->isEmpty()) {
+            if (!is_null($dates) && !is_null($locations)) {
                 return response()->json(
                     [
                         "success" => true,
