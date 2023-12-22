@@ -285,7 +285,7 @@ class Super_adminController extends Controller
             $user = auth()->user();
 
             if ($user->role === "is_super_admin") {
-    
+
                 $request->validate([
                     'name' => 'required|string',
                     'description' => 'required|string',
@@ -293,15 +293,17 @@ class Super_adminController extends Controller
                     'image_2' => 'nullable|string',
                     'image_3' => 'nullable|string',
                 ]);
-    
+
+                $defaultImage = 'https://thenounproject.com/api/private/icons/2616533/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0';
+
                 $location = Location::query()->create([
                     'name' => $request->name,
                     'description' => $request->description,
-                    'image_1' => $request->image_1 ?? '',
-                    'image_2' => $request->image_2 ?? '',
-                    'image_3' => $request->image_3 ?? '',
+                    'image_1' => $request->image_1 ?? $defaultImage,
+                    'image_2' => $request->image_2 ?? $defaultImage,
+                    'image_3' => $request->image_3 ?? $defaultImage,
                 ]);
-    
+
                 if (!$location) {
                     return response()->json(
                         [
@@ -311,7 +313,7 @@ class Super_adminController extends Controller
                         Response::HTTP_INTERNAL_SERVER_ERROR
                     );
                 }
-    
+
                 return response()->json(
                     [
                         "success" => true,
@@ -329,15 +331,6 @@ class Super_adminController extends Controller
                     Response::HTTP_INTERNAL_SERVER_ERROR
                 );
             }
-        } catch (\Throwable $th) {
-            Log::error($th->getMessage());
-            return response()->json(
-                [
-                    "success" => false,
-                    "message" => "Error creating the location"
-                ],
-                Response::HTTP_INTERNAL_SERVER_ERROR
-            );
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
             return response()->json(
@@ -365,16 +358,18 @@ class Super_adminController extends Controller
                     'duration' => 'required|integer',
                     'location_id' => 'required|integer',
                 ]);
-    
+
+                $defaultImage = 'https://thenounproject.com/api/private/icons/2616533/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0';
+
                 $activity = Activity::query()->create([
                     'name' => $request->name,
                     'description' => $request->description,
-                    'image_1' => $request->image_1 ?? '',
-                    'image_2' => $request->image_2 ?? '',
+                    'image_1' => $request->image_1 ?? $defaultImage,
+                    'image_2' => $request->image_2 ?? $defaultImage,
                     'duration' => $request->duration,
                     'location_id' => $request->location_id,
                 ]);
-    
+
                 if (!$activity) {
                     return response()->json(
                         [
@@ -384,7 +379,7 @@ class Super_adminController extends Controller
                         Response::HTTP_INTERNAL_SERVER_ERROR
                     );
                 }
-    
+
                 return response()->json(
                     [
                         "success" => true,
@@ -414,3 +409,6 @@ class Super_adminController extends Controller
         }
     }
 }
+
+
+https://thenounproject.com/api/private/icons/2616533/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0
