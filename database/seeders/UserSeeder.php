@@ -113,7 +113,7 @@ class UserSeeder extends Seeder
             'name' => Str::random(30),
             'email' => 'super@super.com',
             'password' => Hash::make('Password1!'),
-            'role' => 'super_admin',
+            'role' => 'is_super_admin',
         ]);
 
         DB::table('users')->insert([

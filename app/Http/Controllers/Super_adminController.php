@@ -8,6 +8,7 @@ use App\Models\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
 class Super_adminController extends Controller
 {
@@ -16,7 +17,7 @@ class Super_adminController extends Controller
         try {
             $user = auth()->user();
     
-            if ($user->role === "super_admin") {
+            if ($user->role === "is_super_admin") {
     
                 $groups = Group::query()->get();
     
@@ -69,7 +70,7 @@ class Super_adminController extends Controller
 
             $user = auth()->user();
 
-            if ($user->role === "super_admin") {
+            if ($user->role === "is_super_admin") {
                 $trip = Trip::query()->find($id);
                 if (!$trip) {
                     return response()->json(
@@ -109,7 +110,7 @@ class Super_adminController extends Controller
 
             $user = auth()->user();
 
-            if ($user->role === ("super_admin")) {
+            if ($user->role === ("is_super_admin")) {
                 $request->validate([
                     'start_date' => 'required|date|after:today',
                     'end_date' => 'required|date|after:start_date',
@@ -158,7 +159,7 @@ class Super_adminController extends Controller
 
             $user = auth()->user();
 
-            if ($user->role === ("super_admin")) {
+            if ($user->role === ("is_super_admin")) {
                 $trip = Trip::query()->find($id);
 
                 if ($trip) {

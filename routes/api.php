@@ -12,11 +12,23 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\GroupController;
 use App\Http\Middleware\IsSuperAdmin;
 
-Route::middleware('jwt.auth')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::get('/api', function (Request $request) {
+   
+    return response()->json(
+        [
+            "success" => true,
+            "message" => "Healthcheck ok"
+        ],
+        Response::HTTP_OK
+    );     
 });
 
-// USER
+
+// Route::middleware('jwt.auth')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -29,9 +41,7 @@ Route::group([
     Route::put('/update-profile', [UserController::class, 'updateProfile']);
     Route::put('/update-password', [UserController::class, 'updatePassword']);
     Route::delete('/user-delete', [UserController::class, 'deleteUser']);
-    // Route::post('/verify-password', [AuthController::class, 'verifyPassword']);
-    //updatePassword
-
+    Route::get('/validateRole', [AuthController::class, 'validataRole']);
 });
 
 
@@ -82,7 +92,7 @@ Route::group([
 });
 
 
-// SUPERADMIN : TRIPS (por revisar después de modificar relaciones)
+// SUPER_ADMIN
 Route::group([
     'middleware' => ['jwt.auth', 'is_super_admin']
 ], function () {
@@ -90,4 +100,5 @@ Route::group([
     Route::get('/trip/{id}', [Super_adminController::class, 'getTripById']);
     Route::put('/trip-update/{id}', [Super_adminController::class, 'updateTrip']);
     Route::delete('/trip-delete/{id}', [Super_adminController::class, 'deleteTrip']);
+    //to do : Route::put('/changeRole', [SuperAdminController::class, 'changeRole']); 
 });

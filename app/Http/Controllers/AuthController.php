@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Auth; // Import the Auth facade
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -89,7 +89,6 @@ class AuthController extends Controller
 
             $email = $request->input('email');
             $password = $request->input('password');
-
             $user = User::query()->where('email', $email)->first();
 
             if (!$user || !Hash::check($password, $user->password)) {
@@ -103,7 +102,7 @@ class AuthController extends Controller
             }
             
             // Generar token con JWT
-            $token = Auth::guard('jwt')->attempt(['email' => $email, 'password' => $password]);
+            $token = Auth::guard('jwt')->attempt(['email' => $email, 'password' => $password, 'role' => $user->role]);
 
             if ($token) {
 
@@ -158,7 +157,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         try {
-            auth()->logout(); // Invalida el token JWT
+            auth()->logout();
 
             return response()->json(
                 [
@@ -180,39 +179,29 @@ class AuthController extends Controller
         }
     }
 
-    // public function verifyPassword(Request $request)
-    // {
-    //     try {
-    //         $user = auth()->user();
-    //         $providedPassword = $request->input('password');
+    public function validataRole(Request $request)
+    {
+        try {
+            $user = auth()->user();
 
-    //         if (Hash::check($providedPassword, $user->password)) {
-    //             return response()->json(
-    //                 [
-    //                     "success" => true,
-    //                     "message" => "Password verified"
-    //                 ],
-    //                 Response::HTTP_OK
-    //             );
-    //         } else {
-    //             return response()->json(
-    //                 [
-    //                     "success" => false,
-    //                     "message" => "Incorrect password"
-    //                 ],
-    //                 Response::HTTP_UNAUTHORIZED
-    //             );
-    //         }
-    //     } catch (\Throwable $th) {
-    //         Log::error($th->getMessage());
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "User",
+                    "data" => $user->role
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
 
-    //         return response()->json(
-    //             [
-    //                 "success" => false,
-    //                 "message" => "Error verifying password"
-    //             ],
-    //             Response::HTTP_INTERNAL_SERVER_ERROR
-    //         );
-    //     }
-    // }
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error getting profile user"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }
