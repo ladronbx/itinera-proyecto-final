@@ -408,7 +408,45 @@ class Super_adminController extends Controller
             );
         }
     }
+
+    public function deleteActivitySuper(Request $request, $id)
+    {
+        try {
+
+            $user = auth()->user();
+
+            if ($user->role === ("is_super_admin")) {
+                $activity = Activity::query()->find($id);
+
+                if ($activity) {
+                    $activity->delete();
+
+                    return response()->json(
+                        [
+                            "success" => true,
+                            "message" => "Activity deleted succesfully",
+                        ],
+                        Response::HTTP_OK
+                    );
+                } else {
+                    return response()->json(
+                        [
+                            "success" => false,
+                            "message" => "Activity not found"
+                        ],
+                        Response::HTTP_NOT_FOUND
+                    );
+                }
+            }
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error deleting the activity"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }
-
-
-https://thenounproject.com/api/private/icons/2616533/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0
