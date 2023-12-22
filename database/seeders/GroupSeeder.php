@@ -24,9 +24,30 @@ class GroupSeeder extends Seeder
             'user_id' => 3,
             'trip_id' => 1,
         ]);
+        
         DB::table('groups')->insert([
             'user_id' => 4,
             'trip_id' => 1,
+        ]);
+
+        DB::table('groups')->insert([
+            'user_id' => 5,
+            'trip_id' => 1,
+        ]);
+
+        DB::table('groups')->insert([
+            'user_id' => 6,
+            'trip_id' => 2,
+        ]);
+        
+        DB::table('groups')->insert([
+            'user_id' => 1,
+            'trip_id' => 2,
+        ]);
+
+        DB::table('groups')->insert([
+            'user_id' => 2,
+            'trip_id' => 2,
         ]);
     }
 }

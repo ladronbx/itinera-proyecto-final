@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
+use App\Models\Group;
 use App\Models\Location;
 use App\Models\Trip;
 use App\Models\Trip_activity;
@@ -191,7 +192,7 @@ class ActivityController extends Controller
                 ]);
                 $activitiesAdded[] = $trip_activity->id;
             }
-            
+
             return response()->json(
                 [
                     "success" => true,
@@ -200,7 +201,6 @@ class ActivityController extends Controller
                 ],
                 Response::HTTP_OK
             );
-
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
 
@@ -213,12 +213,18 @@ class ActivityController extends Controller
             );
         }
     }
-    
+
+
+
+
+
     public function deleteActivityFromTrip($tripId, $activityId)
     {
         try {
             $user = auth()->user();
-            if (!$user) {
+            $group = Group::query()->where('trip_id', $tripId)->where('user_id', $user->id)->first();
+
+            if (!$user || !$group) {
                 return response()->json(
                     [
                         "success" => false,
@@ -231,6 +237,7 @@ class ActivityController extends Controller
             $trip = Trip::find($tripId)->first();
 
             if (!$trip) {
+                Log::error("Trip: $tripId not found");
                 return response()->json(
                     [
                         "success" => false,
@@ -240,9 +247,10 @@ class ActivityController extends Controller
                 );
             }
 
-            $trip_activity = Trip_activity::query()->where('trip_id', $tripId)->where('activity_id', $activityId)->first();
+            $trip_activity = Trip_activity::query()->where('trip_id', $tripId)->where('id', $activityId)->first();
 
             if (!$trip_activity) {
+                Log::error("Activity: $activityId not found in trip: $tripId");
                 return response()->json(
                     [
                         "success" => false,
@@ -250,19 +258,20 @@ class ActivityController extends Controller
                     ],
                     Response::HTTP_NOT_FOUND
                 );
+            } else {
+                $trip_activity->delete();
+                Log::info("Activity: $activityId deleted successfully from trip: $tripId");
+
+                return response()->json(
+                    [
+                        "success" => true,
+                        "message" => "Activity : $activityId deleted successfully"
+                    ],
+                    Response::HTTP_OK
+                );
             }
-
-            $trip_activity->delete();
-
-            return response()->json(
-                [
-                    "success" => true,
-                    "message" => "Activity : $activityId deleted successfully"
-                ],
-                Response::HTTP_OK
-            );
         } catch (\Throwable $th) {
-            Log::error($th->getMessage());
+            Log::error("Error deleting activity: $activityId from trip: $tripId. Error: " . $th->getMessage());
 
             return response()->json(
                 [

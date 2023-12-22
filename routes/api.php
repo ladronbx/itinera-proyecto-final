@@ -78,7 +78,7 @@ Route::group([
     Route::get('/activity/{id}', [ActivityController::class, 'getActivityById']);
     Route::get('/activities-location/{id}', [ActivityController::class, 'getActivityByLocationId']);
     Route::post('/activities-add-my-trip/{id}', [ActivityController::class, 'addActivityFromTrip']);
-    Route::delete('/activities-delete-my-trip/{tripId}/delete-activity/{activityId}', [ActivityController::class, 'deleteActivityFromTrip']);
+    Route::delete('/activities-my-trip/{tripId}/activity/{activityId}', [ActivityController::class, 'deleteActivityFromTrip']);
 });
 
 

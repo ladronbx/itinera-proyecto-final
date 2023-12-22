@@ -28,5 +28,25 @@ class Group_userSeeder extends Seeder
             'user_id' => 4,
             'group_id' => 4,
         ]);
+
+        DB::table('group_user')->insert([
+            'user_id' => 5,
+            'group_id' => 5,
+        ]);
+
+        DB::table('group_user')->insert([
+            'user_id' => 6,
+            'group_id' => 6,
+        ]);
+
+        DB::table('group_user')->insert([
+            'user_id' => 1,
+            'group_id' => 7,
+        ]);
+
+        DB::table('group_user')->insert([
+            'user_id' => 2,
+            'group_id' => 8,
+        ]);     
     }
 }
