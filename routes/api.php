@@ -82,6 +82,7 @@ Route::group([
     Route::post('/location-create', [Super_adminController::class, 'createLocation']);
     Route::post('/activity-create', [Super_adminController::class, 'createActivity']);
     Route::delete('/activity-remove/{id}', [Super_adminController::class, 'deleteActivitySuper']);
+    Route::get('/activities', [Super_adminController::class, 'getAllActivities']);
     //to do : Route::put('/changeRole', [SuperAdminController::class, 'changeRole']); 
 });
 
@@ -97,7 +98,7 @@ Route::group([
 // Route::get('/activity/{id}', [ActivityController::class, 'getActivityById']); X
 // Route::put('/my-trip/{id}', [TripController::class, 'updateMyTrip']); X
 // Route::get('/location/{id}', [LocationController::class, 'getLocationById']); X
-// Route::get('/activities', [ActivityController::class, 'getAllActivities']); X
+
 // });
 
 

@@ -13,55 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ActivityController extends Controller
 {
-    public function getAllActivities()
-    {
-        try {
-            $activities = Activity::get();
-
-            $data = $activities->map(function ($activity) {
-                $location = Location::find($activity->location_id);
-
-                return [
-                    "id" => $activity->id,
-                    "name" => $activity->name,
-                    "location" => $location->name,
-                    "description" => $activity->description,
-                    "image_1" => $activity->image_1,
-                    "image_2" => $activity->image_2
-
-                ];
-            });
-
-            if (!$activities->isEmpty()) {
-                return response()->json(
-                    [
-                        "success" => false,
-                        "data" => $data
-                    ],
-                    Response::HTTP_OK
-                );
-            } else {
-                return response()->json(
-                    [
-                        "success" => false,
-                        "message" => "Activities not found"
-                    ],
-                    Response::HTTP_NOT_FOUND
-                );
-            }
-        } catch (\Throwable $th) {
-            Log::error($th->getMessage());
-
-            return response()->json(
-                [
-                    "success" => false,
-                    "message" => "Error obtaining an activity"
-                ],
-                Response::HTTP_INTERNAL_SERVER_ERROR
-            );
-        }
-    }
-
     public function getActivityById($id)
     {
         try {
