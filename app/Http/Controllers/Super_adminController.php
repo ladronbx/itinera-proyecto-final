@@ -583,4 +583,46 @@ class Super_adminController extends Controller
             );
         }
     }
+
+    public function deleteUser(Request $request, $id)
+    {
+        try {
+
+            $user = auth()->user();
+
+            if ($user->role === ("is_super_admin")) {
+                $user = User::query()->find($id);
+
+                if ($user) {
+                    $user->delete();
+
+                    return response()->json(
+                        [
+                            "success" => true,
+                            "message" => "User deleted succesfully",
+                        ],
+                        Response::HTTP_OK
+                    );
+                } else {
+                    return response()->json(
+                        [
+                            "success" => false,
+                            "message" => "User not found"
+                        ],
+                        Response::HTTP_NOT_FOUND
+                    );
+                }
+            }
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error deleting the user"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }
