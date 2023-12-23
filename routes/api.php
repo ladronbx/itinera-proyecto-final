@@ -89,20 +89,4 @@ Route::group([
     //to do : Route::put('/changeRole', [SuperAdminController::class, 'changeRole']); 
 });
 
-// SUPERADMIN : LOCATIONS
-// Route::group([
-//     'middleware' => ['jwt.auth', 'is_super_admin']
-// ], function () {
-
-// Route::put('/location-update/{id}', [Super_adminController::class, 'updateLocation']);
-// Route::delete('/location-delete/{id}', [Super_adminController::class, 'deleteLocation']);
-// Route::get('/trip/{id}', [Super_adminController::class, 'getTripById']); X
-// Route::put('/trip-update/{id}', [Super_adminController::class, 'updateTrip']);X
-// Route::get('/activity/{id}', [ActivityController::class, 'getActivityById']); X
-// Route::put('/my-trip/{id}', [TripController::class, 'updateMyTrip']); X
-// Route::get('/location/{id}', [LocationController::class, 'getLocationById']); X
-
-// });
-
-
 // Route::get('/validateRole', [AuthController::class, 'validateRole']);

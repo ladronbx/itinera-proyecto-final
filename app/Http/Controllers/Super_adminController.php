@@ -353,10 +353,22 @@ class Super_adminController extends Controller
                     'image_1' => 'nullable|string',
                     'image_2' => 'nullable|string',
                     'duration' => 'required|integer',
-                    'location_id' => 'required|integer',
+                    'location_name' => 'required|string',
                 ]);
 
                 $defaultImage = 'https://thenounproject.com/api/private/icons/2616533/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0';
+
+                $location = Location::query()->where('name', $request->location_name)->first();
+
+                if (!$location) {
+                    return response()->json(
+                        [
+                            "success" => false,
+                            "message" => "Location not found"
+                        ],
+                        Response::HTTP_NOT_FOUND
+                    );
+                }
 
                 $activity = Activity::query()->create([
                     'name' => $request->name,
@@ -364,7 +376,7 @@ class Super_adminController extends Controller
                     'image_1' => $request->image_1 ?? $defaultImage,
                     'image_2' => $request->image_2 ?? $defaultImage,
                     'duration' => $request->duration,
-                    'location_id' => $request->location_id,
+                    'location_id' => $location->id,
                 ]);
 
                 if (!$activity) {
@@ -399,7 +411,8 @@ class Super_adminController extends Controller
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error creating the activity"
+                    "message" => "Error creating the activity",
+                    "error" => $th->getMessage()
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
@@ -447,17 +460,22 @@ class Super_adminController extends Controller
         }
     }
 
+
+
     
-   public function getAllActivitiesSuper(Request $request)
-   {
+    
+    public function getAllActivitiesSuper(Request $request)
+    {
         try {
             $user = auth()->user();
     
             if ($user->role === "is_super_admin") {
     
-                $activities = Activity::query()->get();
+                // Cambia el método get() por paginate()
+                $activities = Activity::query()->paginate($request->input('per_page', 10));
     
-                $data = $activities->map(function ($activity) {
+                // Convierte $activities a una colección antes de usar map
+                $data = collect($activities->items())->map(function ($activity) {
                     return [
                         "id" => $activity->id,
                         "name" => $activity->name,
@@ -473,8 +491,15 @@ class Super_adminController extends Controller
                     return response()->json(
                         [
                             "success" => true,
-                            "message" => "Activities obtained succesfully",
-                            "data" => $data
+                            "message" => "Activities obtained successfully",
+                            "data" => $data,
+                            // Agrega información adicional de paginación a la respuesta
+                            "pagination" => [
+                                "current_page" => $activities->currentPage(),
+                                "total_pages" => $activities->lastPage(),
+                                "per_page" => $activities->perPage(),
+                                "total" => $activities->total(),
+                            ],
                         ],
                         Response::HTTP_OK
                     );
@@ -491,6 +516,11 @@ class Super_adminController extends Controller
             );
         }
     }
+
+    
+
+
+    
 
     public function deleteLocationSuper(Request $request, $id)
     {
