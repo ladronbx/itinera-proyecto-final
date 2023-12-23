@@ -239,10 +239,10 @@ class Super_adminController extends Controller
             $user = auth()->user();
     
             if ($user->role === "is_super_admin") {
+                
+                $users = User::query()->paginate($request->input('per_page', 10));
     
-                $users = User::query()->get();
-    
-                $data = $users->map(function ($user) {
+                $data = collect($users->items())->map(function ($user) {
                     return [
                         "id" => $user->id,
                         "name" => $user->name,
@@ -257,8 +257,14 @@ class Super_adminController extends Controller
                     return response()->json(
                         [
                             "success" => true,
-                            "message" => "Users obtained succesfully",
-                            "data" => $data
+                            "message" => "Users obtained successfully",
+                            "data" => $data,
+                            "pagination" => [
+                                "current_page" => $users->currentPage(),
+                                "total_pages" => $users->lastPage(),
+                                "per_page" => $users->perPage(),
+                                "total" => $users->total(),
+                            ],
                         ],
                         Response::HTTP_OK
                     );
