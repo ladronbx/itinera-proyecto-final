@@ -240,7 +240,7 @@ class Super_adminController extends Controller
     
             if ($user->role === "is_super_admin") {
                 
-                $users = User::query()->paginate($request->input('per_page', 10));
+                $users = User::query()->paginate($request->input('per_page', 6));
     
                 $data = collect($users->items())->map(function ($user) {
                     return [
@@ -478,7 +478,7 @@ class Super_adminController extends Controller
             if ($user->role === "is_super_admin") {
     
                 // Cambia el método get() por paginate()
-                $activities = Activity::query()->paginate($request->input('per_page', 10));
+                $activities = Activity::query()->paginate($request->input('per_page', 6));
     
                 // Convierte $activities a una colección antes de usar map
                 $data = collect($activities->items())->map(function ($activity) {
@@ -581,12 +581,12 @@ class Super_adminController extends Controller
     {
         try {
             $user = auth()->user();
-    
+
             if ($user->role === "is_super_admin") {
-    
-                $locations = Location::query()->get();
-    
-                $data = $locations->map(function ($location) {
+
+                $locations = Location::query()->paginate($request->input('per_page', 6));
+
+                $data = collect($locations->items())->map(function ($location) {
                     return [
                         "id" => $location->id,
                         "name" => $location->name,
@@ -596,13 +596,19 @@ class Super_adminController extends Controller
                         "image_3" => $location->image_3,
                     ];
                 });
-    
+
                 if (!$locations->isEmpty()) {
                     return response()->json(
                         [
                             "success" => true,
-                            "message" => "Locations obtained succesfully",
-                            "data" => $data
+                            "message" => "Locations obtained successfully",
+                            "data" => $data,
+                            "pagination" => [
+                                "current_page" => $locations->currentPage(),
+                                "total_pages" => $locations->lastPage(),
+                                "per_page" => $locations->perPage(),
+                                "total" => $locations->total(),
+                            ],
                         ],
                         Response::HTTP_OK
                     );
