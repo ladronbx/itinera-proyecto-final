@@ -447,53 +447,51 @@ class Super_adminController extends Controller
         }
     }
 
-    public function getAllActivities()
-    {
+    
+   public function getAllActivitiesSuper(Request $request)
+   {
         try {
-            $activities = Activity::get();
-
-            $data = $activities->map(function ($activity) {
-                $location = Location::find($activity->location_id);
-
-                return [
-                    "id" => $activity->id,
-                    "name" => $activity->name,
-                    "location" => $location->name,
-                    "description" => $activity->description,
-                    "image_1" => $activity->image_1,
-                    "image_2" => $activity->image_2
-                ];
-            });
-
-            if (!$activities->isEmpty()) {
-                return response()->json(
-                    [
-                        "success" => false,
-                        "data" => $data
-                    ],
-                    Response::HTTP_OK
-                );
-            } else {
-                return response()->json(
-                    [
-                        "success" => false,
-                        "message" => "Activities not found"
-                    ],
-                    Response::HTTP_NOT_FOUND
-                );
+            $user = auth()->user();
+    
+            if ($user->role === "is_super_admin") {
+    
+                $activities = Activity::query()->get();
+    
+                $data = $activities->map(function ($activity) {
+                    return [
+                        "id" => $activity->id,
+                        "name" => $activity->name,
+                        "description" => $activity->description,
+                        "image_1" => $activity->image_1,
+                        "image_2" => $activity->image_2,
+                        "duration" => $activity->duration,
+                        "location_id" => $activity->location_id,
+                    ];
+                });
+    
+                if (!$activities->isEmpty()) {
+                    return response()->json(
+                        [
+                            "success" => true,
+                            "message" => "Activities obtained succesfully",
+                            "data" => $data
+                        ],
+                        Response::HTTP_OK
+                    );
+                }
             }
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
-
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error obtaining an activity"
+                    "message" => "Error obtaining the activities"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
         }
     }
+
     public function deleteLocationSuper(Request $request, $id)
     {
         try {
@@ -502,9 +500,17 @@ class Super_adminController extends Controller
 
             if ($user->role === ("is_super_admin")) {
                 $location = Location::query()->find($id);
+                $location_trip = Location_trip::query()->where('location_id', $id)->first();
+                $trip = $location_trip ? Trip::query()->where('id', $location_trip->trip_id)->first() : null;
 
                 if ($location) {
                     $location->delete();
+                    if($location_trip){
+                        $location_trip->delete();
+                    }
+                    if($trip){
+                        $trip->delete();
+                    }
 
                     return response()->json(
                         [
@@ -529,6 +535,49 @@ class Super_adminController extends Controller
                 [
                     "success" => false,
                     "message" => "Error deleting the location"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
+    public function getAllLocationsSuper(Request $request)
+    {
+        try {
+            $user = auth()->user();
+    
+            if ($user->role === "is_super_admin") {
+    
+                $locations = Location::query()->get();
+    
+                $data = $locations->map(function ($location) {
+                    return [
+                        "id" => $location->id,
+                        "name" => $location->name,
+                        "description" => $location->description,
+                        "image_1" => $location->image_1,
+                        "image_2" => $location->image_2,
+                        "image_3" => $location->image_3,
+                    ];
+                });
+    
+                if (!$locations->isEmpty()) {
+                    return response()->json(
+                        [
+                            "success" => true,
+                            "message" => "Locations obtained succesfully",
+                            "data" => $data
+                        ],
+                        Response::HTTP_OK
+                    );
+                }
+            }
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error obtaining the locations"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
