@@ -159,7 +159,6 @@ class Super_adminController extends Controller
     public function deleteTrip(Request $request, $id)
     {
         try {
-
             $user = auth()->user();
 
             if ($user->role === ("is_super_admin")) {
@@ -276,8 +275,6 @@ class Super_adminController extends Controller
             );
         }
     }
-
-    // Route::post('/location-create', [Super_adminController::class, 'createLocation']);
 
     public function createLocation(Request $request)
     {
@@ -465,7 +462,6 @@ class Super_adminController extends Controller
                     "description" => $activity->description,
                     "image_1" => $activity->image_1,
                     "image_2" => $activity->image_2
-
                 ];
             });
 
@@ -498,5 +494,44 @@ class Super_adminController extends Controller
             );
         }
     }
+    public function deleteLocationSuper(Request $request, $id)
+    {
+        try {
 
+            $user = auth()->user();
+
+            if ($user->role === ("is_super_admin")) {
+                $location = Location::query()->find($id);
+
+                if ($location) {
+                    $location->delete();
+
+                    return response()->json(
+                        [
+                            "success" => true,
+                            "message" => "Location deleted succesfully",
+                        ],
+                        Response::HTTP_OK
+                    );
+                } else {
+                    return response()->json(
+                        [
+                            "success" => false,
+                            "message" => "Location not found"
+                        ],
+                        Response::HTTP_NOT_FOUND
+                    );
+                }
+            }
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error deleting the location"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }

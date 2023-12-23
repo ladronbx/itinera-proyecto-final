@@ -82,6 +82,7 @@ Route::group([
     Route::post('/location-create', [Super_adminController::class, 'createLocation']);
     Route::post('/activity-create', [Super_adminController::class, 'createActivity']);
     Route::delete('/activity-remove/{id}', [Super_adminController::class, 'deleteActivitySuper']);
+    Route::delete('/location-remove/{id}', [Super_adminController::class, 'deleteLocationSuper']);
     Route::get('/activities', [Super_adminController::class, 'getAllActivities']);
     //to do : Route::put('/changeRole', [SuperAdminController::class, 'changeRole']); 
 });
