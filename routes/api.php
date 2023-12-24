@@ -12,7 +12,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\GroupController;
 
 Route::get('/api', function (Request $request) {
-
     return response()->json(
         [
             "success" => true,
@@ -86,7 +85,4 @@ Route::group([
     Route::get('/activities-super', [Super_adminController::class, 'getAllActivitiesSuper']);
     Route::get('/locations-super', [Super_adminController::class, 'getAllLocationsSuper']);
     Route::delete('/user-delete/{id}', [Super_adminController::class, 'deleteUser']);
-    //to do : Route::put('/changeRole', [SuperAdminController::class, 'changeRole']); 
 });
-
-// Route::get('/validateRole', [AuthController::class, 'validateRole']);

@@ -498,7 +498,6 @@ class Super_adminController extends Controller
                             "success" => true,
                             "message" => "Activities obtained successfully",
                             "data" => $data,
-                            // Agrega información adicional de paginación a la respuesta
                             "pagination" => [
                                 "current_page" => $activities->currentPage(),
                                 "total_pages" => $activities->lastPage(),
