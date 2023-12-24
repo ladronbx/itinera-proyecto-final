@@ -135,6 +135,8 @@ class TripController extends Controller
                     "start_date" => $dates[0]->start_date,
                     "end_date" => $dates[0]->end_date,
                     "image_1" => $locationName->image_1,
+                    "image_2" => $locationName->image_2,
+                    "image_3" => $locationName->image_3,
 
                 ];
             });
@@ -201,7 +203,11 @@ class TripController extends Controller
                 return [
                     'id' => $location->id,
                     'name' => $location->name,
-                    'image' => $location->image_1,
+                    'description_location' => $location->description,
+                    'image_1' => $location->image_1,
+                    'image_2' => $location->image_2,
+                    'image_3' => $location->image_3,
+
                 ];
             });
 

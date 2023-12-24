@@ -19,20 +19,20 @@ class Super_adminController extends Controller
     {
         try {
             $user = auth()->user();
-    
+
             if ($user->role === "is_super_admin") {
-    
+
                 $groups = Group::query()->get();
-    
+
                 $data = $groups->map(function ($group) {
                     $dates = Trip::query()->where('id', $group->trip_id)->get();
                     $location_trip = Location_trip::query()->where('trip_id', $group->trip_id)->first();
                     $locationName = Location::query()->where('id', $location_trip->location_id)->first();
-    
+
                     $location = $location_trip->location->name;
-    
+
                     $members = Group::query()->where('trip_id', $group->trip_id)->get();
-    
+
                     return [
                         "id" => $group->trip_id,
                         "memberscount" => $members->count(),
@@ -40,10 +40,10 @@ class Super_adminController extends Controller
                         "start_date" => $dates[0]->start_date,
                         "end_date" => $dates[0]->end_date,
                         "image_1" => $locationName->image_1,
-    
+
                     ];
                 });
-    
+
                 if (!$groups->isEmpty()) {
                     return response()->json(
                         [
@@ -54,7 +54,6 @@ class Super_adminController extends Controller
                         Response::HTTP_OK
                     );
                 }
-               
             }
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
@@ -106,7 +105,7 @@ class Super_adminController extends Controller
             );
         }
     }
-    
+
     public function updateTrip(Request $request, $id)
     {
         try {
@@ -203,7 +202,7 @@ class Super_adminController extends Controller
             $user = auth()->user();
             $trip = $user->trips;
 
-            if($trip->isEmpty() || !$trip){
+            if ($trip->isEmpty() || !$trip) {
                 return response()->json(
                     [
                         "success" => true,
@@ -237,11 +236,11 @@ class Super_adminController extends Controller
     {
         try {
             $user = auth()->user();
-    
+
             if ($user->role === "is_super_admin") {
-                
+
                 $users = User::query()->paginate($request->input('per_page', 6));
-    
+
                 $data = collect($users->items())->map(function ($user) {
                     return [
                         "id" => $user->id,
@@ -252,7 +251,7 @@ class Super_adminController extends Controller
                         "is_active" => $user->is_active,
                     ];
                 });
-    
+
                 if (!$users->isEmpty()) {
                     return response()->json(
                         [
@@ -325,7 +324,7 @@ class Super_adminController extends Controller
                     ],
                     Response::HTTP_CREATED
                 );
-            }else{
+            } else {
                 return response()->json(
                     [
                         "success" => false,
@@ -403,7 +402,7 @@ class Super_adminController extends Controller
                     ],
                     Response::HTTP_CREATED
                 );
-            }else{
+            } else {
                 return response()->json(
                     [
                         "success" => false,
@@ -467,20 +466,15 @@ class Super_adminController extends Controller
     }
 
 
-
-    
-    
     public function getAllActivitiesSuper(Request $request)
     {
         try {
             $user = auth()->user();
-    
+
             if ($user->role === "is_super_admin") {
-    
-                // Cambia el método get() por paginate()
+
                 $activities = Activity::query()->paginate($request->input('per_page', 6));
-    
-                // Convierte $activities a una colección antes de usar map
+
                 $data = collect($activities->items())->map(function ($activity) {
                     return [
                         "id" => $activity->id,
@@ -492,7 +486,7 @@ class Super_adminController extends Controller
                         "location_id" => $activity->location_id,
                     ];
                 });
-    
+
                 if (!$activities->isEmpty()) {
                     return response()->json(
                         [
@@ -523,10 +517,10 @@ class Super_adminController extends Controller
         }
     }
 
-    
 
 
-    
+
+
 
     public function deleteLocationSuper(Request $request, $id)
     {
@@ -541,10 +535,10 @@ class Super_adminController extends Controller
 
                 if ($location) {
                     $location->delete();
-                    if($location_trip){
+                    if ($location_trip) {
                         $location_trip->delete();
                     }
-                    if($trip){
+                    if ($trip) {
                         $trip->delete();
                     }
 
