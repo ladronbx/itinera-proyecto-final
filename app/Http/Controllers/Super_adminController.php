@@ -22,34 +22,38 @@ class Super_adminController extends Controller
 
             if ($user->role === "is_super_admin") {
 
-                $groups = Group::query()->get();
+                $trips = Trip::query()->paginate($request->input('per_page', 4));
 
-                $data = $groups->map(function ($group) {
-                    $dates = Trip::query()->where('id', $group->trip_id)->get();
-                    $location_trip = Location_trip::query()->where('trip_id', $group->trip_id)->first();
+                $data = collect($trips->items())->map(function ($trip) {
+                    $location_trip = Location_trip::query()->where('trip_id', $trip->id)->first();
                     $locationName = Location::query()->where('id', $location_trip->location_id)->first();
 
                     $location = $location_trip->location->name;
 
-                    $members = Group::query()->where('trip_id', $group->trip_id)->get();
+                    $members = Group::query()->where('trip_id', $trip->id)->get();
 
                     return [
-                        "id" => $group->trip_id,
+                        "id" => $trip->id,
                         "memberscount" => $members->count(),
                         "location" => $location,
-                        "start_date" => $dates[0]->start_date,
-                        "end_date" => $dates[0]->end_date,
+                        "start_date" => $trip->start_date,
+                        "end_date" => $trip->end_date,
                         "image_1" => $locationName->image_1,
-
                     ];
                 });
 
-                if (!$groups->isEmpty()) {
+                if (!$trips->isEmpty()) {
                     return response()->json(
                         [
                             "success" => true,
-                            "message" => "Trips obtained succesfully",
-                            "data" => $data
+                            "message" => "Trips obtained successfully",
+                            "data" => $data,
+                            "pagination" => [
+                                "current_page" => $trips->currentPage(),
+                                "total_pages" => $trips->lastPage(),
+                                "per_page" => $trips->perPage(),
+                                "total" => $trips->total(),
+                            ],
                         ],
                         Response::HTTP_OK
                     );
@@ -66,6 +70,7 @@ class Super_adminController extends Controller
             );
         }
     }
+
     public function getTripById(Request $request, $id)
     {
         try {
