@@ -193,6 +193,8 @@ Este backend proporciona la infraestructura necesaria para que la aplicación It
         
 </details>
 
+</details>
+
 <summary><h3>4. Update</h3></summary>
 
 - **Descripción**: Actualiza el perfil del usuario autenticado.
