@@ -1,0 +1,147 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Itinera-Users",
+    "dateExported": "2023-12-24T19:00:12.598Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "bc95b183-8bbf-44f2-823a-a660ef99f30a",
+            "colId": "90289e71-f6fa-443c-a5ee-998e1df897e0",
+            "containerId": "",
+            "name": "Register",
+            "url": "http://localhost:8000/api/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-12-06T08:47:40.198Z",
+            "modified": "2023-12-08T10:50:09.119Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"new user\",\n  \"email\": \"user@user.com\",\n  \"password\": \"Password1\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f81b9f1b-9c5e-4ca8-a5f9-345aabdfe36d",
+            "colId": "90289e71-f6fa-443c-a5ee-998e1df897e0",
+            "containerId": "",
+            "name": "Login",
+            "url": "http://localhost:8000/api/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-12-06T09:17:31.006Z",
+            "modified": "2023-12-22T17:47:19.338Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"super@super.com\",\n  \"password\": \"Password1!\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "382b5002-8d7e-40f1-b8d2-a875798bf8f0",
+            "colId": "90289e71-f6fa-443c-a5ee-998e1df897e0",
+            "containerId": "",
+            "name": "Profile",
+            "url": "http://localhost:8000/api/profile",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-12-06T09:20:14.604Z",
+            "modified": "2023-12-20T12:11:55.122Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMDc0MjQ4LCJleHAiOjE3MDMwNzc4NDgsIm5iZiI6MTcwMzA3NDI0OCwianRpIjoibU5HVklkdEx5OEhUcFl3NiIsInN1YiI6IjIwIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.aWVjaw6ZZEIGrJxmMU14NtbGVYYVvrE6H2-Ll83pf_o"
+            },
+            "tests": []
+        },
+        {
+            "_id": "b3f1ead3-21b8-490d-8f31-d1a498c91930",
+            "colId": "90289e71-f6fa-443c-a5ee-998e1df897e0",
+            "containerId": "",
+            "name": "Logout",
+            "url": "http://localhost:8000/api/logout",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-12-06T09:23:29.469Z",
+            "modified": "2023-12-08T10:52:28.582Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "1|8d6giffhErD9OcFRDR4wR0ByCVUEF9gpDcc8hAtS636a922d"
+            },
+            "tests": []
+        },
+        {
+            "_id": "414b97e7-8852-4b49-9a4d-bb3a00327994",
+            "colId": "90289e71-f6fa-443c-a5ee-998e1df897e0",
+            "containerId": "",
+            "name": "updatePassword",
+            "url": "http://localhost:8000/api/update-password",
+            "method": "PUT",
+            "sortNum": 45000,
+            "created": "2023-12-19T18:21:28.291Z",
+            "modified": "2023-12-20T15:52:57.548Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"currentPassword\": \"Password1!\",\n    \"newPassword\": \"Password66!\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMDg3NTUwLCJleHAiOjE3MDMwOTExNTAsIm5iZiI6MTcwMzA4NzU1MCwianRpIjoidlVPUTBDT3k5bTN5RzA4ZCIsInN1YiI6IjQiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.TeZRYhVHOFPPCWOdbJr5BScCxCVDtUwKNTlMSJwH8BQ"
+            },
+            "tests": []
+        },
+        {
+            "_id": "7fd73146-b046-4db5-b1ef-9b4d3e69e81b",
+            "colId": "90289e71-f6fa-443c-a5ee-998e1df897e0",
+            "containerId": "",
+            "name": "Update profile",
+            "url": "http://localhost:8000/api/update-profile",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2023-12-06T09:25:09.603Z",
+            "modified": "2023-12-20T14:15:59.776Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"userupdate\",\n  \"email\": \"userupdate@user.com\",\n  \"image\" : \"imageupdate\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMDc2MzMzLCJleHAiOjE3MDMwNzk5MzMsIm5iZiI6MTcwMzA3NjMzMywianRpIjoidmZFRGRBNU1DNENsZzBOWCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.iCxfFjxNFVezP2ym6O4i47komoVoGnE0mMh2-U10m-M"
+            },
+            "tests": []
+        },
+        {
+            "_id": "d265396c-49d4-45f3-95e8-f5a547761c91",
+            "colId": "90289e71-f6fa-443c-a5ee-998e1df897e0",
+            "containerId": "",
+            "name": "Delete profile",
+            "url": "http://localhost:8000/api/user-delete",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2023-12-06T09:25:55.853Z",
+            "modified": "2023-12-06T09:37:32.695Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "3|YeVwdRB8tCzaqmukBONRxjXbFR58OvlZBL5GwjnZebb44104"
+            },
+            "tests": []
+        }
+    ]
+}

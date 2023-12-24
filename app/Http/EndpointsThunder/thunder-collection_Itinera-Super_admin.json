@@ -1,0 +1,227 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Itinera-Super_admin",
+    "dateExported": "2023-12-24T19:01:29.961Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "3624593d-4151-473e-a8e9-beb4e6a124d5",
+            "colId": "c1f722bc-3a04-42a0-b275-55a8b1b974dc",
+            "containerId": "",
+            "name": "Super : Get all trips",
+            "url": "http://localhost:8000/api/trips",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-12-08T13:29:42.130Z",
+            "modified": "2023-12-22T15:51:19.860Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMjYwMjcwLCJleHAiOjE3MDMyNjM4NzAsIm5iZiI6MTcwMzI2MDI3MCwianRpIjoiRXhZNDhYQjdYR1R4bG9GMiIsInN1YiI6IjE3IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyIsInJvbGUiOiJpc19zdXBlcl9hZG1pbiJ9.TqxObGnrJo8JMfuHC0cK7selTKdZBtZhMIK-HFu-lFY"
+            },
+            "tests": []
+        },
+        {
+            "_id": "715efa77-ed39-4f64-aff1-361896dabcce",
+            "colId": "c1f722bc-3a04-42a0-b275-55a8b1b974dc",
+            "containerId": "",
+            "name": "Super : GetAllUsers",
+            "url": "http://localhost:8000/api/users",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2023-12-22T17:46:05.583Z",
+            "modified": "2023-12-22T17:47:27.838Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMjY3MjM5LCJleHAiOjE3MDMyNzA4MzksIm5iZiI6MTcwMzI2NzIzOSwianRpIjoiVFI0UklMSkZZWjI3TU91TCIsInN1YiI6IjE3IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyIsInJvbGUiOiJpc19zdXBlcl9hZG1pbiJ9.Bn2AVCAfiX1V3qiB6_R8RsOQFi7E10pyMURg-6U-QQs"
+            },
+            "tests": []
+        },
+        {
+            "_id": "a0510150-60e4-4ce6-b0de-77132d0fdcd7",
+            "colId": "c1f722bc-3a04-42a0-b275-55a8b1b974dc",
+            "containerId": "",
+            "name": "Super : Get travel by id",
+            "url": "http://localhost:8000/api/travel/2",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-12-08T13:29:43.698Z",
+            "modified": "2023-12-08T13:29:43.698Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "2|1EDUHIsZKkXkWmKLVBgUCy0JIRHB98MHqZDLVPCG82a0f7c0"
+            },
+            "tests": []
+        },
+        {
+            "_id": "5fe465ad-56ac-41a3-b80c-504570a746d4",
+            "colId": "c1f722bc-3a04-42a0-b275-55a8b1b974dc",
+            "containerId": "",
+            "name": "Super : Update travel by id",
+            "url": "http://localhost:8000/api/travel-update/1",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2023-12-08T13:29:45.589Z",
+            "modified": "2023-12-08T13:29:45.589Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"start_date\":\"2023-12-08\",\n  \"end_date\":\"2023-12-09\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "3|j15nVgPaN8EtQyktdnvTIWadJbLfYHuR5usjYhpD5bd08a4a"
+            },
+            "tests": []
+        },
+        {
+            "_id": "bafdc51c-c106-433d-b483-e9a58815a000",
+            "colId": "c1f722bc-3a04-42a0-b275-55a8b1b974dc",
+            "containerId": "",
+            "name": "Super : Delete travel by id",
+            "url": "http://localhost:8000/api/trip-delete/1",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-12-08T13:29:47.091Z",
+            "modified": "2023-12-22T15:52:11.491Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMjYwMzE1LCJleHAiOjE3MDMyNjM5MTUsIm5iZiI6MTcwMzI2MDMxNSwianRpIjoiV2RxTjlCb2dib3gyNENKcyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3Iiwicm9sZSI6InVzZXIifQ.4-246PYKrM_9Y_gSEGVtp5TGjj6l8c6Cw-dFL-kYe5k"
+            },
+            "tests": []
+        },
+        {
+            "_id": "ac9dbd99-4db0-48f7-9a24-5bfb3039867a",
+            "colId": "c1f722bc-3a04-42a0-b275-55a8b1b974dc",
+            "containerId": "",
+            "name": "Super : Get my travels",
+            "url": "http://localhost:8000/api/my-travels",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-12-08T13:29:48.449Z",
+            "modified": "2023-12-08T13:29:48.449Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "1|dTr7J6UPktfNW75ld4BGK1zN2xO536Opl4bwh2Qcd6e53d3f"
+            },
+            "tests": []
+        },
+        {
+            "_id": "df2531a5-fff3-48ac-8d7c-846b410e8789",
+            "colId": "c1f722bc-3a04-42a0-b275-55a8b1b974dc",
+            "containerId": "",
+            "name": "Super : Create location",
+            "url": "http://localhost:8000/api/location-create",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-12-22T21:26:38.728Z",
+            "modified": "2023-12-22T23:18:05.904Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"name\": \"Destino Ejemplo\",\n    \"description\": \"Esta es una descripción de ejemplo para el destino.\",\n    \"image_1\": \"https://ejemplo.com/imagen1.jpg\",\n    \"image_2\": \"https://ejemplo.com/imagen2.jpg\",\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMjg2NjIwLCJleHAiOjE3MDMyOTAyMjAsIm5iZiI6MTcwMzI4NjYyMCwianRpIjoiUnp5cGhPVG9zSXZWaTV6dSIsInN1YiI6IjE3IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyIsInJvbGUiOiJpc19zdXBlcl9hZG1pbiJ9.l4xO-0el3Wm4iIYfHqPOdsSyd5p0NrjjmhQz9Iquz0M"
+            },
+            "tests": []
+        },
+        {
+            "_id": "c24c0487-9c1e-4d9d-8e7d-a68d2a19bb4c",
+            "colId": "c1f722bc-3a04-42a0-b275-55a8b1b974dc",
+            "containerId": "",
+            "name": "Super : Create activity",
+            "url": "http://localhost:8000/api/activity-create",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2023-12-22T21:32:43.206Z",
+            "modified": "2023-12-23T14:07:37.999Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"name\": \"Actividad Ejemplo\",\n    \"description\": \"Esta es una descripción de ejemplo para la actividad.\",\n    \"image_1\": \"https://ejemplo.com/imagen1.jpg\",\n    \"image_2\": \"https://ejemplo.com/imagen2.jpg\",\n    \"duration\": 12,\n    \"location_name\": \"valencia\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMzQwNDIwLCJleHAiOjE3MDMzNDQwMjAsIm5iZiI6MTcwMzM0MDQyMCwianRpIjoiMWdPODlZaVhOVFZVV1JraCIsInN1YiI6IjE3IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyIsInJvbGUiOiJpc19zdXBlcl9hZG1pbiJ9.sOcZD3sJclsSDKyYFKWWaoy-hSmBxs_VxcWnvU5AQjY"
+            },
+            "tests": []
+        },
+        {
+            "_id": "66f36f0d-f4a9-4bfe-a5a4-1fbb2cd07ade",
+            "colId": "c1f722bc-3a04-42a0-b275-55a8b1b974dc",
+            "containerId": "",
+            "name": "Super : Delete Activity",
+            "url": "http://localhost:8000/api/activity-remove/2",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2023-12-22T23:33:47.235Z",
+            "modified": "2023-12-22T23:35:56.552Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"name\": \"Actividad Ejemplo\",\n    \"description\": \"Esta es una descripción de ejemplo para la actividad.\",\n    \"image_1\": \"https://ejemplo.com/imagen1.jpg\",\n    \"image_2\": \"https://ejemplo.com/imagen2.jpg\",\n    \"duration\": 12,\n    \"location_id\": 1\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMjg4MDg1LCJleHAiOjE3MDMyOTE2ODUsIm5iZiI6MTcwMzI4ODA4NSwianRpIjoib253RWFZSnFwNDNxYXhSayIsInN1YiI6IjE3IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyIsInJvbGUiOiJpc19zdXBlcl9hZG1pbiJ9.7leCnFwpyZT1_Z7KA3AkJeyco2ZxmlxKFoO2LY98sEM"
+            },
+            "tests": []
+        },
+        {
+            "_id": "09d29d20-2936-4ad2-b239-82a278b915cb",
+            "colId": "c1f722bc-3a04-42a0-b275-55a8b1b974dc",
+            "containerId": "",
+            "name": "Super : Delete Location",
+            "url": "http://localhost:8000/api/location-remove/1",
+            "method": "DELETE",
+            "sortNum": 90000,
+            "created": "2023-12-23T11:32:21.868Z",
+            "modified": "2023-12-23T11:33:00.054Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMzI4Nzg3LCJleHAiOjE3MDMzMzIzODcsIm5iZiI6MTcwMzMyODc4NywianRpIjoiYWoxOG9QaU1QWkhFQzRiWCIsInN1YiI6IjE3IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyIsInJvbGUiOiJpc19zdXBlcl9hZG1pbiJ9.3A7cJeWiqqyC1Fdwdr4CS8QNJHkxIBwMgtqhMCkSJ4c"
+            },
+            "tests": []
+        },
+        {
+            "_id": "d7e458ea-6876-42de-afa2-23f37431a87b",
+            "colId": "c1f722bc-3a04-42a0-b275-55a8b1b974dc",
+            "containerId": "",
+            "name": "Super : Delete Users",
+            "url": "http://localhost:8000/api/user-delete/1",
+            "method": "DELETE",
+            "sortNum": 100000,
+            "created": "2023-12-23T12:55:14.028Z",
+            "modified": "2023-12-23T12:55:57.393Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMzM1ODgzLCJleHAiOjE3MDMzMzk0ODMsIm5iZiI6MTcwMzMzNTg4MywianRpIjoieXVLa0dLZUJrbk9xNTRETiIsInN1YiI6IjE3IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyIsInJvbGUiOiJpc19zdXBlcl9hZG1pbiJ9.QMkx5b5a5LLw1dXfHn2Kb4A-ogzT8S-aIf1uJcNfzMU"
+            },
+            "tests": []
+        }
+    ]
+}

@@ -1,0 +1,99 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Itinera-Activities",
+    "dateExported": "2023-12-24T19:01:56.243Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "95bae4f6-6799-408d-a6ed-32db21c6f2a4",
+            "colId": "a352559c-4dd2-4089-9446-140371e0dd21",
+            "containerId": "",
+            "name": "Get all Activities",
+            "url": "http://localhost:8000/api/activities",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-12-10T15:31:42.525Z",
+            "modified": "2023-12-23T00:09:11.902Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMjkwMTA4LCJleHAiOjE3MDMyOTM3MDgsIm5iZiI6MTcwMzI5MDEwOCwianRpIjoieG5kQXNEZjBDeGJDS2UzcSIsInN1YiI6IjE3IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyIsInJvbGUiOiJpc19zdXBlcl9hZG1pbiJ9.r_WYerOtiUpGmlCsk0boRFCp57OOQy5KSwPmwFwZRug"
+            },
+            "tests": []
+        },
+        {
+            "_id": "ac780e0b-6a15-4363-aa11-d8d528276344",
+            "colId": "a352559c-4dd2-4089-9446-140371e0dd21",
+            "containerId": "",
+            "name": "Get Activity By Id",
+            "url": "http://localhost:8000/api/activity/1",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-12-10T15:31:42.526Z",
+            "modified": "2023-12-21T17:00:35.722Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMTc4MDAxLCJleHAiOjE3MDMxODE2MDEsIm5iZiI6MTcwMzE3ODAwMSwianRpIjoiTEROcXVkWTA1dTlaWVNkbSIsInN1YiI6IjQiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.EAVTjKxAzmaDs42eymgovfyNsLHOhnhDHr4gi26ybew"
+            },
+            "tests": []
+        },
+        {
+            "_id": "1b100eef-c39c-4f2a-830f-72bb69219c29",
+            "colId": "a352559c-4dd2-4089-9446-140371e0dd21",
+            "containerId": "",
+            "name": "Get activities by location (getActivityByLocationId)",
+            "url": "http://localhost:8000/api/activities-location/1",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-12-10T15:44:55.759Z",
+            "modified": "2023-12-21T17:15:11.211Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMTc4MDAxLCJleHAiOjE3MDMxODE2MDEsIm5iZiI6MTcwMzE3ODAwMSwianRpIjoiTEROcXVkWTA1dTlaWVNkbSIsInN1YiI6IjQiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.EAVTjKxAzmaDs42eymgovfyNsLHOhnhDHr4gi26ybew"
+            },
+            "tests": []
+        },
+        {
+            "_id": "1c28ec64-b166-4285-9262-57e171d16a21",
+            "colId": "a352559c-4dd2-4089-9446-140371e0dd21",
+            "containerId": "",
+            "name": "addActivityFromTrip(tripId)",
+            "url": "http://localhost:8000/api/activities-add-my-trip/3/57",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-12-21T16:56:53.837Z",
+            "modified": "2023-12-22T11:36:51.033Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMjQ0OTgzLCJleHAiOjE3MDMyNDg1ODMsIm5iZiI6MTcwMzI0NDk4MywianRpIjoieVNHSDRNY0lVcTNHZDJxbSIsInN1YiI6IjE5IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Pd7O4UAGgQ1fCzH4eJC2gX9ZD3mi3o_pTbKLqHPl8eo"
+            },
+            "tests": []
+        },
+        {
+            "_id": "e9ad0d2f-0ad7-43e7-ae10-1b0668554608",
+            "colId": "a352559c-4dd2-4089-9446-140371e0dd21",
+            "containerId": "",
+            "name": "deleteActivityFromTrip(tripId, activityId)",
+            "url": "http://localhost:8000/api/activities-my-trip/1/activity/1",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-12-21T17:28:53.966Z",
+            "modified": "2023-12-22T07:45:28.929Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMjMxMTE1LCJleHAiOjE3MDMyMzQ3MTUsIm5iZiI6MTcwMzIzMTExNSwianRpIjoiY0tVdzc5T0U2S1NjS210QiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.XRJE2Qj3MkVCzwX5IBo0fwftb_QiFU9gtxxsDIdblZE"
+            },
+            "tests": []
+        }
+    ]
+}

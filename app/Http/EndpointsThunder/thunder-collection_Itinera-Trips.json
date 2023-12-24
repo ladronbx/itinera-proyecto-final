@@ -1,0 +1,191 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Itinera-Trips",
+    "dateExported": "2023-12-24T19:01:06.575Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "3c32f40d-6d0d-4810-a5fe-5397d3cf04ad",
+            "colId": "33ee8bd9-e692-4ac4-a8ef-c9bb735b7314",
+            "containerId": "",
+            "name": "Get all my trips(getAllMyTrips)",
+            "url": "http://localhost:8000/api/my-trips",
+            "method": "GET",
+            "sortNum": 65000,
+            "created": "2023-12-08T13:27:54.643Z",
+            "modified": "2023-12-21T20:31:25.185Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMTkwNjY5LCJleHAiOjE3MDMxOTQyNjksIm5iZiI6MTcwMzE5MDY2OSwianRpIjoiWXBtbU5JMEhYVVM2VHc0MCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.L2i13rwEVVAUufKNc5PJ8xCwyX1ErCbk7qtiprkMew8"
+            },
+            "tests": []
+        },
+        {
+            "_id": "8e567e8e-393d-422f-b07c-c7ff94958205",
+            "colId": "33ee8bd9-e692-4ac4-a8ef-c9bb735b7314",
+            "containerId": "",
+            "name": "Get my trip by id(getMyTripById)",
+            "url": "http://localhost:8000/api/my-trip/2",
+            "method": "GET",
+            "sortNum": 67500,
+            "created": "2023-12-08T13:30:44.483Z",
+            "modified": "2023-12-22T07:50:28.496Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMjI5NDAyLCJleHAiOjE3MDMyMzMwMDIsIm5iZiI6MTcwMzIyOTQwMiwianRpIjoiMm5BOXR5VHFYWHdwaTluRSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.jCEMA19k8qftT6QySK4z9mX9nS3MKsmo58KDFlS9gY4"
+            },
+            "tests": []
+        },
+        {
+            "_id": "63218902-c624-425c-aaef-51331639b7e5",
+            "colId": "33ee8bd9-e692-4ac4-a8ef-c9bb735b7314",
+            "containerId": "",
+            "name": "Update my trip by id(updateMyTripById)",
+            "url": "http://localhost:8000/api/my-trip/1",
+            "method": "PUT",
+            "sortNum": 68750,
+            "created": "2023-12-08T15:26:00.155Z",
+            "modified": "2023-12-14T20:48:29.304Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"start_date\":\"2023-12-23\",\n  \"end_date\":\"2023-12-24\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "4|vpZ3FDKkytvsSNt1puwFeeSC3LMuqLlvANY5AMYB8d065bb4"
+            },
+            "tests": []
+        },
+        {
+            "_id": "0d9d6f55-22eb-4da3-b71d-d906291016ef",
+            "colId": "33ee8bd9-e692-4ac4-a8ef-c9bb735b7314",
+            "containerId": "",
+            "name": "Delete my trip by id(updateMyTripById)",
+            "url": "http://localhost:8000/api/my-trip/1",
+            "method": "DELETE",
+            "sortNum": 69375,
+            "created": "2023-12-08T15:45:23.635Z",
+            "modified": "2023-12-22T12:21:00.369Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMjQ3NjI2LCJleHAiOjE3MDMyNTEyMjYsIm5iZiI6MTcwMzI0NzYyNiwianRpIjoicXpyaXB3azRTcDNucUpoRyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.fmDzKCFV5LL1X8ONB6y_eR__z80cNfJ93eqKcCN-mCc"
+            },
+            "tests": []
+        },
+        {
+            "_id": "80ec52d0-4cc3-4743-aeba-0bbc7c37d63b",
+            "colId": "33ee8bd9-e692-4ac4-a8ef-c9bb735b7314",
+            "containerId": "",
+            "name": "selectDatesTrip - [crea un grupo con él mismo]",
+            "url": "http://localhost:8000/api/select-dates/5",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2023-12-07T08:18:13.521Z",
+            "modified": "2023-12-11T17:57:33.413Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"start_date\":\"2023-12-01\",\n  \"end_date\":\"2023-12-31\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAyMzE3NDM3LCJleHAiOjE3MDIzMjEwMzcsIm5iZiI6MTcwMjMxNzQzNywianRpIjoiRkYybjZsaWZqZ29CVnhpaCIsInN1YiI6IjEyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Q_yBFN9WazCRMl0tFYeqMMVUXRsg2Pwab53nR79i7UE"
+            },
+            "tests": []
+        },
+        {
+            "_id": "28f181e6-04ec-4cb6-a0b1-d7c2e5337bdc",
+            "colId": "33ee8bd9-e692-4ac4-a8ef-c9bb735b7314",
+            "containerId": "",
+            "name": "createTrip - [crea un grupo con él mismo]",
+            "url": "http://localhost:8000/api/create-trip",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2023-12-16T12:30:56.034Z",
+            "modified": "2023-12-21T20:32:14.899Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"start_date\": \"2025-07-15\",\n    \"end_date\": \"2025-07-22\",\n    \"location_id\": 3,\n    \"activities\": [15, 16]\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAzMTkwNjY5LCJleHAiOjE3MDMxOTQyNjksIm5iZiI6MTcwMzE5MDY2OSwianRpIjoiWXBtbU5JMEhYVVM2VHc0MCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.L2i13rwEVVAUufKNc5PJ8xCwyX1ErCbk7qtiprkMew8"
+            },
+            "tests": []
+        },
+        {
+            "_id": "439efc35-7d11-4c62-87cf-f6891f7cee00",
+            "colId": "33ee8bd9-e692-4ac4-a8ef-c9bb735b7314",
+            "containerId": "",
+            "name": "addMemberToTrip",
+            "url": "http://localhost:8000/api/my-trip/4/add-member2",
+            "method": "POST",
+            "sortNum": 90000,
+            "created": "2023-12-17T15:50:40.509Z",
+            "modified": "2023-12-18T20:14:20.070Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"email\": \"user2@user.com\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAyOTI5OTcyLCJleHAiOjE3MDI5MzM1NzIsIm5iZiI6MTcwMjkyOTk3MiwianRpIjoia1Rxcjh0OFpOWXNTN0g1ZyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.q9E6qSZfnk-Aq64a9rLmIQalshXuDqWDplMTM99jg7U"
+            },
+            "tests": []
+        },
+        {
+            "_id": "c76467c6-43c1-4872-9297-3e2085fe3318",
+            "colId": "33ee8bd9-e692-4ac4-a8ef-c9bb735b7314",
+            "containerId": "",
+            "name": "deleteMemberFromTrip",
+            "url": "http://localhost:8000/api/my-trip/1/delete-member/4",
+            "method": "DELETE",
+            "sortNum": 100000,
+            "created": "2023-12-18T19:32:30.698Z",
+            "modified": "2023-12-18T21:03:22.083Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAyOTMzMzc4LCJleHAiOjE3MDI5MzY5NzgsIm5iZiI6MTcwMjkzMzM3OCwianRpIjoiVDA1dGs1WlBiektVUklEdSIsInN1YiI6IjQiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0._aS4q5wZ4mT3qRVtGniRfRQDi6W0CJxJmv6Nf44edLA"
+            },
+            "tests": []
+        },
+        {
+            "_id": "0a21138f-115f-4e88-8dad-1180251d94dc",
+            "colId": "33ee8bd9-e692-4ac4-a8ef-c9bb735b7314",
+            "containerId": "",
+            "name": "getMembersTrip",
+            "url": "http://localhost:8000/api/my-trip/1/get-members",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2023-12-19T06:51:38.061Z",
+            "modified": "2023-12-19T06:56:43.571Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzAyOTY4OTM2LCJleHAiOjE3MDI5NzI1MzYsIm5iZiI6MTcwMjk2ODkzNiwianRpIjoiQzk4NXBHUVFFd2tmSXpzOSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.5zjsflN96AGHL-So8mzjsl3hS8mOBmYejSWHS3w9isI"
+            },
+            "tests": []
+        }
+    ]
+}

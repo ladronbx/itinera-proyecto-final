@@ -1,0 +1,37 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Itinera-Locations",
+    "dateExported": "2023-12-24T19:01:43.048Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "5288700a-297a-41cc-831a-5d0adc374d5a",
+            "colId": "ff421342-bc29-4c81-ae82-fda944c93162",
+            "containerId": "",
+            "name": "Get all Locations",
+            "url": "http://localhost:8000/api/locations",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-12-08T16:17:16.103Z",
+            "modified": "2023-12-08T16:34:19.046Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d7edb75d-953b-4687-9d91-58c4e419aa7d",
+            "colId": "ff421342-bc29-4c81-ae82-fda944c93162",
+            "containerId": "",
+            "name": "Get Locations By Id",
+            "url": "http://localhost:8000/api/location/1",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-12-08T16:34:25.930Z",
+            "modified": "2023-12-08T16:34:49.103Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
