@@ -77,16 +77,13 @@ class AuthController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return response()->json(
-                    [
-                        "success" => false,
-                        "message" => "Email o contraseña incorrecta",
-                        "error" => $validator->errors()
-                    ],
-                    Response::HTTP_BAD_REQUEST
-                );
+                return response()->json([
+                    "success" => false,
+                    "message" => "Error en la validación",
+                    "errors" => $validator->errors()
+                ], Response::HTTP_BAD_REQUEST);
             }
-
+            
             $email = $request->input('email');
             $password = $request->input('password');
             $user = User::query()->where('email', $email)->first();
