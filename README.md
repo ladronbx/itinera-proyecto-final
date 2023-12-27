@@ -138,10 +138,9 @@ Este backend proporciona la infraestructura necesaria para que la aplicación It
         
         ```json
         {
-            "name": "Nombre del Usuario",
-            "nickname": "Apodo del Usuario",
-            "email": "correo@ejemplo.com",
-            "password": "contraseña",
+            "name": "Jane",
+            "email": "jane@example.com",
+            "password": "Password1!",
             "photo": "url_de_la_foto"
         }
         
@@ -167,8 +166,8 @@ Este backend proporciona la infraestructura necesaria para que la aplicación It
         
         ```json
         {
-            "email": "correo@ejemplo.com",
-            "password": "contraseña"
+            "email": "jane@example.com",
+            "password": "Password1!",
         }
         
         ```
